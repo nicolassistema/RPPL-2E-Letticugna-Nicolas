@@ -9,7 +9,7 @@ namespace Entidades
         #endregion
 
         #region "Constructor"
-        public Cama(string marca, string nombre, string detalle, int cantidad, double precio, ETamanio tamanio) : base(marca, nombre, detalle, cantidad, precio)
+        public Cama(string marca, string nombre, string detalle, int cantidad, double precio, double kilogramos,  ETamanio tamanio) : base(marca, nombre, detalle, cantidad, precio, kilogramos)
         {
             this.tamanio = tamanio;
         }

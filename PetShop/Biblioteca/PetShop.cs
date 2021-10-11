@@ -96,8 +96,8 @@ namespace Entidades
         {
 
 
-            listaProductos += (new Cama("Cama pepito           ", "Cama lalala", "Cama grande descripcion", 35, 11.11, Cama.ETamanio.Grande));
-            listaProductos += (new Cama("Cama  pepito          ", "Cama lalala", "Cama grande descripcion", 35, 22.22, Cama.ETamanio.Chico));
+            listaProductos += (new Cama("Cama pepito           ", "Cama lalala", "Cama grande descripcion", 35, 11.11, 9, Cama.ETamanio.Grande));
+            listaProductos += (new Cama("Cama  pepito          ", "Cama lalala", "Cama grande descripcion", 35, 22.22, 9, Cama.ETamanio.Chico));
             listaProductos += (new Juguete("juguete pepito        ", "juguete  lalala", "juguete grande descripcion", 35, 33.33, Juguete.EMaterial.Plastico));
             listaProductos += (new Juguete("juguete pepito        ", "juguete lalala", "juguete grande descripcion", 35, 44.44, Juguete.EMaterial.Goma));
             listaProductos += (new Alimento("Alimento pepito       ", "Alimento  lalala", "Alimento grande descripcion", 35, 55.55, Alimento.ETipoAlimento.Natural));

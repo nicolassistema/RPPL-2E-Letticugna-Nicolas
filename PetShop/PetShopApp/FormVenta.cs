@@ -58,6 +58,7 @@ namespace PetShopApp
                 dgvListaProductos.Rows[i].Cells[2].Value = item.Nombre;
                 dgvListaProductos.Rows[i].Cells[3].Value = item.Cantidad;
                 dgvListaProductos.Rows[i].Cells[4].Value = item.Precio;
+                dgvListaProductos.Rows[i].Cells[5].Value = item.Kilogramos;
                 i++;
             }
         }
@@ -167,6 +168,9 @@ namespace PetShopApp
             dgvListaProdSelecc.Rows.Clear();
             CargarDataGridProducto();
             lblMostrarTotal.Text = "0.00";
+            lblKgNumber.Text = "0.00";
+            lblTipoEnvio.Text = "Moto: $";
+            lblMontoTipoEnvio.Text = "100";
         }
 
         public void RestartearVta()
@@ -299,6 +303,8 @@ namespace PetShopApp
                 lblKg.Visible = true;
                 lblKgNumber.Visible = true;
                 lblTipoEnvio.Visible = true;
+                lblTipoEnvioDescrip.Visible = true;
+                lblDescripMax.Visible = true;
                 lblMontoTipoEnvio.Visible = true;
                 lblDistancia.Visible = true;
                 lblDistancia2.Visible = true;
@@ -310,6 +316,8 @@ namespace PetShopApp
                 lblKg.Visible = false;
                 lblKgNumber.Visible = false;
                 lblTipoEnvio.Visible = false;
+                lblTipoEnvioDescrip.Visible = false;
+                lblDescripMax.Visible = false;
                 lblMontoTipoEnvio.Visible = false;
                 lblDistancia.Visible = false;
                 lblDistancia2.Visible = false;
@@ -320,7 +328,11 @@ namespace PetShopApp
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            double acum = 0;
+            int stock = 0;
+            double kg = 0;
             btnLimpiarSelectProd.Enabled = true;
+            lblKgNumber.Text = "0.00";
             lblMontoVta.Text = "0.00";
             cmbFromaPago.Text = "";
             txtMontoAPagar.Text = "";
@@ -329,21 +341,28 @@ namespace PetShopApp
             btnAceptaCompra.Enabled = true;
             btnCancelaCompra.Enabled = true;
             btnSacar.Enabled = true;
-            double acum = 0;
-            int stock = 0;
+          
             Producto productoAux = new Producto();
             int aux = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[0].Value);
             productoAux = PetShop.ObtenerProductoByID(aux);
 
             if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value) < 1))
             {
-                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Nombre.ToString(), productoAux.Marca.ToString(), productoAux.Precio.ToString() });
+                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Nombre.ToString(), productoAux.Marca.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString() });
                 dgvListaProdSelecc.AllowUserToAddRows = false;
                 for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
                 {
                     acum += double.Parse(dgvListaProdSelecc.Rows[i].Cells[3].Value.ToString());
+                    kg += double.Parse(dgvListaProdSelecc.Rows[i].Cells[4].Value.ToString());
                 }
+                if (kg > 100)
+                {
+                    lblTipoEnvio.Text = "MiniFlete: $";
+                    lblMontoTipoEnvio.Text = "500";
+                }
+
                 lblMostrarTotal.Text = string.Format("{0:f2}", acum);
+                lblKgNumber.Text = string.Format("{0:f2}", kg);
                 stock = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value);
                 stock -= 1;
                 dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value = stock.ToString();
@@ -365,9 +384,18 @@ namespace PetShopApp
             int idAux = Convert.ToInt32(dgvListaProdSelecc.Rows[dgvListaProdSelecc.CurrentCell.RowIndex].Cells[0].Value);
             int stock = 0;
             double acumDos = double.Parse(lblMostrarTotal.Text);
+            double totalKg = double.Parse(lblKgNumber.Text);
             double acum = double.Parse(dgvListaProdSelecc.CurrentRow.Cells[3].Value.ToString());
+            double acumKg = double.Parse(dgvListaProdSelecc.CurrentRow.Cells[4].Value.ToString());
             dgvListaProdSelecc.Rows.Remove(dgvListaProdSelecc.CurrentRow);
             lblMostrarTotal.Text = string.Format("{0:f2}", (acumDos - acum));
+            lblKgNumber.Text = string.Format("{0:f2}", (totalKg - acumKg));
+
+            if ((totalKg - acumKg) <= 100 )
+            {
+                lblTipoEnvio.Text = "Moto: $";
+                lblMontoTipoEnvio.Text = "100";
+            }
 
             for (int i = 0; i < dgvListaProductos.RowCount; i++)
             {
@@ -382,7 +410,6 @@ namespace PetShopApp
             if (double.Parse(lblMostrarTotal.Text) <= 0)
             {
                 btnAceptaCompra.Enabled = false;
-                //  btnCancelaCompra.Enabled = false;
                 btnSacar.Enabled = false;
                 btnLimpiarSelectProd.Enabled = false;
             }
@@ -393,6 +420,7 @@ namespace PetShopApp
             double precioXCuadra = 0;
             double total = 0;
             double resultado = 0;
+            double montoTipoEnvio = 0;
             ActivDesactivPnlCompra(false);
             ActivDesactivPnlVenta(true);
             pnlVenta.Visible = true;
@@ -404,32 +432,16 @@ namespace PetShopApp
             txtMontoAPagar.Text = "";
             lblMontoPagar.Text = "0.00";
             lblVto.Text = "0.00";
-            //Cliente cliente = new Cliente(lblCuit.Text.ToString(), lblNombre.Text.ToString(), lblApellido.Text.ToString(), 0);
-            //List<Producto> listaProductoAComprar = new List<Producto>();
-            //Producto producto;
-
-            //for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
-            //{
-            //    int codigo = Convert.ToInt32(dgvListaProdSelecc.Rows[i].Cells[0].Value.ToString());
-            //    string marca = dgvListaProdSelecc.Rows[i].Cells[1].Value.ToString();
-            //    string nombre = dgvListaProdSelecc.Rows[i].Cells[2].Value.ToString();
-            //    double precio = double.Parse(dgvListaProdSelecc.Rows[i].Cells[3].Value.ToString());
-            //    producto = new Producto(codigo, marca, nombre, precio);
-            //    listaProductoAComprar += producto;
-            //}
-            //Venta venta = new Venta(userForm, cliente, double.Parse(lblMostrarTotal.Text.ToString()), listaProductoAComprar);
-            //MessageBox.Show(venta.ToString());
             if (!chkConEnvio.Checked)
             {
-                lblMontoVta.Text = lblMostrarTotal.Text.ToString();
-
+                lblMontoVta.Text = string.Format("{0:f2}", double.Parse(lblMostrarTotal.Text.ToString()));
             }
             else
             {
-               
                 precioXCuadra = double.Parse(lblPrcioXCuadra.Text.ToString());
                 total = double.Parse(lblMostrarTotal.Text.ToString());
-                resultado = precioXCuadra + total;
+                montoTipoEnvio = double.Parse(lblMontoTipoEnvio.Text.ToString());
+                resultado = precioXCuadra + total + montoTipoEnvio;
                 lblMontoVta.Text = resultado.ToString();
             }
             
@@ -451,6 +463,7 @@ namespace PetShopApp
             btnAceptaCompra.Enabled = false;
             btnSacar.Enabled = false;
             lblMostrarTotal.Text = "0.00";
+            lblKgNumber.Text = "0.00";
             dgvListaProdSelecc.Rows.Clear();
             CargarDataGridProducto();
         }
@@ -525,6 +538,7 @@ namespace PetShopApp
             string nombre;
             double precio;
             double montoEnvio = 0;
+            double tipoMontoEnvio = 0;
             List<Producto> listaProducto = new List<Producto>();
 
             for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
@@ -540,9 +554,10 @@ namespace PetShopApp
             if (chkConEnvio.Checked)
             {
                 montoEnvio = double.Parse(lblPrcioXCuadra.Text.ToString());
+                tipoMontoEnvio = double.Parse(lblMontoTipoEnvio.Text.ToString());
             }
 
-            Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, montoEnvio);
+            Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, montoEnvio, tipoMontoEnvio);
             FormFactura factura = new FormFactura(venta);
             PetShop.listaVentas += venta;
          
@@ -635,19 +650,19 @@ namespace PetShopApp
         {
             if (numero <= 30)
             {
-                return "Hasta 30";
+                return "Hasta 30: $";
             }
             else if (numero <= 60)
             {
-                return "Hasta 60";
+                return "Hasta 60: $";
             }
             else if (numero <= 90)
             {
-                return "Hasta 90";
+                return "Hasta 90: $";
             }
             else if (numero > 90)
             {
-                return "Mas de 90";
+                return "Mas de 90: $";
             }
             return "";
         }

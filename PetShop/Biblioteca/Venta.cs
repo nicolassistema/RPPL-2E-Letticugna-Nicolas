@@ -13,6 +13,7 @@ namespace Entidades
         int numeroFactura;
         double montoTotal;
         double montoEnvio;
+        double montoTipoEnvio;
 
 
         public Venta()
@@ -20,7 +21,7 @@ namespace Entidades
             productos = new List<Producto>();
         }
 
-        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio) : this()
+        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio ) : this()
         {
             this.NumeroFactura = IdFacturacionAutoIncremental();
             this.Cliente = cliente;
@@ -28,6 +29,19 @@ namespace Entidades
             this.Usuario = usuario;
             this.productos = productos;
             this.montoEnvio = montoEnvio;
+   
+        }
+
+
+        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio, double montoTipoEnvio) : this()
+        {
+            this.NumeroFactura = IdFacturacionAutoIncremental();
+            this.Cliente = cliente;
+            this.MontoTotal = monto;
+            this.Usuario = usuario;
+            this.productos = productos;
+            this.montoEnvio = montoEnvio;
+            this.montoTipoEnvio = montoTipoEnvio;
         }
 
 
@@ -41,6 +55,19 @@ namespace Entidades
 
         }
         #region "Propiedades"
+
+        public double MontoTipoEnvio
+        {
+            get
+            {
+                return this.montoTipoEnvio;
+            }
+            set
+            {
+                this.montoTipoEnvio = value;
+            }
+        }
+
 
         public double MontoEnvio
         {
@@ -232,15 +259,18 @@ namespace Entidades
             }
             total += this.montoEnvio;
             sb.AppendLine("------------------------------------------------");
-
-
-
-
-     
-            sb.AppendLine("------------------------------------------------");
             if (this.montoEnvio != 0)
             {
-                sb.AppendLine($"                 Costo de envio: ${this.montoEnvio}     ");
+                if (!(this.montoTipoEnvio == 500))
+                {
+                sb.AppendLine($"      Costo de envio (Moto): $ {this.montoTipoEnvio}");
+                }
+                else
+                {
+                sb.AppendLine($"          Costo de envio (Miniflete): $ {this.montoTipoEnvio}");
+                }
+                sb.AppendLine($"              Costo por Cant. Cuadras: ${this.montoEnvio}");
+                sb.AppendLine($"                     Costo Total de envio: ${this.montoEnvio + this.montoTipoEnvio}");
             }
             else
             {
@@ -249,7 +279,7 @@ namespace Entidades
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine("   TODOS LOS PROD. CON I.V.A. INCLUD.     ");
             sb.AppendLine("------------------------------------------------");
-            sb.AppendLine("                           TOTAL : $" + string.Format("{0:f2}", total));
+            sb.AppendLine("                           TOTAL : $" + string.Format("{0:f2}", (total+ this.montoEnvio + this.montoTipoEnvio)));
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine($"Fue atendid@ por: {usuario.Nombre} {usuario.Apellido}");
             return sb.ToString();

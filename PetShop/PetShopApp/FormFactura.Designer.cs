@@ -38,14 +38,14 @@ namespace PetShopApp
             // 
             this.rtxTicket.Location = new System.Drawing.Point(12, 12);
             this.rtxTicket.Name = "rtxTicket";
-            this.rtxTicket.Size = new System.Drawing.Size(447, 310);
+            this.rtxTicket.Size = new System.Drawing.Size(447, 441);
             this.rtxTicket.TabIndex = 0;
             this.rtxTicket.Text = "";
             // 
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnImprimir.Location = new System.Drawing.Point(12, 328);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 459);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(216, 110);
             this.btnImprimir.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace PetShopApp
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalir.Location = new System.Drawing.Point(234, 328);
+            this.btnSalir.Location = new System.Drawing.Point(234, 459);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(225, 110);
             this.btnSalir.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace PetShopApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 447);
+            this.ClientSize = new System.Drawing.Size(470, 581);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.rtxTicket);

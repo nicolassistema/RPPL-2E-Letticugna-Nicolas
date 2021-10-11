@@ -27,6 +27,7 @@ namespace PetShopApp
             rtxTicket.Enabled = false;
             this.venta = venta;
             ImprimirPorPantalla();
+
         }
 
         public void ImprimirPorPantalla()
@@ -90,7 +91,7 @@ namespace PetShopApp
             string dirParameter = AppDomain.CurrentDomain.BaseDirectory + @"\file.txt";
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "(*.txt)|*.txt";
-            saveFileDialog1.FileName = "Factura Nro_"+FormatoNroFactura()+"_"+ DateTime.Today.ToString("dd-MM-yyyy");
+            saveFileDialog1.FileName = "Factura Nro_" + FormatoNroFactura() + "_" + DateTime.Today.ToString("dd-MM-yyyy");
             try
             {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
