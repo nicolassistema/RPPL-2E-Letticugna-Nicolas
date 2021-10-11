@@ -524,6 +524,7 @@ namespace PetShopApp
             string marca;
             string nombre;
             double precio;
+            double montoEnvio = 0;
             List<Producto> listaProducto = new List<Producto>();
 
             for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
@@ -535,9 +536,13 @@ namespace PetShopApp
                 Producto producto = new Producto(id, marca, nombre, precio);
                 listaProducto += (producto);
             }
-         //
-            Cliente cliente = new Cliente(lblCuit.Text.ToString(), lblNombre.Text.ToString(), lblApellido.Text.ToString(), double.Parse(lblMontoPagar.Text.ToString()));
-            Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, double.Parse(lblPrcioXCuadra.Text.ToString()));
+            Cliente cliente = PetShop.ObtenerClientePorCuit(txtCuit.Text);
+            if (chkConEnvio.Checked)
+            {
+                montoEnvio = double.Parse(lblPrcioXCuadra.Text.ToString());
+            }
+
+            Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, montoEnvio);
             FormFactura factura = new FormFactura(venta);
             PetShop.listaVentas += venta;
          

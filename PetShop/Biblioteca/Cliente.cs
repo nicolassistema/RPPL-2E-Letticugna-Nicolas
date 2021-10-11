@@ -17,6 +17,13 @@ namespace Entidades
 
         }
 
+
+        public Cliente(string cuit, string nombre, string apellido) : base(cuit, nombre, apellido)
+        {
+            this.idCliente = IdAutoIncremental();
+   
+        }
+
         public Cliente(string cuit, string nombre, string apellido, double saldo) : base(cuit, nombre, apellido)
         {
             this.idCliente = IdAutoIncremental();

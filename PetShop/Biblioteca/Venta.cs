@@ -10,7 +10,6 @@ namespace Entidades
         List<Producto> productos;
         Cliente cliente;
         Usuario usuario;
-        Venta ventaEntrada;
         int numeroFactura;
         double montoTotal;
         double montoEnvio;
@@ -194,13 +193,10 @@ namespace Entidades
         /// <returns>Muestra la venta</returns>
         public override string ToString()
         {
-
-               
-
+           
             int segundaListas = 0;
             double precioUnitario = 0;
             string nombre = "";
-            Venta venta = new Venta();
             int acum = 0;
             double acumDos;
             int cant;
@@ -232,10 +228,18 @@ namespace Entidades
                 {
                     sb.AppendLine(" " + cant.ToString() + " " +nombre +"      $"+ string.Format("{0:f2}", precioUnitario)   + "      $" + string.Format("{0:f2}", acumDos));
                 }
-              
                 total += acumDos;
             }
-        //    total += ventaEntrada.montoEnvio;
+            total += this.montoEnvio;
+            sb.AppendLine("------------------------------------------------");
+            if (this.montoEnvio != 0)
+            {
+                sb.AppendLine($"                 Costo de envio: ${this.montoEnvio}     ");
+            }
+            else
+            {
+                sb.AppendLine($"                 Sin Envio   ");
+            }
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine("   TODOS LOS PROD. CON I.V.A. INCLUD.     ");
             sb.AppendLine("------------------------------------------------");

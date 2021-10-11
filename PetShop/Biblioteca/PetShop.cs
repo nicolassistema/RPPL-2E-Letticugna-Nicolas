@@ -126,7 +126,7 @@ namespace Entidades
             listaVentas += (new Venta(new Usuario("123456789", "bobo", "esponja", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
         }
 
-   
+
 
         public static List<Venta> ObtenerListaVentas()
         {
@@ -255,7 +255,19 @@ namespace Entidades
             return false;
         }
 
-       
+
+        public static Cliente ObtenerClientePorCuit(string cuit)
+        {
+            foreach (Cliente item in listaClientes)
+            {
+                if (item.Cuit == cuit)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
 
 
     }
