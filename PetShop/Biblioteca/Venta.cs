@@ -232,6 +232,12 @@ namespace Entidades
             }
             total += this.montoEnvio;
             sb.AppendLine("------------------------------------------------");
+
+
+
+
+     
+            sb.AppendLine("------------------------------------------------");
             if (this.montoEnvio != 0)
             {
                 sb.AppendLine($"                 Costo de envio: ${this.montoEnvio}     ");

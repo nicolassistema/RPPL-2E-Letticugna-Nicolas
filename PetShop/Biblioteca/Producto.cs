@@ -6,6 +6,7 @@ namespace Entidades
     public class Producto
     {
         #region "Atributos"
+        double kilogramos;
         int codigo;
         int codigoDos;
         string marca;
@@ -50,6 +51,18 @@ namespace Entidades
             this.precio = precio;
         }
 
+
+        public Producto(string marca, string nombre, string descripcion, int cantidad, double precio, double kilogramos ) : this()
+        {
+            this.Codigo = IdAutoIncremental();
+            this.marca = marca;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.cantidad = cantidad;
+            this.precio = precio;
+            this.kilogramos = kilogramos;
+        }
+
         public Producto(string marca, string nombre, int cantidad, double precio) : this()
         {
             this.Codigo = IdAutoIncremental();
@@ -61,6 +74,18 @@ namespace Entidades
         #endregion
 
         #region "Propiedades"
+
+        public double Kilogramos
+        {
+            get
+            {
+                return this.kilogramos;
+            }
+            set
+            {
+                this.kilogramos = value;
+            }
+        }
 
 
         /// <summary>
