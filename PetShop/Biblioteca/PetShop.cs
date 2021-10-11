@@ -96,14 +96,14 @@ namespace Entidades
         {
 
 
-            listaProductos += (new Cama("Cama pepito           ", "Cama lalala", "Cama grande descripcion", 35, 11.11, 9, Cama.ETamanio.Grande));
-            listaProductos += (new Cama("Cama  pepito          ", "Cama lalala", "Cama grande descripcion", 35, 22.22, 9, Cama.ETamanio.Chico));
-            listaProductos += (new Juguete("juguete pepito        ", "juguete  lalala", "juguete grande descripcion", 35, 33.33, Juguete.EMaterial.Plastico));
-            listaProductos += (new Juguete("juguete pepito        ", "juguete lalala", "juguete grande descripcion", 35, 44.44, Juguete.EMaterial.Goma));
-            listaProductos += (new Alimento("Alimento pepito       ", "Alimento  lalala", "Alimento grande descripcion", 35, 55.55, Alimento.ETipoAlimento.Natural));
-            listaProductos += (new Alimento("Alimento pepito       ", "Alimento  lalala", "Alimento grande descripcion", 35, 66.66, Alimento.ETipoAlimento.Balanceado));
-            listaProductos += (new ArtCuidadoMascota("Farmacia pepito       ", "Farmacia  lalala", "farmacia grande descripcion", 35, 77.77, ArtCuidadoMascota.ETipoCuidado.Farmacia));
-            listaProductos += (new ArtCuidadoMascota("Farmacia pepito      ", "Farmacia  lalala", "Limpieza grande descripcion", 35, 88.0588, ArtCuidadoMascota.ETipoCuidado.Limpieza));
+            listaProductos += (new Cama("Cama pepito           ", "Cama lalala", "Cama grande descripcion", 35, 11.11, 20, Cama.ETamanio.Grande));
+            listaProductos += (new Cama("Cama  pepito          ", "Cama lalala", "Cama grande descripcion", 35, 22.22, 15, Cama.ETamanio.Chico));
+            listaProductos += (new Juguete("juguete pepito        ", "juguete  lalala", "juguete grande descripcion", 35, 33.33, 3, Juguete.EMaterial.Plastico));
+            listaProductos += (new Juguete("juguete pepito        ", "juguete lalala", "juguete grande descripcion", 35, 44.44, 3, Juguete.EMaterial.Goma));
+            listaProductos += (new Alimento("Alimento pepito       ", "Alimento  lalala", "Alimento grande descripcion", 35, 55.55, 3, Alimento.ETipoAlimento.Natural));
+            listaProductos += (new Alimento("Alimento pepito       ", "Alimento  lalala", "Alimento grande descripcion", 35, 66.66, 3, Alimento.ETipoAlimento.Balanceado));
+            listaProductos += (new ArtCuidadoMascota("Farmacia pepito       ", "Farmacia  lalala", "farmacia grande descripcion", 35, 77.77, 3, ArtCuidadoMascota.ETipoCuidado.Farmacia));
+            listaProductos += (new ArtCuidadoMascota("Farmacia pepito      ", "Farmacia  lalala", "Limpieza grande descripcion", 35, 88.05, 3, ArtCuidadoMascota.ETipoCuidado.Limpieza));
         }
 
 

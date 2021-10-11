@@ -9,7 +9,7 @@ namespace Entidades
         #endregion
 
         #region "Constructor"
-        public ArtCuidadoMascota(string marca, string nombre, string detalle, int stock, double precio, ETipoCuidado tipoCuidado) : base(marca, nombre, detalle, stock, precio)
+        public ArtCuidadoMascota(string marca, string nombre, string detalle, int stock, double precio, double kilogramos, ETipoCuidado tipoCuidado) : base(marca, nombre, detalle, stock, precio, kilogramos)
         {
             this.tipoCuidado = tipoCuidado;
         }

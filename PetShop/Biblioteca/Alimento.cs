@@ -8,7 +8,7 @@ namespace Entidades
         private ETipoAlimento tipoAlimento;
 
 
-        public Alimento(string marca, string nombre, string detalle, int cantidad, double precio, ETipoAlimento tipoAlimento) : base(marca, nombre, detalle, cantidad, precio)
+        public Alimento(string marca, string nombre, string detalle, int cantidad, double precio, double kilogramos, ETipoAlimento tipoAlimento) : base(marca, nombre, detalle, cantidad, precio, kilogramos)
         {
             this.tipoAlimento = tipoAlimento;
 

@@ -220,14 +220,13 @@ namespace Entidades
         /// <returns>Muestra la venta</returns>
         public override string ToString()
         {
-           
             int segundaListas = 0;
             double precioUnitario = 0;
             string nombre = "";
             int acum = 0;
             double acumDos;
             int cant;
-            double total = 0;
+    
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine("C.  CONCEPTO                PRECIO      IMPORTE");
@@ -255,9 +254,7 @@ namespace Entidades
                 {
                     sb.AppendLine(" " + cant.ToString() + " " +nombre +"      $"+ string.Format("{0:f2}", precioUnitario)   + "      $" + string.Format("{0:f2}", acumDos));
                 }
-                total += acumDos;
             }
-            total += this.montoEnvio;
             sb.AppendLine("------------------------------------------------");
             if (this.montoEnvio != 0)
             {
@@ -279,7 +276,7 @@ namespace Entidades
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine("   TODOS LOS PROD. CON I.V.A. INCLUD.     ");
             sb.AppendLine("------------------------------------------------");
-            sb.AppendLine("                           TOTAL : $" + string.Format("{0:f2}", (total+ this.montoEnvio + this.montoTipoEnvio)));
+            sb.AppendLine("                           TOTAL : $" + string.Format("{0:f2}", this.montoTotal));
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine($"Fue atendid@ por: {usuario.Nombre} {usuario.Apellido}");
             return sb.ToString();
