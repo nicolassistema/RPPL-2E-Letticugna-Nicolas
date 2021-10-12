@@ -341,7 +341,7 @@ namespace PetShopApp
             btnAceptaCompra.Enabled = true;
             btnCancelaCompra.Enabled = true;
             btnSacar.Enabled = true;
-          
+
             Producto productoAux = new Producto();
             int aux = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[0].Value);
             productoAux = PetShop.ObtenerProductoByID(aux);
@@ -391,7 +391,7 @@ namespace PetShopApp
             lblMostrarTotal.Text = string.Format("{0:f2}", (acumDos - acum));
             lblKgNumber.Text = string.Format("{0:f2}", (totalKg - acumKg));
 
-            if ((totalKg - acumKg) <= 100 )
+            if ((totalKg - acumKg) <= 100)
             {
                 lblTipoEnvio.Text = "Moto: $";
                 lblMontoTipoEnvio.Text = "100";
@@ -444,7 +444,7 @@ namespace PetShopApp
                 resultado = precioXCuadra + total + montoTipoEnvio;
                 lblMontoVta.Text = resultado.ToString();
             }
-            
+
         }
 
         private void btnCancelaCompra_Click(object sender, EventArgs e)
@@ -560,7 +560,7 @@ namespace PetShopApp
             Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, montoEnvio, tipoMontoEnvio);
             FormFactura factura = new FormFactura(venta);
             PetShop.listaVentas += venta;
-         
+
             PetShop.LimpiarListaProductos();
             ActualizarInventario();
 
@@ -679,5 +679,9 @@ namespace PetShopApp
             return double.Parse(lblPrcioXCuadra.Text.ToString());
         }
 
+        private void lblNombreUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

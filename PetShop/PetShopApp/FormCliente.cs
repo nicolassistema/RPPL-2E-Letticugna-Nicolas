@@ -62,7 +62,6 @@ namespace PetShopApp
             }
         }
 
-
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese cerrar session?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -75,7 +74,6 @@ namespace PetShopApp
             }
         }
 
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dvgListaClientes.Rows.Clear();
@@ -87,10 +85,17 @@ namespace PetShopApp
                 if (PetShop.BuscarClientePorString(item, txtBuscar.Text.ToLower()))
                 {
                     dvgListaClientes.Rows.Add(item.IdCliente, item.Cuit, item.Nombre, item.Apellido);
+                    MakeReadOnly();
                 }
             }
         }
 
+        private void MakeReadOnly()
+        {
+            dvgListaClientes.AllowUserToAddRows = false;
+            dvgListaClientes.AllowUserToDeleteRows = false;
+            dvgListaClientes.ReadOnly = true;
+        }
 
         private void btnAltaCliente_Click(object sender, EventArgs e)
         {

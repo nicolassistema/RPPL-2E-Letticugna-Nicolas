@@ -35,6 +35,7 @@ namespace PetShopApp
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.btnFacturacion = new System.Windows.Forms.Button();
+            this.btnInventario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblBienvenido
@@ -97,11 +98,22 @@ namespace PetShopApp
             this.btnFacturacion.UseVisualStyleBackColor = true;
             this.btnFacturacion.Click += new System.EventHandler(this.btnFacturacion_Click);
             // 
+            // btnInventario
+            // 
+            this.btnInventario.Location = new System.Drawing.Point(202, 86);
+            this.btnInventario.Name = "btnInventario";
+            this.btnInventario.Size = new System.Drawing.Size(75, 23);
+            this.btnInventario.TabIndex = 6;
+            this.btnInventario.Text = "Inventario";
+            this.btnInventario.UseVisualStyleBackColor = true;
+            this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
+            // 
             // frmAdministracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 260);
+            this.Controls.Add(this.btnInventario);
             this.Controls.Add(this.btnFacturacion);
             this.Controls.Add(this.btnEmpleados);
             this.Controls.Add(this.btnClientes);
@@ -124,5 +136,6 @@ namespace PetShopApp
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnEmpleados;
         private System.Windows.Forms.Button btnFacturacion;
+        private System.Windows.Forms.Button btnInventario;
     }
 }

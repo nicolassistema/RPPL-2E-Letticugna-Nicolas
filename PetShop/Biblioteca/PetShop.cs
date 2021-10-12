@@ -256,6 +256,23 @@ namespace Entidades
         }
 
 
+        public static bool BuscarProductoPorString(Producto producto, string palabra)
+        {
+            if (producto.Codigo.ToString().Contains(palabra) ||
+                producto.Marca.ToLower().Contains(palabra) ||
+                producto.Nombre.ToLower().Contains(palabra) ||
+                producto.Descripcion.ToLower().Contains(palabra) ||
+                producto.Descripcion.ToLower().Contains(palabra) ||
+                producto.Cantidad.ToString().Contains(palabra) ||
+                producto.Precio.ToString().Contains(palabra) ||
+                producto.Kilogramos.ToString().Contains(palabra))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
         public static Cliente ObtenerClientePorCuit(string cuit)
         {
             foreach (Cliente item in listaClientes)

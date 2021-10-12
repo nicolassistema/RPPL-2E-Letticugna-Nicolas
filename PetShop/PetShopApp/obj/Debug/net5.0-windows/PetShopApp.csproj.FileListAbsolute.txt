@@ -56,3 +56,4 @@ C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\PetShopApp\obj\Debug\net5.0-wi
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\PetShopApp\obj\Debug\net5.0-windows\ref\PetShopApp.dll
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\PetShopApp\obj\Debug\net5.0-windows\PetShopApp.pdb
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\PetShopApp\obj\Debug\net5.0-windows\PetShopApp.genruntimeconfig.cache
+C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\PetShopApp\obj\Debug\net5.0-windows\PetShopApp.frmInventario.resources
