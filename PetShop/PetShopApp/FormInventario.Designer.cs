@@ -29,8 +29,8 @@ namespace PetShopApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblVolver = new System.Windows.Forms.LinkLabel();
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
@@ -48,7 +48,6 @@ namespace PetShopApp
             this.pnlBuscar = new System.Windows.Forms.Panel();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.pnlImagen = new System.Windows.Forms.Panel();
             this.btnConfirmModificacion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).BeginInit();
             this.pnlBuscar.SuspendLayout();
@@ -66,7 +65,7 @@ namespace PetShopApp
             // lblVolver
             // 
             this.lblVolver.AutoSize = true;
-            this.lblVolver.Location = new System.Drawing.Point(745, 9);
+            this.lblVolver.Location = new System.Drawing.Point(616, 9);
             this.lblVolver.Name = "lblVolver";
             this.lblVolver.Size = new System.Drawing.Size(142, 15);
             this.lblVolver.TabIndex = 1;
@@ -77,7 +76,7 @@ namespace PetShopApp
             // lblCerrarSesion
             // 
             this.lblCerrarSesion.AutoSize = true;
-            this.lblCerrarSesion.Location = new System.Drawing.Point(920, 9);
+            this.lblCerrarSesion.Location = new System.Drawing.Point(791, 9);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
             this.lblCerrarSesion.Size = new System.Drawing.Size(76, 15);
             this.lblCerrarSesion.TabIndex = 2;
@@ -93,6 +92,7 @@ namespace PetShopApp
             this.bntAlta.TabIndex = 3;
             this.bntAlta.Text = "Nuevo Producto";
             this.bntAlta.UseVisualStyleBackColor = true;
+            this.bntAlta.Click += new System.EventHandler(this.bntAlta_Click);
             // 
             // btnModificar
             // 
@@ -114,14 +114,14 @@ namespace PetShopApp
             // 
             // dvgProductos
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dvgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -133,17 +133,17 @@ namespace PetShopApp
             this.Kg});
             this.dvgProductos.Location = new System.Drawing.Point(220, 92);
             this.dvgProductos.Name = "dvgProductos";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dvgProductos.RowHeadersVisible = false;
             this.dvgProductos.RowTemplate.Height = 25;
-            this.dvgProductos.Size = new System.Drawing.Size(496, 283);
+            this.dvgProductos.Size = new System.Drawing.Size(647, 283);
             this.dvgProductos.TabIndex = 6;
             // 
             // dataGridViewTextBoxColumn1
@@ -186,7 +186,7 @@ namespace PetShopApp
             // 
             this.pnlBuscar.Controls.Add(this.btnBuscar);
             this.pnlBuscar.Controls.Add(this.txtBuscar);
-            this.pnlBuscar.Location = new System.Drawing.Point(516, 48);
+            this.pnlBuscar.Location = new System.Drawing.Point(667, 48);
             this.pnlBuscar.Name = "pnlBuscar";
             this.pnlBuscar.Size = new System.Drawing.Size(200, 38);
             this.pnlBuscar.TabIndex = 7;
@@ -208,13 +208,6 @@ namespace PetShopApp
             this.txtBuscar.Size = new System.Drawing.Size(100, 23);
             this.txtBuscar.TabIndex = 0;
             // 
-            // pnlImagen
-            // 
-            this.pnlImagen.Location = new System.Drawing.Point(745, 92);
-            this.pnlImagen.Name = "pnlImagen";
-            this.pnlImagen.Size = new System.Drawing.Size(251, 283);
-            this.pnlImagen.TabIndex = 8;
-            // 
             // btnConfirmModificacion
             // 
             this.btnConfirmModificacion.Location = new System.Drawing.Point(93, 162);
@@ -228,9 +221,8 @@ namespace PetShopApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 540);
+            this.ClientSize = new System.Drawing.Size(879, 396);
             this.Controls.Add(this.btnConfirmModificacion);
-            this.Controls.Add(this.pnlImagen);
             this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.dvgProductos);
             this.Controls.Add(this.btnEliminar);
@@ -264,7 +256,6 @@ namespace PetShopApp
         private System.Windows.Forms.Panel pnlBuscar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Panel pnlImagen;
         private System.Windows.Forms.Button btnConfirmModificacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;

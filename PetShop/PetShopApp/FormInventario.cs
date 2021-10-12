@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using System.IO;
 
 namespace PetShopApp
 {
@@ -97,6 +98,11 @@ namespace PetShopApp
             dvgProductos.ReadOnly = true;
         }
 
-
+        private void bntAlta_Click(object sender, EventArgs e)
+        {
+            FrmAltaProducto producto = new FrmAltaProducto(this.userForm);
+            producto.ShowDialog();
+      
+        }
     }
 }

@@ -140,8 +140,13 @@ namespace Entidades
 
         public static void AddCliente(Cliente cliente)
         {
-            listaClientes.Add(cliente);
+            listaClientes += cliente;
+        }
 
+
+        public static void AddProducto(Producto producto)
+        {
+            listaProductos += producto;
         }
 
         public static List<Usuario> ObtenerListaUsuarios()
