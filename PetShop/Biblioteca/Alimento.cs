@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-    class Alimento : Producto
+    public class Alimento : Producto
     {
 
         private ETipoAlimento tipoAlimento;

@@ -112,7 +112,7 @@ namespace PetShopApp
             List<Cliente> lista = new List<Cliente>();
             lista = PetShop.ObtenerListaCliente();
 
-            if (!(Validaciones.ValidateNumber(txtCuit.Text)))
+            if (!(Validaciones.ValidateNumberCuit(txtCuit.Text)))
             {
                 lblMensajeCliente.Text = "Cuit Incorrecto";
                 lblMensajeCliente.Visible = true;

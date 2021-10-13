@@ -87,7 +87,7 @@ namespace Entidades
         /// </summary>
         /// <param name="number"></param>
         /// <returns>true o false</returns>
-        public static bool ValidateNumber(string number)
+        public static bool ValidateNumberCuit(string number)
         {
             //Quito los guiones, el cuit resultante debe tener 11 caracteres.
             number = number.Trim();
@@ -167,6 +167,86 @@ namespace Entidades
             }
             return true;
         }
+
+
+        public static bool EspacioEnBlancoOVacio(string nombre)
+        {
+            if (!(string.IsNullOrWhiteSpace(nombre)))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public static bool ValidateNumber(string number)
+        {
+            char[] arr;
+            arr = number.ToCharArray();
+            if (!(string.IsNullOrWhiteSpace(number)))
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i] < 48 || arr[i] > 57)
+                    {
+                        return false;
+
+                    }
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool ValidaPuntoComa(string strInt)
+        {
+            string str = strInt;
+            char[] arr = str.ToCharArray();
+            int contador = 0;
+            //valido que no tena mas de punto, un punto y una coma, una coma y un punto
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == '.' || arr[i] == ',')
+                {
+                    contador++;
+                    if (contador > 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static string PuntoToComa(string strInt)
+        {
+            double numero;
+            strInt = strInt.Trim();
+            string str = strInt;
+            char[] arr = str.ToCharArray();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] == '.')
+                {
+                    arr[i] = ',';
+                 break;
+                }
+            }
+            if(double.TryParse(arr, out numero))
+            {
+                numero = numero / 1;
+                return strInt = new string(numero.ToString());
+            }
+            strInt = new string(arr);
+            return strInt;
+        }
+
 
 
 

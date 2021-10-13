@@ -44,7 +44,7 @@ namespace PetShopApp
             List<Usuario> lista = new List<Usuario>();
 
 
-            if (!(Validaciones.ValidateNumber(txtCuit.Text)))
+            if (!(Validaciones.ValidateNumberCuit(txtCuit.Text)))
             {
                 sb.AppendLine("*Cuit Incorrecto");
                 lblMensaje.ForeColor = Color.Red;
