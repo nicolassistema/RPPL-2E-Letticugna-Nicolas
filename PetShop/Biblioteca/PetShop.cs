@@ -220,6 +220,25 @@ namespace Entidades
             listaClientes.Clear();
         }
 
+
+      
+
+
+        public static List<Producto> CargarListaNuevamenteProducto(List<Producto> listaProductosAux)
+        {
+            if (!(listaProductosAux is null))
+            {
+                LimpiarListaProductos();
+                foreach (var item in listaProductosAux)
+                {
+                    AddProducto(item);
+                }
+                return ObtenerPorductos();
+            }
+            return null;
+        }
+
+
         public static List<Usuario> CargarListaNuevamente(List<Usuario> listaUsuariosAux)
         {
             if (!(listaUsuariosAux is null))

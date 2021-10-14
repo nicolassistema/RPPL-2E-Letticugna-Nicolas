@@ -68,13 +68,11 @@ namespace PetShopApp
             }
         }
 
-
         public void RefrescarForm()
         {
             FormEmpleado form = new FormEmpleado();
             form.Refresh();
         }
-
 
         private void lblVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

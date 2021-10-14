@@ -16,6 +16,7 @@ namespace PetShopApp
     public partial class FrmAltaProducto : Form
     {
         Usuario userForm;
+        frmInventario inventario;
         public FrmAltaProducto()
         {
             InitializeComponent();
@@ -99,8 +100,8 @@ namespace PetShopApp
                     cmbDetalleTipoProd.Items.Add("Goma");
                     break;
                 case "Cama":
-                    cmbDetalleTipoProd.Items.Add("Tamaño Chico");
-                    cmbDetalleTipoProd.Items.Add("Tamaño Grande");
+                    cmbDetalleTipoProd.Items.Add("Chico");
+                    cmbDetalleTipoProd.Items.Add("Grande");
                     break;
                 case "Alimento":
                     cmbDetalleTipoProd.Items.Add("Natural");
@@ -338,6 +339,7 @@ namespace PetShopApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            frmInventario fm = new frmInventario(this.userForm);
 
             if (!FlagDetector())
             {
@@ -345,31 +347,39 @@ namespace PetShopApp
             }
             else
             {
-                
                 switch (cmbTipoProd.SelectedItem.ToString())
                 {
                     case "Juguete":
                    
-                        PetShop.listaProductos += (new Juguete(txtMarca.Text, txtNombre.Text, txtDescrip.Text, Convert.ToInt32(txtStock.Text), double.Parse(txtPrecio.Text), double.Parse(txtKg.Text), (Entidades.Juguete.EMaterial)Enum.Parse(typeof(Entidades.Juguete.EMaterial), cmbDetalleTipoProd.SelectedItem.ToString())));
+                        PetShop.listaProductos += (new Juguete(txtMarca.Text, txtNombre.Text, txtDescrip.Text, Convert.ToInt32(txtStock.Text), double.Parse(txtPrecio.Text), double.Parse(txtKg.Text), (Entidades.Juguete.EMaterial)Enum.Parse(typeof(Entidades.Juguete.EMaterial), cmbDetalleTipoProd.SelectedItem.ToString()) ));
+                       
+
                         this.Hide();
+                        fm.ShowDialog();
                         this.Close();
                         break;
                     case "Cama":
 
                         PetShop.listaProductos += (new Cama(txtMarca.Text, txtNombre.Text, txtDescrip.Text, Convert.ToInt32(txtStock.Text), double.Parse(txtPrecio.Text), double.Parse(txtKg.Text), (Entidades.Cama.ETamanio)Enum.Parse(typeof(Entidades.Cama.ETamanio), cmbDetalleTipoProd.SelectedItem.ToString())));
                         this.Hide();
+                        fm.ShowDialog();
                         this.Close();
                         break;
                     case "Alimento":
 
                         PetShop.listaProductos += (new Alimento(txtMarca.Text, txtNombre.Text, txtDescrip.Text, Convert.ToInt32(txtStock.Text), double.Parse(txtPrecio.Text), double.Parse(txtKg.Text), (Entidades.Alimento.ETipoAlimento)Enum.Parse(typeof(Entidades.Alimento.ETipoAlimento), cmbDetalleTipoProd.SelectedItem.ToString())));
                         this.Hide();
+                        fm.ShowDialog();
                         this.Close();
                         break;
                     case "Art. Cuidado Mascota":
 
                         PetShop.listaProductos += (new ArtCuidadoMascota(txtMarca.Text, txtNombre.Text, txtDescrip.Text, Convert.ToInt32(txtStock.Text), double.Parse(txtPrecio.Text), double.Parse(txtKg.Text), (Entidades.ArtCuidadoMascota.ETipoCuidado)Enum.Parse(typeof(Entidades.ArtCuidadoMascota.ETipoCuidado), cmbDetalleTipoProd.SelectedItem.ToString())));
+            
+
+                      
                         this.Hide();
+                        fm.ShowDialog();
                         this.Close();
                         break;
 
@@ -377,13 +387,16 @@ namespace PetShopApp
                         break;
                 }
 
-          
-               
+              
             }
-
-
-
         }
+
+
+
+
+
+
+
 
     }
 }

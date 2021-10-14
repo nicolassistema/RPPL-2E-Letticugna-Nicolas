@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -20,7 +21,6 @@ namespace PetShopApp
         {
             InitializeComponent();
         }
-
 
         public frmInventario(Usuario usuario) : this()
         {
@@ -53,7 +53,6 @@ namespace PetShopApp
             }
         }
 
-
         public void CargarDataGridProducto()
         {
             int i = 0;
@@ -69,9 +68,37 @@ namespace PetShopApp
                 dvgProductos.Rows[i].Cells[4].Value = item.Cantidad;
                 dvgProductos.Rows[i].Cells[5].Value = item.Precio;
                 dvgProductos.Rows[i].Cells[6].Value = item.Kilogramos;
+                dvgProductos.Rows[i].Cells[7].Value = ObtenerNombreObjeto(item);
+                dvgProductos.Rows[i].Cells[8].Value = ObtenerValorEnumeradoDeObjeto(item);
                 i++;
             }
         }
+
+        public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
+        {
+            Type type = objeto.GetType();
+            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            {
+                if (!(propertyInfo.GetType().IsEnum))
+                {
+                    string lala = propertyInfo.GetValue(objeto).ToString();
+                    return lala;
+                }
+            }
+            return null;
+        }
+
+      
+
+        public static string ObtenerNombreObjeto(Object objeto)
+        {
+            string aux;
+            Type type = objeto.GetType();
+            aux = type.ToString();
+            aux = aux.Substring(aux.IndexOf(".")+1);
+            return aux;
+        }
+
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -89,8 +116,6 @@ namespace PetShopApp
             }
         }
 
-
-
         private void MakeReadOnly()
         {
             dvgProductos.AllowUserToAddRows = false;
@@ -102,7 +127,76 @@ namespace PetShopApp
         {
             FrmAltaProducto producto = new FrmAltaProducto(this.userForm);
             producto.ShowDialog();
-      
+
         }
+
+        private void btnConfirmModificacion_Click(object sender, EventArgs e)
+        {
+            //List<Producto> producto = new List<Producto>();
+            //for (int i = 0; i < dvgProductos.RowCount; i++)
+            //{
+            //    string aux = dvgProductos.Rows[i].Cells[5].Value.ToString();
+            //    string codigoProducto = dvgProductos.Rows[i].Cells[0].Value.ToString();
+
+            //    //if (userForm.Cuit == cuitAux)
+            //    //{
+            //    //    lblNombreUsuario.Text = dgvListaEmpleados.Rows[i].Cells[1].Value.ToString() + " " + dgvListaEmpleados.Rows[i].Cells[2].Value.ToString();
+            //    //    userForm.Nombre = dgvListaEmpleados.Rows[i].Cells[1].Value.ToString();
+            //    //    userForm.Apellido = dgvListaEmpleados.Rows[i].Cells[2].Value.ToString();
+            //    //    userForm.NameUsuario = dgvListaEmpleados.Rows[i].Cells[3].Value.ToString();
+            //    //    userForm.PassUsuario = dgvListaEmpleados.Rows[i].Cells[4].Value.ToString();
+            //    //}
+
+
+
+
+            //   // PetShop.ObtenerPorductos();
+
+
+
+            //    Usuario usuario = new Usuario(dvgProductos.Rows[i].Cells[0].Value.ToString(),
+            //                                                dvgProductos.Rows[i].Cells[1].Value.ToString(),
+            //                                                dvgProductos.Rows[i].Cells[2].Value.ToString(),
+            //                                                dvgProductos.Rows[i].Cells[3].Value.ToString(),
+            //                                                dvgProductos.Rows[i].Cells[4].Value.ToString(),
+            //                                                 dvgProductos.Rows[i].Cells[5].Value.ToString(),
+            //                                                  dvgProductos.Rows[i].Cells[6].Value.ToString(),
+            //                                                   dvgProductos.Rows[i].Cells[7].Value.ToString(),
+            //                                                    dvgProductos.Rows[i].Cells[8].Value.ToString(),
+            //                                                Entidades.Usuario.EPerfilUsuario.Admin);
+
+
+
+
+            //    if (Entidades.Usuario.EPerfilUsuario.Admin.ToString() == aux)
+            //    {
+            //        Usuario usuario = new Usuario(dgvListaEmpleados.Rows[i].Cells[0].Value.ToString(),
+            //                                                 dgvListaEmpleados.Rows[i].Cells[1].Value.ToString(),
+            //                                                 dgvListaEmpleados.Rows[i].Cells[2].Value.ToString(),
+            //                                                 dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
+            //                                                 dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
+            //                                                 Entidades.Usuario.EPerfilUsuario.Admin);
+            //        auxList.Add(usuario);
+            //    }
+            //    else
+            //    {
+            //        Usuario usuario = new Usuario(dgvListaEmpleados.Rows[i].Cells[0].Value.ToString(),
+            //                                                dgvListaEmpleados.Rows[i].Cells[1].Value.ToString(),
+            //                                                dgvListaEmpleados.Rows[i].Cells[2].Value.ToString(),
+            //                                                dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
+            //                                                dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
+            //                                                Entidades.Usuario.EPerfilUsuario.Empleado);
+
+            //        auxList.Add(usuario);
+            //    }
+            //    PetShop.LimpiarListaUsarios();
+            //    PetShop.CargarListaNuevamente(auxList);
+            //}
+        }
+
+
+
+
+
     }
 }

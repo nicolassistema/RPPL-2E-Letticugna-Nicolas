@@ -38,6 +38,10 @@ namespace PetShopApp
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dvgProductos = new System.Windows.Forms.DataGridView();
+            this.pnlBuscar = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnConfirmModificacion = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,10 +49,8 @@ namespace PetShopApp
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Kg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlBuscar = new System.Windows.Forms.Panel();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnConfirmModificacion = new System.Windows.Forms.Button();
+            this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Detalle_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +132,9 @@ namespace PetShopApp
             this.Descripcion,
             this.Stock,
             this.Precio,
-            this.Kg});
+            this.Kg,
+            this.TipoProducto,
+            this.Tipo_Detalle_Producto});
             this.dvgProductos.Location = new System.Drawing.Point(220, 92);
             this.dvgProductos.Name = "dvgProductos";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -143,44 +147,8 @@ namespace PetShopApp
             this.dvgProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dvgProductos.RowHeadersVisible = false;
             this.dvgProductos.RowTemplate.Height = 25;
-            this.dvgProductos.Size = new System.Drawing.Size(647, 283);
+            this.dvgProductos.Size = new System.Drawing.Size(756, 283);
             this.dvgProductos.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Cod Produc";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // Kg
-            // 
-            this.Kg.HeaderText = "Kg";
-            this.Kg.Name = "Kg";
             // 
             // pnlBuscar
             // 
@@ -216,12 +184,61 @@ namespace PetShopApp
             this.btnConfirmModificacion.TabIndex = 9;
             this.btnConfirmModificacion.Text = "Confirmar Modificar";
             this.btnConfirmModificacion.UseVisualStyleBackColor = true;
+            this.btnConfirmModificacion.Click += new System.EventHandler(this.btnConfirmModificacion_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cod Produc";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.Width = 50;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            // 
+            // Kg
+            // 
+            this.Kg.HeaderText = "Kg";
+            this.Kg.Name = "Kg";
+            this.Kg.Width = 50;
+            // 
+            // TipoProducto
+            // 
+            this.TipoProducto.HeaderText = "TipoProducto";
+            this.TipoProducto.Name = "TipoProducto";
+            // 
+            // Tipo_Detalle_Producto
+            // 
+            this.Tipo_Detalle_Producto.HeaderText = "Tipo_Detalle_Producto";
+            this.Tipo_Detalle_Producto.Name = "Tipo_Detalle_Producto";
             // 
             // frmInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 396);
+            this.ClientSize = new System.Drawing.Size(987, 396);
             this.Controls.Add(this.btnConfirmModificacion);
             this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.dvgProductos);
@@ -264,5 +281,7 @@ namespace PetShopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kg;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_Detalle_Producto;
     }
 }
