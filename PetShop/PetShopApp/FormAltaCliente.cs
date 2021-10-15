@@ -43,7 +43,7 @@ namespace PetShopApp
             Cliente cliente;
             lblMensaje.Text = "";
             StringBuilder sb = new StringBuilder();
-            List<Cliente> lista = new List<Cliente>();
+            //List<Cliente> lista = new List<Cliente>();
 
             if (Validaciones.ValidateNumberCuit(txtCuit.Text))
             {

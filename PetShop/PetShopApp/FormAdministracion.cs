@@ -76,7 +76,7 @@ namespace PetShopApp
 
         private void btnInventario_Click(object sender, EventArgs e)
         {
-            frmInventario inventario = new frmInventario(this.userForm);
+            formInventario inventario = new formInventario(this.userForm);
             this.Hide();
             inventario.ShowDialog();
             this.Close();

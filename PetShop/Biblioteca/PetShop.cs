@@ -149,6 +149,9 @@ namespace Entidades
             listaProductos += producto;
         }
 
+
+
+
         public static List<Usuario> ObtenerListaUsuarios()
         {
             return listaUsuarios;
@@ -190,6 +193,21 @@ namespace Entidades
         {
             return listaProductos;
         }
+
+        public static bool EliminarProducto(Producto producto)
+        {
+            List<Producto> auxList = PetShop.Producto;
+            foreach (var item in auxList)
+            {
+                if (item == producto)
+                {
+                    auxList.Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         public static bool EliminarUsuario(Usuario usuario)
         {

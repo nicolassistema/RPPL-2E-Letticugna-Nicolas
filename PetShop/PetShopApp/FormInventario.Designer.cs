@@ -1,7 +1,7 @@
 ﻿
 namespace PetShopApp
 {
-    partial class frmInventario
+    partial class formInventario
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,6 @@ namespace PetShopApp
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dvgProductos = new System.Windows.Forms.DataGridView();
-            this.pnlBuscar = new System.Windows.Forms.Panel();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnConfirmModificacion = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +47,10 @@ namespace PetShopApp
             this.Kg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo_Detalle_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlBuscar = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnConfirmModificacion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +113,7 @@ namespace PetShopApp
             this.btnEliminar.TabIndex = 5;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dvgProductos
             // 
@@ -149,42 +150,6 @@ namespace PetShopApp
             this.dvgProductos.RowTemplate.Height = 25;
             this.dvgProductos.Size = new System.Drawing.Size(756, 283);
             this.dvgProductos.TabIndex = 6;
-            // 
-            // pnlBuscar
-            // 
-            this.pnlBuscar.Controls.Add(this.btnBuscar);
-            this.pnlBuscar.Controls.Add(this.txtBuscar);
-            this.pnlBuscar.Location = new System.Drawing.Point(667, 48);
-            this.pnlBuscar.Name = "pnlBuscar";
-            this.pnlBuscar.Size = new System.Drawing.Size(200, 38);
-            this.pnlBuscar.TabIndex = 7;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(116, 8);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(3, 8);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(100, 23);
-            this.txtBuscar.TabIndex = 0;
-            // 
-            // btnConfirmModificacion
-            // 
-            this.btnConfirmModificacion.Location = new System.Drawing.Point(93, 162);
-            this.btnConfirmModificacion.Name = "btnConfirmModificacion";
-            this.btnConfirmModificacion.Size = new System.Drawing.Size(75, 56);
-            this.btnConfirmModificacion.TabIndex = 9;
-            this.btnConfirmModificacion.Text = "Confirmar Modificar";
-            this.btnConfirmModificacion.UseVisualStyleBackColor = true;
-            this.btnConfirmModificacion.Click += new System.EventHandler(this.btnConfirmModificacion_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -234,7 +199,43 @@ namespace PetShopApp
             this.Tipo_Detalle_Producto.HeaderText = "Tipo_Detalle_Producto";
             this.Tipo_Detalle_Producto.Name = "Tipo_Detalle_Producto";
             // 
-            // frmInventario
+            // pnlBuscar
+            // 
+            this.pnlBuscar.Controls.Add(this.btnBuscar);
+            this.pnlBuscar.Controls.Add(this.txtBuscar);
+            this.pnlBuscar.Location = new System.Drawing.Point(667, 48);
+            this.pnlBuscar.Name = "pnlBuscar";
+            this.pnlBuscar.Size = new System.Drawing.Size(200, 38);
+            this.pnlBuscar.TabIndex = 7;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(116, 8);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 1;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(3, 8);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(100, 23);
+            this.txtBuscar.TabIndex = 0;
+            // 
+            // btnConfirmModificacion
+            // 
+            this.btnConfirmModificacion.Location = new System.Drawing.Point(93, 162);
+            this.btnConfirmModificacion.Name = "btnConfirmModificacion";
+            this.btnConfirmModificacion.Size = new System.Drawing.Size(75, 56);
+            this.btnConfirmModificacion.TabIndex = 9;
+            this.btnConfirmModificacion.Text = "Confirmar Modificar";
+            this.btnConfirmModificacion.UseVisualStyleBackColor = true;
+            this.btnConfirmModificacion.Click += new System.EventHandler(this.btnConfirmModificacion_Click);
+            // 
+            // formInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -250,7 +251,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblNombreUsuario);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmInventario";
+            this.Name = "formInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).EndInit();

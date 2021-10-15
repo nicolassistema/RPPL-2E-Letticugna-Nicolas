@@ -13,16 +13,16 @@ using System.IO;
 
 namespace PetShopApp
 {
-    public partial class frmInventario : Form
+    public partial class formInventario : Form
     {
         Usuario userForm;
 
-        public frmInventario()
+        public formInventario()
         {
             InitializeComponent();
         }
 
-        public frmInventario(Usuario usuario) : this()
+        public formInventario(Usuario usuario) : this()
         {
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
@@ -88,17 +88,14 @@ namespace PetShopApp
             return null;
         }
 
-      
-
         public static string ObtenerNombreObjeto(Object objeto)
         {
             string aux;
             Type type = objeto.GetType();
             aux = type.ToString();
-            aux = aux.Substring(aux.IndexOf(".")+1);
+            aux = aux.Substring(aux.IndexOf(".") + 1);
             return aux;
         }
-
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -125,9 +122,9 @@ namespace PetShopApp
 
         private void bntAlta_Click(object sender, EventArgs e)
         {
-            FrmAltaProducto producto = new FrmAltaProducto(this.userForm);
+            FormAltaProducto producto = new FormAltaProducto(this.userForm);
             producto.ShowDialog();
-
+            this.CargarDataGridProducto();
         }
 
         private void btnConfirmModificacion_Click(object sender, EventArgs e)
@@ -194,9 +191,41 @@ namespace PetShopApp
             //}
         }
 
-
-
-
-
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            dvgProductos.DataSource = null;
+            List<Producto> lista = new List<Producto>();
+            lista = PetShop.ObtenerPorductos();
+            int aux;
+            foreach (DataGridViewCell oneCell in dvgProductos.SelectedCells)
+            {
+                aux = Convert.ToInt32(dvgProductos.Rows[dvgProductos.CurrentCell.RowIndex].Cells[0].Value.ToString());
+                if (dvgProductos.SelectedCells.Count < 2)
+                {
+                    if (oneCell.Selected)
+                    {
+                        foreach (var item in lista)
+                        {
+                            if (item.Codigo == aux)
+                            {
+                                DialogResult dr = MessageBox.Show($"Esta seguro de eliminar el Producto\n {item.Nombre.ToString()}?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                if (dr != DialogResult.No)
+                                {
+                                    PetShop.EliminarProducto(item);
+                                    dvgProductos.DataSource = null;
+                                    this.CargarDataGridProducto();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se puede seleccionar mas de una celda");
+                    break;
+                }
+            }
+        }
     }
 }

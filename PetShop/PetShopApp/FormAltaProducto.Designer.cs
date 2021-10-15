@@ -1,7 +1,7 @@
 ﻿
 namespace PetShopApp
 {
-    partial class FrmAltaProducto
+    partial class FormAltaProducto
     {
         /// <summary>
         /// Required designer variable.
