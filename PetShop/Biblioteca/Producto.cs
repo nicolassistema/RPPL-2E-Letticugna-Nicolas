@@ -7,6 +7,7 @@ namespace Entidades
     {
         #region "Atributos"
         double kilogramos;
+        static int autoIncremental = 1;
         int codigo;
         int codigoDos;
         string marca;
@@ -33,7 +34,7 @@ namespace Entidades
         public Producto(string marca, string nombre, string descripcion, double precio) : this()
         {
 
-            this.Codigo = IdAutoIncremental();
+            this.Codigo = autoIncremental++; // IdAutoIncremental();
             this.marca = marca;
             this.nombre = nombre;
             this.descripcion = descripcion;
@@ -43,7 +44,7 @@ namespace Entidades
 
         public Producto(string marca, string nombre, string descripcion, int cantidad, double precio) : this()
         {
-            this.Codigo = IdAutoIncremental();
+            this.Codigo = autoIncremental++; // IdAutoIncremental();
             this.marca = marca;
             this.nombre = nombre;
             this.descripcion = descripcion;
@@ -54,7 +55,7 @@ namespace Entidades
 
         public Producto(string marca, string nombre, string descripcion, int cantidad, double precio, double kilogramos ) : this()
         {
-            this.Codigo = IdAutoIncremental();
+            this.Codigo = autoIncremental++; // IdAutoIncremental();
             this.marca = marca;
             this.nombre = nombre;
             this.descripcion = descripcion;
@@ -65,11 +66,23 @@ namespace Entidades
 
         public Producto(string marca, string nombre, int cantidad, double precio) : this()
         {
+            this.Codigo = autoIncremental++; // IdAutoIncremental();
+            this.nombre = nombre;
+            this.marca = marca;
+            this.cantidad = cantidad;
+            this.precio = precio;
+        }
+
+
+
+        public Producto(string marca, string nombre, int cantidad, double precio, string descripcion) : this()
+        {
             this.Codigo = IdAutoIncremental();
             this.nombre = nombre;
             this.marca = marca;
             this.cantidad = cantidad;
             this.precio = precio;
+            this.descripcion = descripcion;
         }
         #endregion
 
@@ -288,10 +301,10 @@ namespace Entidades
          
                 for (int i = 0; i <= PetShop.ObtenerPorductos().Count; i++)
                 {
-                    this.codigo = i + 1;
+                    codigo = i + 1;
                 }
           
-            return this.codigo;
+            return codigo;
         }
 
         #endregion

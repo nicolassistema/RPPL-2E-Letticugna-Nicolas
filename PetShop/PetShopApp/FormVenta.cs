@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 using Entidades;
 
 namespace PetShopApp
@@ -56,12 +57,41 @@ namespace PetShopApp
                 dgvListaProductos.Rows[i].Cells[0].Value = item.Codigo;
                 dgvListaProductos.Rows[i].Cells[1].Value = item.Marca;
                 dgvListaProductos.Rows[i].Cells[2].Value = item.Nombre;
-                dgvListaProductos.Rows[i].Cells[3].Value = item.Cantidad;
-                dgvListaProductos.Rows[i].Cells[4].Value = item.Precio;
-                dgvListaProductos.Rows[i].Cells[5].Value = item.Kilogramos;
+                dgvListaProductos.Rows[i].Cells[3].Value = item.Descripcion;
+                dgvListaProductos.Rows[i].Cells[4].Value = item.Cantidad;
+                dgvListaProductos.Rows[i].Cells[5].Value = item.Precio;
+                dgvListaProductos.Rows[i].Cells[6].Value = item.Kilogramos;
+                dgvListaProductos.Rows[i].Cells[7].Value = ObtenerNombreObjeto(item);
+                dgvListaProductos.Rows[i].Cells[8].Value = ObtenerValorEnumeradoDeObjeto(item);
                 i++;
             }
         }
+
+        public static string ObtenerNombreObjeto(Object objeto)
+        {
+            string aux;
+            Type type = objeto.GetType();
+            aux = type.ToString();
+            aux = aux.Substring(aux.IndexOf(".") + 1);
+            return aux;
+        }
+
+        public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
+        {
+            Type type = objeto.GetType();
+            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            {
+                if (!(propertyInfo.GetType().IsEnum))
+                {
+                    string lala = propertyInfo.GetValue(objeto).ToString();
+                    return lala;
+                }
+            }
+            return null;
+        }
+
+     
+
 
 
         public List<Producto> ActualizarInventario()
@@ -69,18 +99,44 @@ namespace PetShopApp
             List<Producto> listaAux = new List<Producto>();
             string nombre;
             string marca;
+            string descripcion;
             int cantidad;
             double precio;
+            double kiloG;
+            PetShop.LimpiarListaProductos();
+
             for (int i = 0; i < dgvListaProductos.RowCount; i++)
             {
-                nombre = dgvListaProductos.Rows[i].Cells[1].Value.ToString();
-                marca = dgvListaProductos.Rows[i].Cells[2].Value.ToString();
-                cantidad = Convert.ToInt32(dgvListaProductos.Rows[i].Cells[3].Value.ToString());
-                precio = double.Parse(dgvListaProductos.Rows[i].Cells[4].Value.ToString());
-                PetShop.listaProductos += new Producto(nombre, marca, cantidad, precio);
+                marca = dgvListaProductos.Rows[i].Cells[1].Value.ToString();
+                nombre = dgvListaProductos.Rows[i].Cells[2].Value.ToString();
+                descripcion = dgvListaProductos.Rows[i].Cells[3].Value.ToString();
+                cantidad = Convert.ToInt32(dgvListaProductos.Rows[i].Cells[4].Value.ToString());
+                precio = double.Parse(dgvListaProductos.Rows[i].Cells[5].Value.ToString());
+                kiloG = double.Parse(dgvListaProductos.Rows[i].Cells[6].Value.ToString());
+
+                switch (dgvListaProductos.Rows[i].Cells[7].Value.ToString())
+                {
+                    case "Juguete":
+                        PetShop.listaProductos += new Juguete(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Juguete.EMaterial)Enum.Parse(typeof(Entidades.Juguete.EMaterial), dgvListaProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "Cama":
+                        PetShop.listaProductos += new Cama(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Cama.ETamanio)Enum.Parse(typeof(Entidades.Cama.ETamanio), dgvListaProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "Alimento":
+                        PetShop.listaProductos += new Alimento(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Alimento.ETipoAlimento)Enum.Parse(typeof(Entidades.Alimento.ETipoAlimento), dgvListaProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "ArtCuidadoMascota":
+                        PetShop.listaProductos += new ArtCuidadoMascota(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.ArtCuidadoMascota.ETipoCuidado)Enum.Parse(typeof(Entidades.ArtCuidadoMascota.ETipoCuidado), dgvListaProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    default:
+                        break;
+                }
             }
             return PetShop.ObtenerPorductos();
         }
+
+
+
 
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -346,9 +402,9 @@ namespace PetShopApp
             int aux = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[0].Value);
             productoAux = PetShop.ObtenerProductoByID(aux);
 
-            if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value) < 1))
+            if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value) < 1))
             {
-                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Nombre.ToString(), productoAux.Marca.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString() });
+                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), ObtenerNombreObjeto(productoAux)});
                 dgvListaProdSelecc.AllowUserToAddRows = false;
                 for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
                 {
@@ -363,9 +419,9 @@ namespace PetShopApp
 
                 lblMostrarTotal.Text = string.Format("{0:f2}", acum);
                 lblKgNumber.Text = string.Format("{0:f2}", kg);
-                stock = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value);
+                stock = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value);
                 stock -= 1;
-                dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[3].Value = stock.ToString();
+                dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value = stock.ToString();
             }
             else
             {
@@ -401,9 +457,9 @@ namespace PetShopApp
             {
                 if (idAux == Convert.ToInt32(dgvListaProductos.Rows[i].Cells[0].Value.ToString()))
                 {
-                    stock = Convert.ToInt32(dgvListaProductos.Rows[i].Cells[3].Value.ToString());
+                    stock = Convert.ToInt32(dgvListaProductos.Rows[i].Cells[4].Value.ToString());
                     stock += 1;
-                    dgvListaProductos.Rows[i].Cells[3].Value = stock.ToString();
+                    dgvListaProductos.Rows[i].Cells[4].Value = stock.ToString();
                     break;
                 }
             }

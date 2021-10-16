@@ -62,18 +62,7 @@ namespace PetShopApp
             this.lblTipoEnvio = new System.Windows.Forms.Label();
             this.btnLimpiarSelectProd = new System.Windows.Forms.Button();
             this.dgvListaProdSelecc = new System.Windows.Forms.DataGridView();
-            this.CodProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kilogramos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvListaProductos = new System.Windows.Forms.DataGridView();
-            this.CodPorducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblPesos = new System.Windows.Forms.Label();
             this.btnCancelaCompra = new System.Windows.Forms.Button();
             this.btnAceptaCompra = new System.Windows.Forms.Button();
@@ -96,6 +85,21 @@ namespace PetShopApp
             this.btnCancelarConfirmCompra = new System.Windows.Forms.Button();
             this.btnCompraNueva = new System.Windows.Forms.Button();
             this.btnConfirmarCompra = new System.Windows.Forms.Button();
+            this.CodPorducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_Detalle_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kilogramos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBuscarCliente.SuspendLayout();
             this.pnlCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdSelecc)).BeginInit();
@@ -117,7 +121,7 @@ namespace PetShopApp
             // lblCerrarSesion
             // 
             this.lblCerrarSesion.AutoSize = true;
-            this.lblCerrarSesion.Location = new System.Drawing.Point(1104, 9);
+            this.lblCerrarSesion.Location = new System.Drawing.Point(1239, 9);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
             this.lblCerrarSesion.Size = new System.Drawing.Size(76, 15);
             this.lblCerrarSesion.TabIndex = 1;
@@ -128,7 +132,7 @@ namespace PetShopApp
             // lblVolver
             // 
             this.lblVolver.AutoSize = true;
-            this.lblVolver.Location = new System.Drawing.Point(934, 9);
+            this.lblVolver.Location = new System.Drawing.Point(1069, 9);
             this.lblVolver.Name = "lblVolver";
             this.lblVolver.Size = new System.Drawing.Size(142, 15);
             this.lblVolver.TabIndex = 2;
@@ -224,7 +228,7 @@ namespace PetShopApp
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(370, 7);
+            this.btnAgregar.Location = new System.Drawing.Point(329, 7);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 89);
             this.btnAgregar.TabIndex = 8;
@@ -234,7 +238,7 @@ namespace PetShopApp
             // 
             // btnSacar
             // 
-            this.btnSacar.Location = new System.Drawing.Point(370, 102);
+            this.btnSacar.Location = new System.Drawing.Point(329, 102);
             this.btnSacar.Name = "btnSacar";
             this.btnSacar.Size = new System.Drawing.Size(75, 89);
             this.btnSacar.TabIndex = 9;
@@ -246,7 +250,7 @@ namespace PetShopApp
             // 
             this.lblMostrarTotal.AutoSize = true;
             this.lblMostrarTotal.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMostrarTotal.Location = new System.Drawing.Point(717, 367);
+            this.lblMostrarTotal.Location = new System.Drawing.Point(676, 367);
             this.lblMostrarTotal.Name = "lblMostrarTotal";
             this.lblMostrarTotal.Padding = new System.Windows.Forms.Padding(0, 0, 50, 0);
             this.lblMostrarTotal.Size = new System.Drawing.Size(83, 37);
@@ -278,14 +282,14 @@ namespace PetShopApp
             this.pnlCompra.Controls.Add(this.btnAgregar);
             this.pnlCompra.Location = new System.Drawing.Point(393, 53);
             this.pnlCompra.Name = "pnlCompra";
-            this.pnlCompra.Size = new System.Drawing.Size(964, 466);
+            this.pnlCompra.Size = new System.Drawing.Size(922, 466);
             this.pnlCompra.TabIndex = 10;
             // 
             // lblDescripMax
             // 
             this.lblDescripMax.AutoSize = true;
             this.lblDescripMax.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDescripMax.Location = new System.Drawing.Point(820, 367);
+            this.lblDescripMax.Location = new System.Drawing.Point(779, 367);
             this.lblDescripMax.Name = "lblDescripMax";
             this.lblDescripMax.Size = new System.Drawing.Size(128, 15);
             this.lblDescripMax.TabIndex = 27;
@@ -295,7 +299,7 @@ namespace PetShopApp
             // 
             this.lblTipoEnvioDescrip.AutoSize = true;
             this.lblTipoEnvioDescrip.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTipoEnvioDescrip.Location = new System.Drawing.Point(802, 420);
+            this.lblTipoEnvioDescrip.Location = new System.Drawing.Point(761, 420);
             this.lblTipoEnvioDescrip.Name = "lblTipoEnvioDescrip";
             this.lblTipoEnvioDescrip.Size = new System.Drawing.Size(39, 12);
             this.lblTipoEnvioDescrip.TabIndex = 26;
@@ -305,7 +309,7 @@ namespace PetShopApp
             // 
             this.lblPrcioXCuadra.AutoSize = true;
             this.lblPrcioXCuadra.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPrcioXCuadra.Location = new System.Drawing.Point(907, 439);
+            this.lblPrcioXCuadra.Location = new System.Drawing.Point(866, 439);
             this.lblPrcioXCuadra.Name = "lblPrcioXCuadra";
             this.lblPrcioXCuadra.Size = new System.Drawing.Size(50, 19);
             this.lblPrcioXCuadra.TabIndex = 25;
@@ -315,7 +319,7 @@ namespace PetShopApp
             // 
             this.lblCantCuadras.AutoSize = true;
             this.lblCantCuadras.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCantCuadras.Location = new System.Drawing.Point(855, 442);
+            this.lblCantCuadras.Location = new System.Drawing.Point(814, 442);
             this.lblCantCuadras.Name = "lblCantCuadras";
             this.lblCantCuadras.Size = new System.Drawing.Size(30, 12);
             this.lblCantCuadras.TabIndex = 24;
@@ -325,7 +329,7 @@ namespace PetShopApp
             // 
             this.lblDistancia2.AutoSize = true;
             this.lblDistancia2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDistancia2.Location = new System.Drawing.Point(807, 449);
+            this.lblDistancia2.Location = new System.Drawing.Point(766, 449);
             this.lblDistancia2.Name = "lblDistancia2";
             this.lblDistancia2.Size = new System.Drawing.Size(40, 12);
             this.lblDistancia2.TabIndex = 23;
@@ -335,7 +339,7 @@ namespace PetShopApp
             // 
             this.lblDistancia.AutoSize = true;
             this.lblDistancia.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDistancia.Location = new System.Drawing.Point(807, 437);
+            this.lblDistancia.Location = new System.Drawing.Point(766, 437);
             this.lblDistancia.Name = "lblDistancia";
             this.lblDistancia.Size = new System.Drawing.Size(23, 12);
             this.lblDistancia.TabIndex = 22;
@@ -344,7 +348,7 @@ namespace PetShopApp
             // chkSinEnvio
             // 
             this.chkSinEnvio.AutoSize = true;
-            this.chkSinEnvio.Location = new System.Drawing.Point(717, 421);
+            this.chkSinEnvio.Location = new System.Drawing.Point(676, 421);
             this.chkSinEnvio.Name = "chkSinEnvio";
             this.chkSinEnvio.Size = new System.Drawing.Size(74, 19);
             this.chkSinEnvio.TabIndex = 21;
@@ -357,7 +361,7 @@ namespace PetShopApp
             // chkConEnvio
             // 
             this.chkConEnvio.AutoSize = true;
-            this.chkConEnvio.Location = new System.Drawing.Point(717, 441);
+            this.chkConEnvio.Location = new System.Drawing.Point(676, 441);
             this.chkConEnvio.Name = "chkConEnvio";
             this.chkConEnvio.Size = new System.Drawing.Size(80, 19);
             this.chkConEnvio.TabIndex = 20;
@@ -371,7 +375,7 @@ namespace PetShopApp
             // 
             this.lblMontoTipoEnvio.AutoSize = true;
             this.lblMontoTipoEnvio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMontoTipoEnvio.Location = new System.Drawing.Point(905, 416);
+            this.lblMontoTipoEnvio.Location = new System.Drawing.Point(864, 416);
             this.lblMontoTipoEnvio.Name = "lblMontoTipoEnvio";
             this.lblMontoTipoEnvio.Size = new System.Drawing.Size(50, 19);
             this.lblMontoTipoEnvio.TabIndex = 19;
@@ -381,7 +385,7 @@ namespace PetShopApp
             // 
             this.lblKgNumber.AutoSize = true;
             this.lblKgNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblKgNumber.Location = new System.Drawing.Point(886, 381);
+            this.lblKgNumber.Location = new System.Drawing.Point(845, 381);
             this.lblKgNumber.Name = "lblKgNumber";
             this.lblKgNumber.Padding = new System.Windows.Forms.Padding(0, 0, 27, 0);
             this.lblKgNumber.Size = new System.Drawing.Size(67, 15);
@@ -392,7 +396,7 @@ namespace PetShopApp
             // 
             this.lblKg.AutoSize = true;
             this.lblKg.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblKg.Location = new System.Drawing.Point(859, 381);
+            this.lblKg.Location = new System.Drawing.Point(818, 381);
             this.lblKg.Name = "lblKg";
             this.lblKg.Size = new System.Drawing.Size(24, 15);
             this.lblKg.TabIndex = 17;
@@ -402,7 +406,7 @@ namespace PetShopApp
             // 
             this.lblTipoEnvio.AutoSize = true;
             this.lblTipoEnvio.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTipoEnvio.Location = new System.Drawing.Point(851, 419);
+            this.lblTipoEnvio.Location = new System.Drawing.Point(810, 419);
             this.lblTipoEnvio.Name = "lblTipoEnvio";
             this.lblTipoEnvio.Size = new System.Drawing.Size(30, 12);
             this.lblTipoEnvio.TabIndex = 16;
@@ -410,7 +414,7 @@ namespace PetShopApp
             // 
             // btnLimpiarSelectProd
             // 
-            this.btnLimpiarSelectProd.Location = new System.Drawing.Point(451, 391);
+            this.btnLimpiarSelectProd.Location = new System.Drawing.Point(410, 391);
             this.btnLimpiarSelectProd.Name = "btnLimpiarSelectProd";
             this.btnLimpiarSelectProd.Size = new System.Drawing.Size(62, 49);
             this.btnLimpiarSelectProd.TabIndex = 15;
@@ -433,8 +437,9 @@ namespace PetShopApp
             this.CodProducto,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.Kilogramos});
+            this.dataGridViewTextBoxColumn4,
+            this.Kilogramos,
+            this.dataGridViewTextBoxColumn3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -443,38 +448,12 @@ namespace PetShopApp
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaProdSelecc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvListaProdSelecc.Location = new System.Drawing.Point(451, 7);
+            this.dgvListaProdSelecc.Location = new System.Drawing.Point(410, 7);
             this.dgvListaProdSelecc.Name = "dgvListaProdSelecc";
             this.dgvListaProdSelecc.RowHeadersVisible = false;
             this.dgvListaProdSelecc.RowTemplate.Height = 25;
             this.dgvListaProdSelecc.Size = new System.Drawing.Size(497, 357);
             this.dgvListaProdSelecc.TabIndex = 14;
-            // 
-            // CodProducto
-            // 
-            this.CodProducto.HeaderText = "CodProducto";
-            this.CodProducto.Name = "CodProducto";
-            this.CodProducto.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Marca";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Precio";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // Kilogramos
-            // 
-            this.Kilogramos.HeaderText = "Kilogramos";
-            this.Kilogramos.Name = "Kilogramos";
             // 
             // dgvListaProductos
             // 
@@ -491,9 +470,12 @@ namespace PetShopApp
             this.CodPorducto,
             this.Marca,
             this.Nombre,
+            this.Descripcion,
             this.Stock,
             this.Precio,
-            this.Kg});
+            this.Kg,
+            this.TipoProducto,
+            this.Tipo_Detalle_Producto});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -507,48 +489,14 @@ namespace PetShopApp
             this.dgvListaProductos.Name = "dgvListaProductos";
             this.dgvListaProductos.RowHeadersVisible = false;
             this.dgvListaProductos.RowTemplate.Height = 25;
-            this.dgvListaProductos.Size = new System.Drawing.Size(350, 456);
+            this.dgvListaProductos.Size = new System.Drawing.Size(309, 456);
             this.dgvListaProductos.TabIndex = 13;
-            // 
-            // CodPorducto
-            // 
-            this.CodPorducto.HeaderText = "CodPorducto";
-            this.CodPorducto.Name = "CodPorducto";
-            this.CodPorducto.Width = 50;
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Stock
-            // 
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.Width = 50;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 50;
-            // 
-            // Kg
-            // 
-            this.Kg.HeaderText = "kg";
-            this.Kg.Name = "Kg";
-            this.Kg.Visible = false;
             // 
             // lblPesos
             // 
             this.lblPesos.AutoSize = true;
             this.lblPesos.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblPesos.Location = new System.Drawing.Point(684, 367);
+            this.lblPesos.Location = new System.Drawing.Point(643, 367);
             this.lblPesos.Name = "lblPesos";
             this.lblPesos.Size = new System.Drawing.Size(33, 37);
             this.lblPesos.TabIndex = 12;
@@ -557,7 +505,7 @@ namespace PetShopApp
             // btnCancelaCompra
             // 
             this.btnCancelaCompra.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelaCompra.Location = new System.Drawing.Point(583, 391);
+            this.btnCancelaCompra.Location = new System.Drawing.Point(542, 391);
             this.btnCancelaCompra.Name = "btnCancelaCompra";
             this.btnCancelaCompra.Size = new System.Drawing.Size(61, 49);
             this.btnCancelaCompra.TabIndex = 11;
@@ -567,7 +515,7 @@ namespace PetShopApp
             // 
             // btnAceptaCompra
             // 
-            this.btnAceptaCompra.Location = new System.Drawing.Point(519, 391);
+            this.btnAceptaCompra.Location = new System.Drawing.Point(478, 391);
             this.btnAceptaCompra.Name = "btnAceptaCompra";
             this.btnAceptaCompra.Size = new System.Drawing.Size(58, 49);
             this.btnAceptaCompra.TabIndex = 10;
@@ -784,11 +732,100 @@ namespace PetShopApp
             this.btnConfirmarCompra.UseVisualStyleBackColor = false;
             this.btnConfirmarCompra.Click += new System.EventHandler(this.btnConfirmarCompra_Click);
             // 
+            // CodPorducto
+            // 
+            this.CodPorducto.HeaderText = "CodPorducto";
+            this.CodPorducto.Name = "CodPorducto";
+            this.CodPorducto.Visible = false;
+            this.CodPorducto.Width = 50;
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 120;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Visible = false;
+            // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "Stock";
+            this.Stock.Name = "Stock";
+            this.Stock.Width = 50;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 50;
+            // 
+            // Kg
+            // 
+            this.Kg.HeaderText = "kg";
+            this.Kg.Name = "Kg";
+            this.Kg.Visible = false;
+            // 
+            // TipoProducto
+            // 
+            this.TipoProducto.HeaderText = "TipoProducto";
+            this.TipoProducto.Name = "TipoProducto";
+            this.TipoProducto.Visible = false;
+            // 
+            // Tipo_Detalle_Producto
+            // 
+            this.Tipo_Detalle_Producto.HeaderText = "Tipo_Detalle_Producto";
+            this.Tipo_Detalle_Producto.Name = "Tipo_Detalle_Producto";
+            this.Tipo_Detalle_Producto.Visible = false;
+            // 
+            // CodProducto
+            // 
+            this.CodProducto.HeaderText = "CodProducto";
+            this.CodProducto.Name = "CodProducto";
+            this.CodProducto.Visible = false;
+            this.CodProducto.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Marca";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Precio";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // Kilogramos
+            // 
+            this.Kilogramos.HeaderText = "Kilogramos";
+            this.Kilogramos.Name = "Kilogramos";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
             // FormVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1366, 527);
+            this.ClientSize = new System.Drawing.Size(1324, 527);
             this.Controls.Add(this.pnlConfirmarCompra);
             this.Controls.Add(this.pnlVenta);
             this.Controls.Add(this.pnlCompra);
@@ -849,10 +886,6 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblMensajeCliente;
         private System.Windows.Forms.DataGridView dgvListaProdSelecc;
         private System.Windows.Forms.DataGridView dgvListaProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Panel pnlConfirmarCompra;
         private System.Windows.Forms.Button btnLimpiarSelectProd;
         private System.Windows.Forms.Button btnCancelarConfirmCompra;
@@ -869,14 +902,22 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblPrcioXCuadra;
         private System.Windows.Forms.Label lblCantCuadras;
         private System.Windows.Forms.Label lblDistancia2;
+        private System.Windows.Forms.Label lblTipoEnvioDescrip;
+        private System.Windows.Forms.Label lblDescripMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kilogramos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodPorducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Kilogramos;
-        private System.Windows.Forms.Label lblTipoEnvioDescrip;
-        private System.Windows.Forms.Label lblDescripMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_Detalle_Producto;
     }
 }
