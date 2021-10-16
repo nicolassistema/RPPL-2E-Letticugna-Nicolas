@@ -27,6 +27,7 @@ namespace PetShopApp
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
             RestartearListas();
+          //  
             //  CargarDataGridProducto();
         }
 
@@ -131,6 +132,7 @@ namespace PetShopApp
         {
             dvgProductos.Rows.Clear();
             CargarDataGridProducto();
+           // dvgProductos.AllowUserToAddRows = false;
         }
 
 
@@ -252,7 +254,7 @@ namespace PetShopApp
 
         public List<Producto> ActualizarInventario()
         {
-            List<Producto> listaAux = new List<Producto>();
+           // List<Producto> listaAux = new List<Producto>();
             string nombre;
             string marca;
             string descripcion;
@@ -283,6 +285,7 @@ namespace PetShopApp
                         break;
                     case "ArtCuidadoMascota":
                         PetShop.listaProductos += new ArtCuidadoMascota(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.ArtCuidadoMascota.ETipoCuidado)Enum.Parse(typeof(Entidades.ArtCuidadoMascota.ETipoCuidado), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                        MessageBox.Show("Entro en este if");
                         break;
                     default:
                         break;
@@ -363,6 +366,27 @@ namespace PetShopApp
                     break;
                 }
             }
+        }
+
+        private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            dvgProductos.AllowUserToDeleteRows = false;
+            dvgProductos.AllowUserToAddRows = false;
+           
+        }
+
+        private void dvgProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dvgProductos.AllowUserToDeleteRows = false;
+            dvgProductos.AllowUserToAddRows = false;
+          
+        }
+
+        private void dvgProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            dvgProductos.AllowUserToDeleteRows = false;
+            dvgProductos.AllowUserToAddRows = false;
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Entidades
     {
         static List<Usuario> listaUsuarios;
         public static List<Producto> listaProductos;
-        //public static Dictionary<int, Producto> listaProductoD;
         static List<Producto> listaProductosWork;
         static List<Cliente> listaClientes;
         public static List<Venta> listaVentas;

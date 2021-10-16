@@ -150,6 +150,9 @@ namespace PetShopApp
             this.dvgProductos.RowTemplate.Height = 25;
             this.dvgProductos.Size = new System.Drawing.Size(756, 283);
             this.dvgProductos.TabIndex = 6;
+            this.dvgProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellContentClick);
+            this.dvgProductos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellContentDoubleClick);
+            this.dvgProductos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellValueChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
