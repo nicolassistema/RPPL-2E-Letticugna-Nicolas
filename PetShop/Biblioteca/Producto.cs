@@ -288,10 +288,10 @@ namespace Entidades
          
                 for (int i = 0; i <= PetShop.ObtenerPorductos().Count; i++)
                 {
-                    codigo = i + 1;
+                    this.codigo = i + 1;
                 }
           
-            return codigo;
+            return this.codigo;
         }
 
         #endregion

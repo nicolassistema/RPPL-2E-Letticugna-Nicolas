@@ -8,6 +8,19 @@ namespace Entidades
         private ETipoAlimento tipoAlimento;
 
 
+        public Alimento()
+        {
+
+        }
+
+        public Alimento(string marca, string nombre, string detalle, int stock, double precio, double kilogramos) : base(marca, nombre, detalle, stock, precio, kilogramos)
+        {
+
+        }
+
+
+
+
         public Alimento(string marca, string nombre, string detalle, int cantidad, double precio, double kilogramos, ETipoAlimento tipoAlimento) : base(marca, nombre, detalle, cantidad, precio, kilogramos)
         {
             this.tipoAlimento = tipoAlimento;
@@ -47,6 +60,27 @@ namespace Entidades
             sb.AppendLine(base.ToString());
             sb.AppendLine($"{this.tipoAlimento} | {this.Cantidad}");
             return sb.ToString();
+        }
+
+
+
+        public static explicit operator Alimento(Cama cama)
+        {
+            Alimento alimento = new Alimento(cama.Marca, cama.Nombre, cama.Descripcion, cama.Cantidad, cama.Precio, cama.Kilogramos);
+            return alimento;
+        }
+
+        public static explicit operator Alimento(ArtCuidadoMascota articulo)
+        {
+            Alimento alimento = new Alimento(articulo.Marca, articulo.Nombre, articulo.Descripcion, articulo.Cantidad, articulo.Precio, articulo.Kilogramos);
+            return alimento;
+        }
+
+
+        public static explicit operator Alimento(Juguete jueguete)
+        {
+            Alimento alimento = new Alimento(jueguete.Marca, jueguete.Nombre, jueguete.Descripcion, jueguete.Cantidad, jueguete.Precio, jueguete.Kilogramos);
+            return alimento;
         }
 
 

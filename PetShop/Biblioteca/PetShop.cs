@@ -115,7 +115,6 @@ namespace Entidades
             listaClientes += (new Cliente("20323206059", "fefe", "lopez", 0));
         }
 
-
         private static void HardcodVentas()
         {
             Producto prod1 = new Producto(1, "Dog Chow", "Dog Chow", 4000);
@@ -125,8 +124,6 @@ namespace Entidades
             listaVentas += (new Venta(new Usuario("123456789", "Caro", "LaScrofani", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
             listaVentas += (new Venta(new Usuario("123456789", "bobo", "esponja", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
         }
-
-
 
         public static List<Venta> ObtenerListaVentas()
         {
@@ -143,14 +140,10 @@ namespace Entidades
             listaClientes += cliente;
         }
 
-
         public static void AddProducto(Producto producto)
         {
             listaProductos += producto;
         }
-
-
-
 
         public static List<Usuario> ObtenerListaUsuarios()
         {
@@ -208,7 +201,6 @@ namespace Entidades
             return false;
         }
 
-
         public static bool EliminarUsuario(Usuario usuario)
         {
             List<Usuario> auxList = PetShop.Usuario;
@@ -238,10 +230,6 @@ namespace Entidades
             listaClientes.Clear();
         }
 
-
-      
-
-
         public static List<Producto> CargarListaNuevamenteProducto(List<Producto> listaProductosAux)
         {
             if (!(listaProductosAux is null))
@@ -255,7 +243,6 @@ namespace Entidades
             }
             return null;
         }
-
 
         public static List<Usuario> CargarListaNuevamente(List<Usuario> listaUsuariosAux)
         {
@@ -297,7 +284,6 @@ namespace Entidades
             return false;
         }
 
-
         public static bool BuscarProductoPorString(Producto producto, string palabra)
         {
             if (producto.Codigo.ToString().Contains(palabra) ||
@@ -313,7 +299,6 @@ namespace Entidades
             }
             return false;
         }
-
 
         public static Cliente ObtenerClientePorCuit(string cuit)
         {

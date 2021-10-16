@@ -26,7 +26,8 @@ namespace PetShopApp
         {
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
-            CargarDataGridProducto();
+            RestartearListas();
+            //  CargarDataGridProducto();
         }
 
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -97,6 +98,45 @@ namespace PetShopApp
             return aux;
         }
 
+
+        public static Type ObtenerTipoObjetoByNombre(string nombre)
+        {
+            switch (nombre)
+            {
+                case "Cama":
+                    Cama cama = new Cama();
+                    return cama.GetType();
+                    break;
+                case "Juguete":
+                    Juguete juguete = new Juguete();
+                    return juguete.GetType();
+                    break;
+                case "ArtCuidadoMascota":
+                    ArtCuidadoMascota articulo = new ArtCuidadoMascota();
+                    return articulo.GetType();
+                    break;
+                case "Alimento":
+                    Alimento alimento = new Alimento();
+                    return alimento.GetType();
+                    break;
+
+                default:
+                    return null;
+                    break;
+            }
+
+        }
+
+        public void RestartearListas()
+        {
+            dvgProductos.Rows.Clear();
+            CargarDataGridProducto();
+        }
+
+
+
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dvgProductos.Rows.Clear();
@@ -107,7 +147,7 @@ namespace PetShopApp
             {
                 if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                 {
-                    dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos);
+                    dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
                     MakeReadOnly();
                 }
             }
@@ -129,67 +169,164 @@ namespace PetShopApp
 
         private void btnConfirmModificacion_Click(object sender, EventArgs e)
         {
-            //List<Producto> producto = new List<Producto>();
-            //for (int i = 0; i < dvgProductos.RowCount; i++)
-            //{
-            //    string aux = dvgProductos.Rows[i].Cells[5].Value.ToString();
-            //    string codigoProducto = dvgProductos.Rows[i].Cells[0].Value.ToString();
+            //   List<Producto> prodcutosExistentes = new List<Producto>();
 
-            //    //if (userForm.Cuit == cuitAux)
-            //    //{
-            //    //    lblNombreUsuario.Text = dgvListaEmpleados.Rows[i].Cells[1].Value.ToString() + " " + dgvListaEmpleados.Rows[i].Cells[2].Value.ToString();
-            //    //    userForm.Nombre = dgvListaEmpleados.Rows[i].Cells[1].Value.ToString();
-            //    //    userForm.Apellido = dgvListaEmpleados.Rows[i].Cells[2].Value.ToString();
-            //    //    userForm.NameUsuario = dgvListaEmpleados.Rows[i].Cells[3].Value.ToString();
-            //    //    userForm.PassUsuario = dgvListaEmpleados.Rows[i].Cells[4].Value.ToString();
-            //    //}
+            // Carga(PetShop.ObtenerPorductos());
 
-
-
-
-            //   // PetShop.ObtenerPorductos();
-
-
-
-            //    Usuario usuario = new Usuario(dvgProductos.Rows[i].Cells[0].Value.ToString(),
-            //                                                dvgProductos.Rows[i].Cells[1].Value.ToString(),
-            //                                                dvgProductos.Rows[i].Cells[2].Value.ToString(),
-            //                                                dvgProductos.Rows[i].Cells[3].Value.ToString(),
-            //                                                dvgProductos.Rows[i].Cells[4].Value.ToString(),
-            //                                                 dvgProductos.Rows[i].Cells[5].Value.ToString(),
-            //                                                  dvgProductos.Rows[i].Cells[6].Value.ToString(),
-            //                                                   dvgProductos.Rows[i].Cells[7].Value.ToString(),
-            //                                                    dvgProductos.Rows[i].Cells[8].Value.ToString(),
-            //                                                Entidades.Usuario.EPerfilUsuario.Admin);
-
-
-
-
-            //    if (Entidades.Usuario.EPerfilUsuario.Admin.ToString() == aux)
-            //    {
-            //        Usuario usuario = new Usuario(dgvListaEmpleados.Rows[i].Cells[0].Value.ToString(),
-            //                                                 dgvListaEmpleados.Rows[i].Cells[1].Value.ToString(),
-            //                                                 dgvListaEmpleados.Rows[i].Cells[2].Value.ToString(),
-            //                                                 dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
-            //                                                 dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
-            //                                                 Entidades.Usuario.EPerfilUsuario.Admin);
-            //        auxList.Add(usuario);
-            //    }
-            //    else
-            //    {
-            //        Usuario usuario = new Usuario(dgvListaEmpleados.Rows[i].Cells[0].Value.ToString(),
-            //                                                dgvListaEmpleados.Rows[i].Cells[1].Value.ToString(),
-            //                                                dgvListaEmpleados.Rows[i].Cells[2].Value.ToString(),
-            //                                                dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
-            //                                                dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
-            //                                                Entidades.Usuario.EPerfilUsuario.Empleado);
-
-            //        auxList.Add(usuario);
-            //    }
-            //    PetShop.LimpiarListaUsarios();
-            //    PetShop.CargarListaNuevamente(auxList);
-            //}
+            ActualizarInventario();
         }
+
+
+
+        public void Carga(List<Producto> producto)
+        {
+            List<Producto> productosTemporarios = new List<Producto>();
+            for (int i = 0; i < dvgProductos.RowCount; i++)
+            {
+                string tipoObjetoAux = dvgProductos.Rows[i].Cells[7].Value.ToString();
+                int codigoProducto = Convert.ToInt32(dvgProductos.Rows[i].Cells[0].Value.ToString());
+
+                foreach (var item in producto)
+                {
+                    if (item.Codigo == codigoProducto)
+                    {
+                        switch (tipoObjetoAux)
+                        {
+                            case "Cama":
+                                productosTemporarios += new Cama(dvgProductos.Rows[i].Cells[1].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[2].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[3].Value.ToString(),
+                                                            Convert.ToInt32(dvgProductos.Rows[i].Cells[4].Value),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[5].Value.ToString()),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[6].Value.ToString()),
+                                                            (Entidades.Cama.ETamanio)Enum.Parse(typeof(Entidades.Cama.ETamanio), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                                break;
+                            case "Juguete":
+                                productosTemporarios += new Juguete(dvgProductos.Rows[i].Cells[1].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[2].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[3].Value.ToString(),
+                                                            Convert.ToInt32(dvgProductos.Rows[i].Cells[4].Value),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[5].Value.ToString()),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[6].Value.ToString()),
+                                                            (Entidades.Juguete.EMaterial)Enum.Parse(typeof(Entidades.Juguete.EMaterial), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                                break;
+                            case "Alimento":
+                                productosTemporarios += new Alimento(dvgProductos.Rows[i].Cells[1].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[2].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[3].Value.ToString(),
+                                                            Convert.ToInt32(dvgProductos.Rows[i].Cells[4].Value),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[5].Value.ToString()),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[6].Value.ToString()),
+                                                            (Entidades.Alimento.ETipoAlimento)Enum.Parse(typeof(Entidades.Alimento.ETipoAlimento), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                                break;
+                            case "ArtCuidadoMascota":
+                                productosTemporarios += new ArtCuidadoMascota(dvgProductos.Rows[i].Cells[1].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[2].Value.ToString(),
+                                                            dvgProductos.Rows[i].Cells[3].Value.ToString(),
+                                                            Convert.ToInt32(dvgProductos.Rows[i].Cells[4].Value),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[5].Value.ToString()),
+                                                            double.Parse(dvgProductos.Rows[i].Cells[6].Value.ToString()),
+                                                            (Entidades.ArtCuidadoMascota.ETipoCuidado)Enum.Parse(typeof(Entidades.ArtCuidadoMascota.ETipoCuidado), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+
+                    }
+                }
+
+                PetShop.LimpiarListaProductos();
+                PetShop.CargarListaNuevamenteProducto(productosTemporarios);
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+        public List<Producto> ActualizarInventario()
+        {
+            List<Producto> listaAux = new List<Producto>();
+            string nombre;
+            string marca;
+            string descripcion;
+            int cantidad;
+            double precio;
+            double kiloG;
+            PetShop.LimpiarListaProductos();
+
+            for (int i = 0; i < dvgProductos.RowCount; i++)
+            {
+                marca = dvgProductos.Rows[i].Cells[1].Value.ToString();
+                nombre = dvgProductos.Rows[i].Cells[2].Value.ToString();
+                descripcion = dvgProductos.Rows[i].Cells[3].Value.ToString();
+                cantidad = Convert.ToInt32(dvgProductos.Rows[i].Cells[4].Value.ToString());
+                precio = double.Parse(dvgProductos.Rows[i].Cells[5].Value.ToString());
+                kiloG = double.Parse(dvgProductos.Rows[i].Cells[6].Value.ToString());
+
+                switch (dvgProductos.Rows[i].Cells[7].Value.ToString())
+                {
+                    case "Juguete":
+                        PetShop.listaProductos += new Juguete(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Juguete.EMaterial)Enum.Parse(typeof(Entidades.Juguete.EMaterial), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "Cama":
+                        PetShop.listaProductos += new Cama(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Cama.ETamanio)Enum.Parse(typeof(Entidades.Cama.ETamanio), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "Alimento":
+                        PetShop.listaProductos += new Alimento(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.Alimento.ETipoAlimento)Enum.Parse(typeof(Entidades.Alimento.ETipoAlimento), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    case "ArtCuidadoMascota":
+                        PetShop.listaProductos += new ArtCuidadoMascota(marca, nombre, descripcion, cantidad, precio, kiloG, (Entidades.ArtCuidadoMascota.ETipoCuidado)Enum.Parse(typeof(Entidades.ArtCuidadoMascota.ETipoCuidado), dvgProductos.Rows[i].Cells[8].Value.ToString()));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return PetShop.ObtenerPorductos();
+        }
+
+
+
+        public static Object ObtenerObjetoByString(string nombre)
+        {
+
+            switch (nombre)
+            {
+                case "Cama":
+                    Cama cama = new Cama();
+                    return cama;
+                    break;
+                case "Juguete":
+                    Juguete juguete = new Juguete();
+                    return juguete;
+                    break;
+                case "ArtCuidadoMascota":
+                    ArtCuidadoMascota articulo = new ArtCuidadoMascota();
+                    return articulo;
+                    break;
+                case "Alimento":
+                    Alimento alimento = new Alimento();
+                    return alimento;
+                    break;
+
+                //Falta agregar los otros dos tipos de productos
+                default:
+                    break;
+            }
+
+            return null;
+        }
+
+
+
+
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
