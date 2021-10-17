@@ -22,36 +22,7 @@ namespace PetShopApp
             this.userForm = new Usuario();
         }
 
-        //private void btnAceptar_Click(object sender, EventArgs e)
-        //{
-        //    label3.Text = Validaciones.SalidaMensajeValidacion(txtUser.Text, txtPass.Text);
-        //    if (label3.Text == "Bienvenido!")
-        //    {
-        //        label3.ForeColor = Color.Green;
-        //        this.userForm = PetShop.ObtenerUsuario(txtUser.Text, txtPass.Text);
-        //        if (!(this.userForm is null))
-        //        {
-        //            frmAdministracion administracion = new frmAdministracion(this.userForm);
-        //            this.Hide();
-        //            administracion.ShowDialog();
-        //            this.Close();
-        //        }
-        //        else
-        //        {
-        //            //disparar un exception
-        //            //inicializacion de exceocion + throw
-        //            label3.Text = "Usuario no registrado";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        label3.ForeColor = Color.Red;
-        //    }
-        //    label3.Visible = true;
-        //}
-
-
-
+    
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -71,9 +42,6 @@ namespace PetShopApp
                 MessageBox.Show(ex.Message);
             }
         }
-
-
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

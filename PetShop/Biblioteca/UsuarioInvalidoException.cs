@@ -11,24 +11,20 @@ namespace Entidades
     {
         public UsuarioInvalidoException()
         {
+
         }
 
         public UsuarioInvalidoException(string message) : base(message)
         {
+
         }
 
         public UsuarioInvalidoException(string message, Exception innerException) : base(message, innerException)
         {
+
         }
 
-        //public override string Message
-        //{
-        //    get
-        //    {
-        //        return "Nombre invalido";
-        //    }
-        //}
-
+   
 
     }
 }

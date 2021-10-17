@@ -244,48 +244,6 @@ namespace Entidades
             {
                 sb.AppendLine(" " + total.cant.ToString() + "   " + total.Nombre.ToString() + "      $" + string.Format("{0:f2}", total.Precio) + "         $" + string.Format("{0:f2}", total.Total));
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //foreach (var item in productos)
-            //{
-            //    acumDos = 0;
-            //    cant = 0;
-            //    acum = item.Codigo;
-
-            //    foreach (var itemDos in productos)
-            //    {
-            //        int segundaLista = itemDos.CodigoDos;
-            //     //   int indicePireraLista = acum;
-
-            //        if (itemDos.CodigoDos == item.Codigo)
-            //        {
-            //            precioUnitario = itemDos.Precio;
-            //            nombre = itemDos.Nombre.ToString();
-            //            segundaListas = itemDos.Codigo;
-            //            acumDos += itemDos.Precio;
-            //            cant++;
-
-            //        }
-            //    }
-
-            //    if (segundaListas == acum)
-            //    {
-            //        sb.AppendLine(" " + cant.ToString() + " " +nombre +"      $"+ string.Format("{0:f2}", precioUnitario)   + "      $" + string.Format("{0:f2}", acumDos));
-            //    }
-            //}
             sb.AppendLine("------------------------------------------------");
             if (this.montoEnvio != 0)
             {
@@ -338,6 +296,7 @@ namespace Entidades
 
 
 
+      
        
 
 

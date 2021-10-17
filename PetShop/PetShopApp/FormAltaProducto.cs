@@ -69,27 +69,6 @@ namespace PetShopApp
             }
         }
 
-        public static bool ValidarDecimal(string numero)
-        {
-
-            try
-            {
-                double d = Convert.ToDouble(numero);
-                if (d >= 0)
-                {
-                    return true;
-                }
-
-                return false;
-
-            }
-            catch (Exception ex)
-            {
-
-                return false;
-            }
-        }
-
         public void VisualizacionTooltip(bool estado)
         {
             if (!estado)
@@ -236,7 +215,7 @@ namespace PetShopApp
 
         private void txtPrecio_Leave(object sender, EventArgs e)
         {
-            if (ValidarDecimal(txtPrecio.Text))
+            if (Validaciones.ValidarDecimal(txtPrecio.Text))
             {
                 txtPrecio.Text = Validaciones.PuntoToComa(txtPrecio.Text);
                 lblValidPrecio.ForeColor = Color.Green;
@@ -249,7 +228,7 @@ namespace PetShopApp
 
         private void txtPrecio_MouseHover(object sender, EventArgs e)
         {
-            if (ValidarDecimal(txtPrecio.Text))
+            if (Validaciones.ValidarDecimal(txtPrecio.Text))
             {
                 VisualizacionTooltip(false);
             }
@@ -261,7 +240,7 @@ namespace PetShopApp
 
         private void txtKg_MouseHover(object sender, EventArgs e)
         {
-            if (ValidarDecimal(txtKg.Text))
+            if (Validaciones.ValidarDecimal(txtKg.Text))
             {
                 VisualizacionTooltip(false);
             }
@@ -273,7 +252,7 @@ namespace PetShopApp
 
         private void txtKg_Leave(object sender, EventArgs e)
         {
-            if (ValidarDecimal(txtKg.Text))
+            if (Validaciones.ValidarDecimal(txtKg.Text))
             {
                 txtKg.Text = Validaciones.PuntoToComa(txtKg.Text);
                 lblValidKg.ForeColor = Color.Green;

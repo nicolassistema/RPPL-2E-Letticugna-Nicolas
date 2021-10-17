@@ -558,20 +558,39 @@ namespace PetShopApp
             btnLimpiarSelectProd.Enabled = true;
         }
 
+
+
         private void btnAceptarVta_Click(object sender, EventArgs e)
         {
             double montoTotal;
             double montoPago;
             if (!(txtMontoAPagar.Text == ""))
             {
-                lblMontoPagar.Text = txtMontoAPagar.Text.ToString();
-                montoTotal = double.Parse(lblMontoVta.Text.ToString());
-                montoPago = double.Parse(lblMontoPagar.Text.ToString());
-                lblVto.Text = string.Format("{0:f2}", (montoPago - montoTotal));
-                VisibilidadPnlConfirmarCompra(true);
-                pnlVenta.Enabled = false;
-                FocusPnlVenta(false);
-                FocusPnlConfirm(true);
+                if (Validaciones.ValidarDecimal(txtMontoAPagar.Text.ToString()))
+                {
+                    txtMontoAPagar.Text= Validaciones.PuntoToComa(txtMontoAPagar.Text.ToString());
+                    try
+                    {
+                        Validaciones.ValidaSaldoAPagar(lblMontoVta.Text, txtMontoAPagar.Text);
+                        lblMontoPagar.Text = txtMontoAPagar.Text.ToString();
+
+                        montoTotal = double.Parse(lblMontoVta.Text.ToString());
+                        montoPago = double.Parse(lblMontoPagar.Text.ToString());
+                        lblVto.Text = string.Format("{0:f2}", (montoPago - montoTotal));
+                        VisibilidadPnlConfirmarCompra(true);
+                        pnlVenta.Enabled = false;
+                        FocusPnlVenta(false);
+                        FocusPnlConfirm(true);
+                    }
+                    catch (ClienteSinDineroExcepcion ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al ingresar el monto a pagar. Por favor ingresar correctamente un numero en formato decimal positivo");
+                }
             }
             else
             {

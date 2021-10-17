@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Entidades
 {
@@ -168,7 +170,6 @@ namespace Entidades
             return true;
         }
 
-
         public static bool EspacioEnBlancoOVacio(string nombre)
         {
             if (!(string.IsNullOrWhiteSpace(nombre)))
@@ -180,7 +181,6 @@ namespace Entidades
                 return true;
             }
         }
-
 
         public static bool ValidateNumber(string number)
         {
@@ -247,9 +247,39 @@ namespace Entidades
             return strInt;
         }
 
+        public static bool ValidarDecimal(string numero)
+        {
+            try
+            {
+                double d = Convert.ToDouble(numero);
+                if (d >= 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
-
-
+        public static void ValidaSaldoAPagar(string saldoAPagar, string dineroDisponible)
+        {
+            if (!(string.IsNullOrWhiteSpace(saldoAPagar)) && !(string.IsNullOrWhiteSpace(dineroDisponible)))
+            {
+                if (!(double.Parse(dineroDisponible) >= double.Parse(saldoAPagar)))
+                {
+                    ClienteSinDineroExcepcion clienteSinDineroExcepcion = new ClienteSinDineroExcepcion(message: "Saldo insuficiente para pagar");
+                    throw clienteSinDineroExcepcion;
+                }
+            }
+            else
+            {
+                ClienteSinDineroExcepcion clienteSinDineroExcepcion = new ClienteSinDineroExcepcion(message: "Error en el monto a pagar y/o en el dinero disponible");
+                throw clienteSinDineroExcepcion;
+            }
+        }
 
     }
 
