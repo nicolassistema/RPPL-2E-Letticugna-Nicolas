@@ -33,6 +33,7 @@ namespace PetShopApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVenta));
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
             this.lblVolver = new System.Windows.Forms.LinkLabel();
@@ -632,7 +633,6 @@ namespace PetShopApp
             this.pnlVenta.Name = "pnlVenta";
             this.pnlVenta.Size = new System.Drawing.Size(372, 171);
             this.pnlVenta.TabIndex = 11;
-
             // 
             // lblVto
             // 
@@ -846,6 +846,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblVolver);
             this.Controls.Add(this.lblCerrarSesion);
             this.Controls.Add(this.lblNombreUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";

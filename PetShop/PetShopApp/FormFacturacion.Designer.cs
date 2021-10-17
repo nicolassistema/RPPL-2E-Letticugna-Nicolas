@@ -29,6 +29,7 @@ namespace PetShopApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFacturacion));
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblVolver = new System.Windows.Forms.LinkLabel();
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
@@ -100,6 +101,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblCerrarSesion);
             this.Controls.Add(this.lblVolver);
             this.Controls.Add(this.lblNombreUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmFacturacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturacion";

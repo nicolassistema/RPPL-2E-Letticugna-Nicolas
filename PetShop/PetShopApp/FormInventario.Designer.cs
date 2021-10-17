@@ -31,6 +31,7 @@ namespace PetShopApp
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInventario));
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblVolver = new System.Windows.Forms.LinkLabel();
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
@@ -260,6 +261,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblCerrarSesion);
             this.Controls.Add(this.lblVolver);
             this.Controls.Add(this.lblNombreUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "formInventario";

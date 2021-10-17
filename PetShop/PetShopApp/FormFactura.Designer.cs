@@ -29,6 +29,7 @@ namespace PetShopApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFactura));
             this.rtxTicket = new System.Windows.Forms.RichTextBox();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@ namespace PetShopApp
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.rtxTicket);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormFactura";

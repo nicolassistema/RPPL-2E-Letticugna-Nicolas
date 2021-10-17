@@ -30,6 +30,7 @@ namespace PetShopApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAltaProducto));
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblDescrip = new System.Windows.Forms.Label();
@@ -363,6 +364,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblDescrip);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblMarca);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAltaProducto";
