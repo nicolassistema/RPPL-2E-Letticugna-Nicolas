@@ -53,6 +53,16 @@ namespace Entidades
         }
 
 
+        public Producto(string marca, string nombre, string descripcion, double precio, double kilogramos) : this()
+        {
+            this.Codigo = autoIncremental++; // IdAutoIncremental();
+            this.marca = marca;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.kilogramos = kilogramos;
+        }
+
         public Producto(string marca, string nombre, string descripcion, int cantidad, double precio, double kilogramos ) : this()
         {
             this.Codigo = autoIncremental++; // IdAutoIncremental();

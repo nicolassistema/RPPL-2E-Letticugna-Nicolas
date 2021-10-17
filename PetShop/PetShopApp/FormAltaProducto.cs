@@ -16,6 +16,7 @@ namespace PetShopApp
     public partial class FormAltaProducto : Form
     {
         Usuario userForm;
+        Producto producto;
         formInventario inventario;
         public FormAltaProducto()
         {
@@ -27,6 +28,24 @@ namespace PetShopApp
         {
             this.userForm = usuario;
         }
+
+
+        public FormAltaProducto(Usuario usuario, Producto producto) : this()
+        {
+            this.userForm = usuario;
+            this.producto = producto;
+
+            txtMarca.Text = producto.Marca;
+            txtNombre.Text = producto.Nombre;
+            txtDescrip.Text = producto.Descripcion;
+            txtStock.Text = producto.Cantidad.ToString();
+            txtPrecio.Text = producto.Precio.ToString();
+            txtKg.Text = producto.Kilogramos.ToString();
+            cmbTipoProd.Text = formInventario.ObtenerNombreObjeto(producto);
+            cmbDetalleTipoProd.Text = formInventario.ObtenerValorEnumeradoDeObjeto(producto);
+        }
+
+
 
         private void btnCanelar_Click(object sender, EventArgs e)
         {
@@ -339,7 +358,7 @@ namespace PetShopApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            formInventario fm = new formInventario(this.userForm);
+        //    formInventario fm = new formInventario(this.userForm);
 
             if (!FlagDetector())
             {
@@ -378,12 +397,6 @@ namespace PetShopApp
             }
         }
 
-
-
-
-
-
-
-
+    
     }
 }

@@ -331,11 +331,11 @@ namespace PetShopApp
             this.lblValidDetalleProd.TabIndex = 26;
             this.lblValidDetalleProd.Text = "*";
             // 
-            // FrmAltaProducto
+            // FormAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 483);
+            this.ClientSize = new System.Drawing.Size(309, 530);
             this.Controls.Add(this.lblValidDetalleProd);
             this.Controls.Add(this.lblValidTipoProd);
             this.Controls.Add(this.lblValidKg);
@@ -365,7 +365,7 @@ namespace PetShopApp
             this.Controls.Add(this.lblMarca);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmAltaProducto";
+            this.Name = "FormAltaProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Producto";
             this.ResumeLayout(false);

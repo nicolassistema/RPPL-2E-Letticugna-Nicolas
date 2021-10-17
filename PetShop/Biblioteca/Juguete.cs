@@ -15,10 +15,20 @@ namespace Entidades
 
         }
 
+
+
+
         public Juguete(string marca, string nombre, string detalle, int stock, double precio, double kilogramos) : base(marca, nombre, detalle, stock, precio, kilogramos)
         {
           
         }
+
+        public Juguete(string marca, string nombre, string detalle,  double precio, double kilogramos, EMaterial material) : base(marca, nombre, detalle,  precio, kilogramos)
+        {
+            this.material = material;
+        }
+
+
 
         public Juguete(string marca, string nombre, string detalle, int stock, double precio,double kilogramos, EMaterial material) : base(marca, nombre, detalle, stock, precio, kilogramos)
         {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +31,7 @@ namespace PetShopApp
         }
 
 
-        public void CargarDataGrid()
+        private void CargarDataGrid()
         {
             dgvListaEmpleados.Refresh();
             dgvListaEmpleados.DataSource = null;
@@ -41,22 +41,22 @@ namespace PetShopApp
 
             foreach (var item in PetShop.ObtenerListaUsuarios())
             {
-                if (item.Cuit == userForm.Cuit.ToString())
+                if (item.Key == userForm.Cuit.ToString())
                 {
-                    dgvListaEmpleados.Rows[i].Cells[0].Value = item.Cuit;
+                    dgvListaEmpleados.Rows[i].Cells[0].Value = item.Key;
                     dgvListaEmpleados.Rows[i].Cells[0].ReadOnly = true;
                     dgvListaEmpleados.Rows[i].Cells[5].ReadOnly = true;
                 }
                 else
                 {
-                    dgvListaEmpleados.Rows[i].Cells[0].Value = item.Cuit;
+                    dgvListaEmpleados.Rows[i].Cells[0].Value = item.Key;
                 }
-                dgvListaEmpleados.Rows[i].Cells[1].Value = item.Nombre;
-                dgvListaEmpleados.Rows[i].Cells[2].Value = item.Apellido;
-                dgvListaEmpleados.Rows[i].Cells[3].Value = item.NameUsuario;
-                dgvListaEmpleados.Rows[i].Cells[4].Value = item.PassUsuario;
+                dgvListaEmpleados.Rows[i].Cells[1].Value = item.Value.Nombre;
+                dgvListaEmpleados.Rows[i].Cells[2].Value = item.Value.Apellido;
+                dgvListaEmpleados.Rows[i].Cells[3].Value = item.Value.NameUsuario;
+                dgvListaEmpleados.Rows[i].Cells[4].Value = item.Value.PassUsuario;
 
-                if (item.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
+                if (item.Value.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
                 {
                     dgvListaEmpleados.Rows[i].Cells[5].Value = "Admin";
                 }
@@ -101,14 +101,14 @@ namespace PetShopApp
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             dgvListaEmpleados.Rows.Clear();
-            List<Usuario> lista = new List<Usuario>();
+            Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
             lista = PetShop.ObtenerListaUsuarios();
             string aux;
             foreach (var item in lista)
             {
-                if (BuscarPorString(item, txtBuscar.Text.ToLower()))
+                if (BuscarPorString(item.Value, txtBuscar.Text.ToLower()))
                 {
-                    if (item.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
+                    if (item.Value.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
                     {
                         aux = "Admin";
                     }
@@ -116,7 +116,7 @@ namespace PetShopApp
                     {
                         aux = "Empleado";
                     }
-                    dgvListaEmpleados.Rows.Add(item.Cuit, item.Nombre, item.Apellido, item.NameUsuario, item.PassUsuario, aux);
+                    dgvListaEmpleados.Rows.Add(item.Value.Cuit, item.Value.Nombre, item.Value.Apellido, item.Value.NameUsuario, item.Value.PassUsuario, aux);
                     MakeReadOnly();
                 }
 
@@ -165,7 +165,7 @@ namespace PetShopApp
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             dgvListaEmpleados.DataSource = null;
-            List<Usuario> lista = new List<Usuario>();
+            Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
             lista = PetShop.ObtenerListaUsuarios();
             string aux;
             foreach (DataGridViewCell oneCell in dgvListaEmpleados.SelectedCells)
@@ -179,12 +179,12 @@ namespace PetShopApp
                         {
                             foreach (var item in lista)
                             {
-                                if (item.Cuit == aux)
+                                if (item.Key == aux)
                                 {
                                     DialogResult dr = MessageBox.Show($"Esta seguro de eliminar el usuario\n {item.ToString()}?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                                     if (dr != DialogResult.No)
                                     {
-                                        PetShop.EliminarUsuario(item);
+                                        PetShop.EliminarUsuario(item.Value);
                                         dgvListaEmpleados.DataSource = null;
                                         this.CargarDataGrid();
                                         break;
@@ -209,7 +209,7 @@ namespace PetShopApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            List<Usuario> auxList = new List<Usuario>();
+            Dictionary<string, Usuario> auxList = new Dictionary<string, Usuario>();
             for (int i = 0; i < dgvListaEmpleados.RowCount; i++)
             {
                 string aux = dgvListaEmpleados.Rows[i].Cells[5].Value.ToString();
@@ -232,7 +232,7 @@ namespace PetShopApp
                                                              dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
                                                              dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
                                                              Entidades.Usuario.EPerfilUsuario.Admin);
-                    auxList.Add(usuario);
+                    auxList.Add(usuario.Cuit,usuario);
                 }
                 else
                 {
@@ -243,7 +243,7 @@ namespace PetShopApp
                                                             dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
                                                             Entidades.Usuario.EPerfilUsuario.Empleado);
 
-                    auxList.Add(usuario);
+                    auxList.Add(usuario.Cuit, usuario);
                 }
                 PetShop.LimpiarListaUsarios();
                 PetShop.CargarListaNuevamente(auxList);

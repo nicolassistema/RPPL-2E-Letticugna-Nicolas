@@ -38,6 +38,10 @@ namespace PetShopApp
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dvgProductos = new System.Windows.Forms.DataGridView();
+            this.pnlBuscar = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnConfirmModificacion = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +51,6 @@ namespace PetShopApp
             this.Kg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo_Detalle_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlBuscar = new System.Windows.Forms.Panel();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnConfirmModificacion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.SuspendLayout();
@@ -154,6 +154,42 @@ namespace PetShopApp
             this.dvgProductos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellContentDoubleClick);
             this.dvgProductos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellValueChanged);
             // 
+            // pnlBuscar
+            // 
+            this.pnlBuscar.Controls.Add(this.btnBuscar);
+            this.pnlBuscar.Controls.Add(this.txtBuscar);
+            this.pnlBuscar.Location = new System.Drawing.Point(667, 48);
+            this.pnlBuscar.Name = "pnlBuscar";
+            this.pnlBuscar.Size = new System.Drawing.Size(200, 38);
+            this.pnlBuscar.TabIndex = 7;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(116, 8);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 1;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(3, 8);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(100, 23);
+            this.txtBuscar.TabIndex = 0;
+            // 
+            // btnConfirmModificacion
+            // 
+            this.btnConfirmModificacion.Location = new System.Drawing.Point(93, 162);
+            this.btnConfirmModificacion.Name = "btnConfirmModificacion";
+            this.btnConfirmModificacion.Size = new System.Drawing.Size(75, 56);
+            this.btnConfirmModificacion.TabIndex = 9;
+            this.btnConfirmModificacion.Text = "Confirmar Modificar";
+            this.btnConfirmModificacion.UseVisualStyleBackColor = true;
+            this.btnConfirmModificacion.Click += new System.EventHandler(this.btnConfirmModificacion_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Cod Produc";
@@ -196,47 +232,15 @@ namespace PetShopApp
             // 
             this.TipoProducto.HeaderText = "TipoProducto";
             this.TipoProducto.Name = "TipoProducto";
+            this.TipoProducto.ReadOnly = true;
+            this.TipoProducto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Tipo_Detalle_Producto
             // 
             this.Tipo_Detalle_Producto.HeaderText = "Tipo_Detalle_Producto";
             this.Tipo_Detalle_Producto.Name = "Tipo_Detalle_Producto";
-            // 
-            // pnlBuscar
-            // 
-            this.pnlBuscar.Controls.Add(this.btnBuscar);
-            this.pnlBuscar.Controls.Add(this.txtBuscar);
-            this.pnlBuscar.Location = new System.Drawing.Point(667, 48);
-            this.pnlBuscar.Name = "pnlBuscar";
-            this.pnlBuscar.Size = new System.Drawing.Size(200, 38);
-            this.pnlBuscar.TabIndex = 7;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(116, 8);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(3, 8);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(100, 23);
-            this.txtBuscar.TabIndex = 0;
-            // 
-            // btnConfirmModificacion
-            // 
-            this.btnConfirmModificacion.Location = new System.Drawing.Point(93, 162);
-            this.btnConfirmModificacion.Name = "btnConfirmModificacion";
-            this.btnConfirmModificacion.Size = new System.Drawing.Size(75, 56);
-            this.btnConfirmModificacion.TabIndex = 9;
-            this.btnConfirmModificacion.Text = "Confirmar Modificar";
-            this.btnConfirmModificacion.UseVisualStyleBackColor = true;
-            this.btnConfirmModificacion.Click += new System.EventHandler(this.btnConfirmModificacion_Click);
+            this.Tipo_Detalle_Producto.ReadOnly = true;
+            this.Tipo_Detalle_Producto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // formInventario
             // 

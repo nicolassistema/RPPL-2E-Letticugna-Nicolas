@@ -27,8 +27,6 @@ namespace PetShopApp
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
             RestartearListas();
-          //  
-            //  CargarDataGridProducto();
         }
 
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -132,7 +130,6 @@ namespace PetShopApp
         {
             dvgProductos.Rows.Clear();
             CargarDataGridProducto();
-           // dvgProductos.AllowUserToAddRows = false;
         }
 
 
@@ -150,7 +147,7 @@ namespace PetShopApp
                 if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                 {
                     dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
-                    MakeReadOnly();
+                    //MakeReadOnly();
                 }
             }
         }
@@ -177,7 +174,6 @@ namespace PetShopApp
 
             ActualizarInventario();
         }
-
 
 
         public void Carga(List<Producto> producto)
@@ -245,16 +241,9 @@ namespace PetShopApp
         }
 
 
-
-
-
-
-
-
-
         public List<Producto> ActualizarInventario()
         {
-           // List<Producto> listaAux = new List<Producto>();
+           
             string nombre;
             string marca;
             string descripcion;
@@ -370,17 +359,16 @@ namespace PetShopApp
 
         private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             dvgProductos.AllowUserToDeleteRows = false;
             dvgProductos.AllowUserToAddRows = false;
-           
         }
+
 
         private void dvgProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             dvgProductos.AllowUserToDeleteRows = false;
             dvgProductos.AllowUserToAddRows = false;
-          
+
         }
 
         private void dvgProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -388,5 +376,12 @@ namespace PetShopApp
             dvgProductos.AllowUserToDeleteRows = false;
             dvgProductos.AllowUserToAddRows = false;
         }
+
+
+
+
+
+
+
     }
 }

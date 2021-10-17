@@ -90,7 +90,7 @@ namespace PetShopApp
             return null;
         }
 
-     
+
 
 
 
@@ -404,7 +404,7 @@ namespace PetShopApp
 
             if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value) < 1))
             {
-                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), ObtenerNombreObjeto(productoAux)});
+                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), ObtenerNombreObjeto(productoAux) });
                 dgvListaProdSelecc.AllowUserToAddRows = false;
                 for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
                 {
@@ -562,8 +562,6 @@ namespace PetShopApp
         {
             double montoTotal;
             double montoPago;
-            //var direction = ListSortDirection.Ascending;
-            //dgvListaProdSelecc.Sort(CodProducto, direction);
             if (!(txtMontoAPagar.Text == ""))
             {
                 lblMontoPagar.Text = txtMontoAPagar.Text.ToString();
@@ -739,5 +737,32 @@ namespace PetShopApp
         {
 
         }
+
+        private void lblDescuento_Click(object sender, EventArgs e)
+        {
+            if (PetShop.listaDescuentos.Count > 0)
+            {
+                Producto producto = new Producto();
+                producto = PetShop.listaDescuentos.Pop();
+
+                DialogResult dr = MessageBox.Show($"Felicidades!!! tiene promocion del producto {producto.ToString()} Desea aceptar la promo?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr != DialogResult.No)
+                {
+                    dgvListaProdSelecc.Rows.Add(new[] { producto.Codigo.ToString(), producto.Marca.ToString(), producto.Nombre.ToString(), producto.Precio.ToString(), producto.Kilogramos.ToString(), producto.Descripcion.ToString() });
+                }
+                else
+                {
+                    PetShop.listaDescuentos.Push(producto);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ya no hay productos en promocion");
+            }
+        }
+
+
+
+
     }
 }

@@ -5,7 +5,7 @@ namespace Entidades
     public class Validaciones
     {
 
-        private static List<Usuario> acceso;
+        private static Dictionary<string, Usuario> acceso;
 
 
         static Validaciones()
@@ -20,30 +20,30 @@ namespace Entidades
         /// <param name="usuario"></param>
         /// <param name="password"></param>
         /// <returns>mensajes de validacion</returns>
-        public static string SalidaMensajeValidacion(string usuario, string password)
+        public static void SalidaMensajeValidacion(string usuario, string password)
         {
-
             if (!(acceso is null) && !(string.IsNullOrWhiteSpace(usuario)) && !(string.IsNullOrWhiteSpace(password)))
             {
                 if (ValidacionUser(usuario))
                 {
-                    if (ValidacionPassword(password))
+                    if (!(ValidacionPassword(password)))
                     {
-                        return "Bienvenido!";
-                    }
-                    else
-                    {
-                        return "Password Incorrecto!";
+                        UsuarioInvalidoException usuarioInvalidoException = new UsuarioInvalidoException(message: "Password Incorrecto!");
+                        throw usuarioInvalidoException;
                     }
                 }
                 else
                 {
-                    return "Usuario Inexistente";
+                    UsuarioInvalidoException usuarioInvalidoException = new UsuarioInvalidoException(message: "Usuario Incorrecto");
+                    throw usuarioInvalidoException;
                 }
             }
-            return "Error al ingresar usuario y/o password";
+            else
+            {
+                UsuarioInvalidoException usuarioInvalidoException = new UsuarioInvalidoException(message: "Error al ingresar usuario y/o password");
+                throw usuarioInvalidoException;
+            }
         }
-
 
         /// <summary>
         /// valida el uusario
@@ -54,7 +54,7 @@ namespace Entidades
         {
             foreach (var item in acceso)
             {
-                if (item.NameUsuario == usuario)
+                if (item.Value.NameUsuario == usuario)
                 {
                     return true;
                 }
@@ -71,7 +71,7 @@ namespace Entidades
         {
             foreach (var item in acceso)
             {
-                if (item.PassUsuario == password)
+                if (item.Value.PassUsuario == password)
                 {
                     return true;
                 }
@@ -235,10 +235,10 @@ namespace Entidades
                 if (arr[i] == '.')
                 {
                     arr[i] = ',';
-                 break;
+                    break;
                 }
             }
-            if(double.TryParse(arr, out numero))
+            if (double.TryParse(arr, out numero))
             {
                 numero = numero / 1;
                 return strInt = new string(numero.ToString());
@@ -253,5 +253,5 @@ namespace Entidades
 
     }
 
-
 }
+

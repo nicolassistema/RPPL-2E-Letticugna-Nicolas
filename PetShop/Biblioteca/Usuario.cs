@@ -89,11 +89,11 @@ namespace Entidades
         /// <param name="usuarios"></param>
         /// <param name="usuario"></param>
         /// <returns>devueve la lista con el objeto a agregar</returns>
-        public static List<Usuario> operator +(List<Usuario> usuarios, Usuario usuario)
+        public static Dictionary<string, Usuario> operator +(Dictionary<string, Usuario> usuarios, Usuario usuario)
         {
             if (usuarios != usuario)
             {
-                PetShop.Usuario.Add(usuario);
+                PetShop.Usuario.Add(usuario.Cuit,usuario);
                 return PetShop.Usuario;
             }
             else
@@ -105,12 +105,12 @@ namespace Entidades
         /// <param name="usuarios"></param>
         /// <param name="usuario"></param>
         /// <returns>devuelve la lista sin el objeto a eliminar</returns>
-        public static List<Usuario> operator -(List<Usuario> usuarios, Usuario usuario)
+        public static Dictionary<string, Usuario> operator -(Dictionary<string, Usuario> usuarios, Usuario usuario)
         {
 
             if (usuarios == usuario)
             {
-                PetShop.Usuario.Remove(usuario);
+                PetShop.Usuario.Remove(usuario.Cuit);
                 return PetShop.Usuario;
             }
             else
@@ -123,11 +123,11 @@ namespace Entidades
         /// <param name="usuarios"></param>
         /// <param name="usuario"></param>
         /// <returns>Devuelve true si  se encuentra el objeto esta en la lista </returns>
-        public static bool operator ==(List<Usuario> usuarios, Usuario usuario)
+        public static bool operator ==(Dictionary<string,Usuario> usuarios, Usuario usuario)
         {
-            foreach (Usuario auxUsuarios in PetShop.Usuario)
+            foreach (var item in usuarios)
             {
-                if (usuario == auxUsuarios)
+                if (usuario.Cuit == item.Key)
                     return true;
             }
 
@@ -139,7 +139,7 @@ namespace Entidades
         /// <param name="usuarios"></param>
         /// <param name="usuario"></param>
         /// <returns>Devuelve true si NO se encuentra el objeto esta en la lista </returns>
-        public static bool operator !=(List<Usuario> usuarios, Usuario usuario)
+        public static bool operator !=(Dictionary<string, Usuario> usuarios, Usuario usuario)
         {
             return !(usuarios == usuario);
         }
@@ -175,6 +175,12 @@ namespace Entidades
             }
             return false;
         }
+
+
+
+
+
+
         #endregion
     }
 }

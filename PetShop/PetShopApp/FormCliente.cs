@@ -107,16 +107,22 @@ namespace PetShopApp
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
             List<Cliente> auxList = new List<Cliente>();
+            PetShop.LimpiarListaClientes();
+
+            string cuit;
+            string nombre;
+            string apellido;
+
+
             for (int i = 0; i < dvgListaClientes.RowCount; i++)
             {
 
-                Cliente cliente = new Cliente(dvgListaClientes.Rows[i].Cells[0].Value.ToString(),
-                                                         dvgListaClientes.Rows[i].Cells[1].Value.ToString(),
-                                                         dvgListaClientes.Rows[i].Cells[2].Value.ToString(),
-                                                         0);
-
+                cuit = dvgListaClientes.Rows[i].Cells[1].Value.ToString();
+                nombre = dvgListaClientes.Rows[i].Cells[2].Value.ToString();
+                apellido = dvgListaClientes.Rows[i].Cells[3].Value.ToString();
+                Cliente cliente = new Cliente(cuit,nombre,apellido,  0);
                 auxList.Add(cliente);
-                PetShop.LimpiarListaClientes();
+
                 PetShop.CargarListaNuevamenteClientes(auxList);
             }
             btnCancelarMoficiacion.Enabled = false;
@@ -130,6 +136,24 @@ namespace PetShopApp
         private void dvgListaClientes_DoubleClick(object sender, EventArgs e)
         {
             btnCancelarMoficiacion.Enabled = true;
+        }
+
+        private void dvgListaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dvgListaClientes.AllowUserToDeleteRows = false;
+            dvgListaClientes.AllowUserToAddRows = false;
+        }
+
+        private void dvgListaClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dvgListaClientes.AllowUserToDeleteRows = false;
+            dvgListaClientes.AllowUserToAddRows = false;
+        }
+
+        private void dvgListaClientes_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            dvgListaClientes.AllowUserToDeleteRows = false;
+            dvgListaClientes.AllowUserToAddRows = false;
         }
     }
 }

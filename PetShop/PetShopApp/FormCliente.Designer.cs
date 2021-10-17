@@ -112,6 +112,9 @@ namespace PetShopApp
             this.dvgListaClientes.RowTemplate.Height = 25;
             this.dvgListaClientes.Size = new System.Drawing.Size(453, 171);
             this.dvgListaClientes.TabIndex = 3;
+            this.dvgListaClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgListaClientes_CellContentClick);
+            this.dvgListaClientes.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgListaClientes_CellContentDoubleClick);
+            this.dvgListaClientes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgListaClientes_CellValueChanged);
             this.dvgListaClientes.DoubleClick += new System.EventHandler(this.dvgListaClientes_DoubleClick);
             // 
             // ID

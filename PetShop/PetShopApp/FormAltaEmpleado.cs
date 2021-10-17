@@ -41,7 +41,7 @@ namespace PetShopApp
             Usuario usuario;
             lblMensaje.Text = "";
             StringBuilder sb = new StringBuilder();
-            List<Usuario> lista = new List<Usuario>();
+            Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
 
 
             if (!(Validaciones.ValidateNumberCuit(txtCuit.Text)))

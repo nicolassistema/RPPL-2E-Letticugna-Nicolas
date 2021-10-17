@@ -20,6 +20,11 @@ namespace Entidades
 
         }
 
+        public ArtCuidadoMascota(string marca, string nombre, string detalle, double precio, double kilogramos, ETipoCuidado tipoCuidado) : base(marca, nombre, detalle, precio, kilogramos)
+        {
+            this.tipoCuidado = tipoCuidado;
+        }
+
 
         public ArtCuidadoMascota(string marca, string nombre, string detalle, int stock, double precio, double kilogramos, ETipoCuidado tipoCuidado) : base(marca, nombre, detalle, stock, precio, kilogramos)
         {

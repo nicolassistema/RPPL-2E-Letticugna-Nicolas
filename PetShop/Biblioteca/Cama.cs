@@ -20,6 +20,12 @@ namespace Entidades
 
         }
 
+        public Cama(string marca, string nombre, string detalle, double precio, double kilogramos, ETamanio tamanio) : base(marca, nombre, detalle, precio, kilogramos)
+        {
+            this.tamanio = tamanio;
+        }
+
+
         public Cama(string marca, string nombre, string detalle, int cantidad, double precio, double kilogramos,  ETamanio tamanio) : base(marca, nombre, detalle, cantidad, precio, kilogramos)
         {
             this.tamanio = tamanio;
