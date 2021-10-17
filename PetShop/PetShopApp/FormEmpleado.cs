@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -100,27 +100,60 @@ namespace PetShopApp
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgvListaEmpleados.Rows.Clear();
-            Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
-            lista = PetShop.ObtenerListaUsuarios();
-            string aux;
-            foreach (var item in lista)
-            {
-                if (BuscarPorString(item.Value, txtBuscar.Text.ToLower()))
-                {
-                    if (item.Value.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
-                    {
-                        aux = "Admin";
-                    }
-                    else
-                    {
-                        aux = "Empleado";
-                    }
-                    dgvListaEmpleados.Rows.Add(item.Value.Cuit, item.Value.Nombre, item.Value.Apellido, item.Value.NameUsuario, item.Value.PassUsuario, aux);
-                    MakeReadOnly();
-                }
 
+
+            if (!(txtBuscar.Text == ""))
+            {
+                pnlMenuIzquiedo.Enabled = false;
+                dgvListaEmpleados.Rows.Clear();
+                Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
+                lista = PetShop.ObtenerListaUsuarios();
+                string aux;
+                foreach (var item in lista)
+                {
+                    if (BuscarPorString(item.Value, txtBuscar.Text.ToLower()))
+                    {
+                        if (item.Value.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
+                        {
+                            aux = "Admin";
+                        }
+                        else
+                        {
+                            aux = "Empleado";
+                        }
+                        dgvListaEmpleados.Rows.Add(item.Value.Cuit, item.Value.Nombre, item.Value.Apellido, item.Value.NameUsuario, item.Value.PassUsuario, aux);
+                        MakeReadOnly();
+                    }
+                }
             }
+            else
+            {
+                pnlMenuIzquiedo.Enabled = true;
+                dgvListaEmpleados.Rows.Clear();
+                Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
+                lista = PetShop.ObtenerListaUsuarios();
+                string aux;
+                foreach (var item in lista)
+                {
+                    if (BuscarPorString(item.Value, txtBuscar.Text.ToLower()))
+                    {
+                        if (item.Value.PerfilUsuario == Entidades.Usuario.EPerfilUsuario.Admin)
+                        {
+                            aux = "Admin";
+                        }
+                        else
+                        {
+                            aux = "Empleado";
+                        }
+                        dgvListaEmpleados.Rows.Add(item.Value.Cuit, item.Value.Nombre, item.Value.Apellido, item.Value.NameUsuario, item.Value.PassUsuario, aux);
+                        MakeReadOnly();
+                        dgvListaEmpleados.ReadOnly = false;
+                    }
+                }
+            }
+
+
+
         }
 
         private void MakeReadOnly()
@@ -232,7 +265,7 @@ namespace PetShopApp
                                                              dgvListaEmpleados.Rows[i].Cells[3].Value.ToString(),
                                                              dgvListaEmpleados.Rows[i].Cells[4].Value.ToString(),
                                                              Entidades.Usuario.EPerfilUsuario.Admin);
-                    auxList.Add(usuario.Cuit,usuario);
+                    auxList.Add(usuario.Cuit, usuario);
                 }
                 else
                 {

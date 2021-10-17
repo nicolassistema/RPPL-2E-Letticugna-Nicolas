@@ -46,8 +46,10 @@ namespace PetShopApp
             this.pnlBuscar = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.pnlMenuIzquierdo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dvgListaClientes)).BeginInit();
             this.pnlBuscar.SuspendLayout();
+            this.pnlMenuIzquierdo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombreUsuario
@@ -55,9 +57,9 @@ namespace PetShopApp
             this.lblNombreUsuario.AutoSize = true;
             this.lblNombreUsuario.Location = new System.Drawing.Point(8, 9);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(38, 15);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(112, 15);
             this.lblNombreUsuario.TabIndex = 0;
-            this.lblNombreUsuario.Text = "label1";
+            this.lblNombreUsuario.Text = "Nombre del usuario";
             // 
             // lblVolver
             // 
@@ -143,7 +145,7 @@ namespace PetShopApp
             // 
             // btnAltaCliente
             // 
-            this.btnAltaCliente.Location = new System.Drawing.Point(8, 93);
+            this.btnAltaCliente.Location = new System.Drawing.Point(1, 3);
             this.btnAltaCliente.Name = "btnAltaCliente";
             this.btnAltaCliente.Size = new System.Drawing.Size(75, 53);
             this.btnAltaCliente.TabIndex = 4;
@@ -154,7 +156,7 @@ namespace PetShopApp
             // btnModificarCliente
             // 
             this.btnModificarCliente.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModificarCliente.Location = new System.Drawing.Point(8, 152);
+            this.btnModificarCliente.Location = new System.Drawing.Point(1, 62);
             this.btnModificarCliente.Name = "btnModificarCliente";
             this.btnModificarCliente.Size = new System.Drawing.Size(75, 53);
             this.btnModificarCliente.TabIndex = 5;
@@ -165,7 +167,7 @@ namespace PetShopApp
             // btnCancelarMoficiacion
             // 
             this.btnCancelarMoficiacion.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelarMoficiacion.Location = new System.Drawing.Point(8, 211);
+            this.btnCancelarMoficiacion.Location = new System.Drawing.Point(1, 121);
             this.btnCancelarMoficiacion.Name = "btnCancelarMoficiacion";
             this.btnCancelarMoficiacion.Size = new System.Drawing.Size(75, 53);
             this.btnCancelarMoficiacion.TabIndex = 6;
@@ -199,15 +201,23 @@ namespace PetShopApp
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // pnlMenuIzquierdo
+            // 
+            this.pnlMenuIzquierdo.Controls.Add(this.btnCancelarMoficiacion);
+            this.pnlMenuIzquierdo.Controls.Add(this.btnAltaCliente);
+            this.pnlMenuIzquierdo.Controls.Add(this.btnModificarCliente);
+            this.pnlMenuIzquierdo.Location = new System.Drawing.Point(8, 89);
+            this.pnlMenuIzquierdo.Name = "pnlMenuIzquierdo";
+            this.pnlMenuIzquierdo.Size = new System.Drawing.Size(79, 176);
+            this.pnlMenuIzquierdo.TabIndex = 8;
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 271);
+            this.ClientSize = new System.Drawing.Size(554, 276);
+            this.Controls.Add(this.pnlMenuIzquierdo);
             this.Controls.Add(this.pnlBuscar);
-            this.Controls.Add(this.btnCancelarMoficiacion);
-            this.Controls.Add(this.btnModificarCliente);
-            this.Controls.Add(this.btnAltaCliente);
             this.Controls.Add(this.dvgListaClientes);
             this.Controls.Add(this.lblCerrarSesion);
             this.Controls.Add(this.lblVolver);
@@ -218,6 +228,7 @@ namespace PetShopApp
             ((System.ComponentModel.ISupportInitialize)(this.dvgListaClientes)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
+            this.pnlMenuIzquierdo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,5 +250,6 @@ namespace PetShopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.Panel pnlMenuIzquierdo;
     }
 }

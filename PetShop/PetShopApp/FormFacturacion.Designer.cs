@@ -42,9 +42,9 @@ namespace PetShopApp
             this.lblNombreUsuario.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNombreUsuario.Location = new System.Drawing.Point(12, 9);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(50, 19);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(143, 19);
             this.lblNombreUsuario.TabIndex = 0;
-            this.lblNombreUsuario.Text = "label1";
+            this.lblNombreUsuario.Text = "Nombre del usuario";
             // 
             // lblVolver
             // 
@@ -85,9 +85,9 @@ namespace PetShopApp
             this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTimer.Location = new System.Drawing.Point(12, 24);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(45, 19);
+            this.lblTimer.Size = new System.Drawing.Size(43, 19);
             this.lblTimer.TabIndex = 8;
-            this.lblTimer.Text = "label1";
+            this.lblTimer.Text = "Timer";
             this.lblTimer.Visible = false;
             // 
             // frmFacturacion

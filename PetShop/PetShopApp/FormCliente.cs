@@ -76,18 +76,42 @@ namespace PetShopApp
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dvgListaClientes.Rows.Clear();
-            dvgListaClientes.DataSource = null;
-            List<Cliente> lista = new List<Cliente>();
-            lista = PetShop.ObtenerListaCliente();
-            foreach (var item in lista)
+
+            if (!(txtBuscar.Text == ""))
             {
-                if (PetShop.BuscarClientePorString(item, txtBuscar.Text.ToLower()))
+                pnlMenuIzquierdo.Enabled = false;
+                dvgListaClientes.Rows.Clear();
+                dvgListaClientes.DataSource = null;
+                List<Cliente> lista = new List<Cliente>();
+                lista = PetShop.ObtenerListaCliente();
+                foreach (var item in lista)
                 {
-                    dvgListaClientes.Rows.Add(item.IdCliente, item.Cuit, item.Nombre, item.Apellido);
-                    MakeReadOnly();
+                    if (PetShop.BuscarClientePorString(item, txtBuscar.Text.ToLower()))
+                    {
+                        dvgListaClientes.Rows.Add(item.IdCliente, item.Cuit, item.Nombre, item.Apellido);
+                        MakeReadOnly();
+                    }
                 }
             }
+            else
+            {
+                pnlMenuIzquierdo.Enabled = true;
+                dvgListaClientes.Rows.Clear();
+                dvgListaClientes.DataSource = null;
+                List<Cliente> lista = new List<Cliente>();
+                lista = PetShop.ObtenerListaCliente();
+                foreach (var item in lista)
+                {
+                    if (PetShop.BuscarClientePorString(item, txtBuscar.Text.ToLower()))
+                    {
+                        dvgListaClientes.Rows.Add(item.IdCliente, item.Cuit, item.Nombre, item.Apellido);
+                        dvgListaClientes.AllowUserToAddRows = false;
+                        dvgListaClientes.AllowUserToDeleteRows = false;
+                        dvgListaClientes.ReadOnly = false;
+                    }
+                }
+            }
+
         }
 
         private void MakeReadOnly()
@@ -106,6 +130,21 @@ namespace PetShopApp
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
+            bool flag = true;
+            for (int m = 0; m < dvgListaClientes.RowCount; m++)
+            {
+                if (!(Validaciones.ValidateNumberCuit(dvgListaClientes.Rows[m].Cells[1].Value.ToString())))
+                {
+                    MessageBox.Show("Por favor ingresar correctamente un numero de cuit valido");
+                    flag = false;
+                    CargarDataGrid();
+                    break;
+                }
+            }
+
+
+            if (flag)
+            {
             List<Cliente> auxList = new List<Cliente>();
             PetShop.LimpiarListaClientes();
 
@@ -120,12 +159,15 @@ namespace PetShopApp
                 cuit = dvgListaClientes.Rows[i].Cells[1].Value.ToString();
                 nombre = dvgListaClientes.Rows[i].Cells[2].Value.ToString();
                 apellido = dvgListaClientes.Rows[i].Cells[3].Value.ToString();
-                Cliente cliente = new Cliente(cuit,nombre,apellido,  0);
+                Cliente cliente = new Cliente(cuit, nombre, apellido, 0);
                 auxList.Add(cliente);
 
                 PetShop.CargarListaNuevamenteClientes(auxList);
             }
             btnCancelarMoficiacion.Enabled = false;
+
+            }
+
         }
 
         private void btnCancelarMoficiacion_Click(object sender, EventArgs e)

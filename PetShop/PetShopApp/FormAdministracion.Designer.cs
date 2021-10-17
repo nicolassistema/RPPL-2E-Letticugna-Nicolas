@@ -43,9 +43,9 @@ namespace PetShopApp
             this.lblBienvenido.AutoSize = true;
             this.lblBienvenido.Location = new System.Drawing.Point(12, 13);
             this.lblBienvenido.Name = "lblBienvenido";
-            this.lblBienvenido.Size = new System.Drawing.Size(38, 15);
+            this.lblBienvenido.Size = new System.Drawing.Size(112, 15);
             this.lblBienvenido.TabIndex = 0;
-            this.lblBienvenido.Text = "label1";
+            this.lblBienvenido.Text = "Nombre del usuario";
             // 
             // lblCerrarSesion
             // 

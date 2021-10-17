@@ -29,8 +29,8 @@ namespace PetShopApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.lblVolver = new System.Windows.Forms.LinkLabel();
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
@@ -48,8 +48,10 @@ namespace PetShopApp
             this.btnAlta = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.pnlMenuIzquiedo = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEmpleados)).BeginInit();
             this.pnlBuscar.SuspendLayout();
+            this.pnlMenuIzquiedo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombreUsuario
@@ -57,14 +59,14 @@ namespace PetShopApp
             this.lblNombreUsuario.AutoSize = true;
             this.lblNombreUsuario.Location = new System.Drawing.Point(12, 9);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(38, 15);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(112, 15);
             this.lblNombreUsuario.TabIndex = 0;
-            this.lblNombreUsuario.Text = "label1";
+            this.lblNombreUsuario.Text = "Nombre del usuario";
             // 
             // lblVolver
             // 
             this.lblVolver.AutoSize = true;
-            this.lblVolver.Location = new System.Drawing.Point(414, 9);
+            this.lblVolver.Location = new System.Drawing.Point(459, 9);
             this.lblVolver.Name = "lblVolver";
             this.lblVolver.Size = new System.Drawing.Size(142, 15);
             this.lblVolver.TabIndex = 1;
@@ -75,7 +77,7 @@ namespace PetShopApp
             // lblCerrarSesion
             // 
             this.lblCerrarSesion.AutoSize = true;
-            this.lblCerrarSesion.Location = new System.Drawing.Point(570, 9);
+            this.lblCerrarSesion.Location = new System.Drawing.Point(615, 9);
             this.lblCerrarSesion.Name = "lblCerrarSesion";
             this.lblCerrarSesion.Size = new System.Drawing.Size(76, 15);
             this.lblCerrarSesion.TabIndex = 2;
@@ -85,14 +87,14 @@ namespace PetShopApp
             // 
             // dgvListaEmpleados
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cuit,
@@ -105,7 +107,7 @@ namespace PetShopApp
             this.dgvListaEmpleados.Name = "dgvListaEmpleados";
             this.dgvListaEmpleados.RowHeadersVisible = false;
             this.dgvListaEmpleados.RowTemplate.Height = 25;
-            this.dgvListaEmpleados.Size = new System.Drawing.Size(559, 150);
+            this.dgvListaEmpleados.Size = new System.Drawing.Size(603, 280);
             this.dgvListaEmpleados.TabIndex = 3;
             // 
             // Cuit
@@ -135,8 +137,8 @@ namespace PetShopApp
             // 
             // Perfil
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.Perfil.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.Perfil.DefaultCellStyle = dataGridViewCellStyle4;
             this.Perfil.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.Perfil.HeaderText = "Perfil";
             this.Perfil.Items.AddRange(new object[] {
@@ -148,7 +150,7 @@ namespace PetShopApp
             // 
             this.pnlBuscar.Controls.Add(this.txtBuscar);
             this.pnlBuscar.Controls.Add(this.btnBuscar);
-            this.pnlBuscar.Location = new System.Drawing.Point(446, 40);
+            this.pnlBuscar.Location = new System.Drawing.Point(491, 40);
             this.pnlBuscar.Name = "pnlBuscar";
             this.pnlBuscar.Size = new System.Drawing.Size(200, 47);
             this.pnlBuscar.TabIndex = 4;
@@ -172,7 +174,7 @@ namespace PetShopApp
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(11, 174);
+            this.btnEliminar.Location = new System.Drawing.Point(2, 210);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 66);
             this.btnEliminar.TabIndex = 2;
@@ -182,7 +184,7 @@ namespace PetShopApp
             // 
             // btnAlta
             // 
-            this.btnAlta.Location = new System.Drawing.Point(11, 102);
+            this.btnAlta.Location = new System.Drawing.Point(2, 138);
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(75, 66);
             this.btnAlta.TabIndex = 5;
@@ -193,7 +195,7 @@ namespace PetShopApp
             // btnAceptar
             // 
             this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAceptar.Location = new System.Drawing.Point(11, 30);
+            this.btnAceptar.Location = new System.Drawing.Point(2, 66);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 66);
             this.btnAceptar.TabIndex = 6;
@@ -204,7 +206,7 @@ namespace PetShopApp
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(92, 30);
+            this.btnCancelar.Location = new System.Drawing.Point(3, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 57);
             this.btnCancelar.TabIndex = 7;
@@ -212,15 +214,23 @@ namespace PetShopApp
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // pnlMenuIzquiedo
+            // 
+            this.pnlMenuIzquiedo.Controls.Add(this.btnCancelar);
+            this.pnlMenuIzquiedo.Controls.Add(this.btnEliminar);
+            this.pnlMenuIzquiedo.Controls.Add(this.btnAceptar);
+            this.pnlMenuIzquiedo.Controls.Add(this.btnAlta);
+            this.pnlMenuIzquiedo.Location = new System.Drawing.Point(1, 93);
+            this.pnlMenuIzquiedo.Name = "pnlMenuIzquiedo";
+            this.pnlMenuIzquiedo.Size = new System.Drawing.Size(85, 278);
+            this.pnlMenuIzquiedo.TabIndex = 8;
+            // 
             // FormEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 252);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.btnAlta);
-            this.Controls.Add(this.btnEliminar);
+            this.ClientSize = new System.Drawing.Size(716, 380);
+            this.Controls.Add(this.pnlMenuIzquiedo);
             this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.dgvListaEmpleados);
             this.Controls.Add(this.lblCerrarSesion);
@@ -232,6 +242,7 @@ namespace PetShopApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEmpleados)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
+            this.pnlMenuIzquiedo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +267,6 @@ namespace PetShopApp
         private System.Windows.Forms.Button btnAlta;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Panel pnlMenuIzquiedo;
     }
 }

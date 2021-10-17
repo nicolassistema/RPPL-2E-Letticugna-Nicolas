@@ -178,7 +178,7 @@ namespace PetShopApp
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(7, -2);
+            this.lblMensaje.Location = new System.Drawing.Point(7, 9);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Padding = new System.Windows.Forms.Padding(0, 0, 200, 0);
             this.lblMensaje.Size = new System.Drawing.Size(253, 15);

@@ -239,9 +239,9 @@ namespace PetShopApp
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Location = new System.Drawing.Point(12, 9);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(38, 15);
+            this.lblMensaje.Size = new System.Drawing.Size(51, 15);
             this.lblMensaje.TabIndex = 18;
-            this.lblMensaje.Text = "label1";
+            this.lblMensaje.Text = "Mensaje";
             // 
             // lblValidMarca
             // 

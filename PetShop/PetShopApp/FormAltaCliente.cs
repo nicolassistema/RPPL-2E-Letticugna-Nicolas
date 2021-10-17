@@ -38,43 +38,84 @@ namespace PetShopApp
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void txtCuit_Leave(object sender, EventArgs e)
         {
-            Cliente cliente;
-            lblMensaje.Text = "";
-            StringBuilder sb = new StringBuilder();
-            //List<Cliente> lista = new List<Cliente>();
-
-            if (Validaciones.ValidateNumberCuit(txtCuit.Text))
             {
-                sb.AppendLine("*Cuit Incorrecto");
-                lblMensaje.ForeColor = Color.Red;
-                lblMensaje.Visible = true;
+                if (Validaciones.ValidateNumberCuit(txtCuit.Text))
+                {
+
+                    lblValidCuit.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblValidCuit.ForeColor = Color.Red;
+                }
+            }
+        }
+
+        private void txtNombre_Leave(object sender, EventArgs e)
+        {
+            if (!(Validaciones.EspacioEnBlancoOVacio(txtNombre.Text)))
+            {
+                lblValidNombre.ForeColor = Color.Green;
             }
             else
             {
-                lblMensaje.Visible = true;
+                lblValidNombre.ForeColor = Color.Red;
             }
-
-            if (Validaciones.ValidacionString(txtNombre.Text))
-            {
-                sb.AppendLine("*Formato de nombre incorrecto");
-                lblMensaje.ForeColor = Color.Red;
-                lblMensaje.Visible = true;
-            }
-
-            if (Validaciones.ValidacionString(txtApellido.Text))
-            {
-                sb.AppendLine("*Formato de apellido incorrecto");
-                lblMensaje.ForeColor = Color.Red;
-                lblMensaje.Visible = true;
-            }
-
-            cliente = new Cliente(txtCuit.Text, txtNombre.Text, txtApellido.Text, 0);
-            PetShop.AddCliente(cliente);
-
-            this.Hide();
-            this.Close();
         }
+
+        private void txtApellido_Leave(object sender, EventArgs e)
+        {
+            if (!(Validaciones.EspacioEnBlancoOVacio(txtApellido.Text)))
+            {
+                lblValidApellido.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidApellido.ForeColor = Color.Red;
+            }
+        }
+
+        private bool FlagDetector()
+        {
+            if (lblValidCuit.ForeColor != Color.Red &&
+                lblValidApellido.ForeColor != Color.Red &&
+                 lblValidNombre.ForeColor != Color.Red)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (!(FlagDetector()))
+            {
+                MessageBox.Show("Por favor competar los campos requeridos");
+            }
+            else
+            {
+                Cliente cliente;
+                lblMensaje.Text = "";
+                StringBuilder sb = new StringBuilder();
+                cliente = new Cliente(txtCuit.Text, txtNombre.Text, txtApellido.Text, 0);
+                PetShop.AddCliente(cliente);
+
+                this.Hide();
+                this.Close();
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
 }
