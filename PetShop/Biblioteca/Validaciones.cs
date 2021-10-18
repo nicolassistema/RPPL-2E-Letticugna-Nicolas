@@ -10,6 +10,9 @@ namespace Entidades
         private static Dictionary<string, Usuario> acceso;
 
 
+        /// <summary>
+        /// Constructor sin parámetros de la clase Accesorio.
+        /// </summary>
         static Validaciones()
         {
             acceso = PetShop.Usuario;
@@ -17,7 +20,7 @@ namespace Entidades
 
 
         /// <summary>
-        /// mensajes de validacion
+        /// mensajes de validacion con exceociones
         /// </summary>
         /// <param name="usuario"></param>
         /// <param name="password"></param>
@@ -47,6 +50,7 @@ namespace Entidades
             }
         }
 
+
         /// <summary>
         /// valida el uusario
         /// </summary>
@@ -63,6 +67,7 @@ namespace Entidades
             }
             return false;
         }
+
 
         /// <summary>
         /// Valida password
@@ -82,8 +87,6 @@ namespace Entidades
         }
 
 
-
-
         /// <summary>
         /// Valida si es numero
         /// </summary>
@@ -100,6 +103,7 @@ namespace Entidades
 
             return ValidaCuit(number);
         }
+
 
         /// <summary>
         /// Calcula el digito para el cuit
@@ -118,6 +122,7 @@ namespace Entidades
             var resto = total % 11;
             return resto == 0 ? 0 : resto == 1 ? 9 : 11 - resto;
         }
+
 
         /// <summary>
         /// Valida si el cuit tiene el formato correcto
@@ -142,6 +147,7 @@ namespace Entidades
                 return calculado == digito;
             }
         }
+
 
         /// <summary>
         /// Valida si es string
@@ -170,6 +176,12 @@ namespace Entidades
             return true;
         }
 
+
+        /// <summary>
+        /// Revisa si el string tiene un espacio en blanco
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>Devuelve true si hay espacio en blanco, sino false</returns>
         public static bool EspacioEnBlancoOVacio(string nombre)
         {
             if (!(string.IsNullOrWhiteSpace(nombre)))
@@ -182,6 +194,12 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// Valida si el string es numeros
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>Devuelve true si es numero, sino false</returns>
         public static bool ValidateNumber(string number)
         {
             char[] arr;
@@ -193,7 +211,6 @@ namespace Entidades
                     if (arr[i] < 48 || arr[i] > 57)
                     {
                         return false;
-
                     }
                 }
             }
@@ -204,12 +221,17 @@ namespace Entidades
             return true;
         }
 
+
+        /// <summary>
+        /// valido que no tenga mas de punto, un punto y una coma, una coma y un punto
+        /// </summary>
+        /// <param name="strInt"></param>
+        /// <returns>Devuelvo true si tiene mas de punto, un punto y una coma, una coma y un punto, false sino </returns>
         public static bool ValidaPuntoComa(string strInt)
         {
             string str = strInt;
             char[] arr = str.ToCharArray();
             int contador = 0;
-            //valido que no tena mas de punto, un punto y una coma, una coma y un punto
             for (int i = 0; i < arr.Length; i++)
             {
                 if (arr[i] == '.' || arr[i] == ',')
@@ -224,6 +246,12 @@ namespace Entidades
             return false;
         }
 
+
+        /// <summary>
+        /// COnvierte un punto en una coma de un string es inetnta parsearlo a double
+        /// </summary>
+        /// <param name="strInt"></param>
+        /// <returns>Devuelve un string</returns>
         public static string PuntoToComa(string strInt)
         {
             double numero;
@@ -247,6 +275,12 @@ namespace Entidades
             return strInt;
         }
 
+
+        /// <summary>
+        /// Valida si es decimal por medio de un string que recibe por parametro
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns>devuele true si es decimal, sino false </returns>
         public static bool ValidarDecimal(string numero)
         {
             try
@@ -264,6 +298,12 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// Valida si el saldo disponible es mayor o igual al saldo a pagar
+        /// </summary>
+        /// <param name="saldoAPagar"></param>
+        /// <param name="dineroDisponible"></param>
         public static void ValidaSaldoAPagar(string saldoAPagar, string dineroDisponible)
         {
             if (!(string.IsNullOrWhiteSpace(saldoAPagar)) && !(string.IsNullOrWhiteSpace(dineroDisponible)))
@@ -282,6 +322,5 @@ namespace Entidades
         }
 
     }
-
 }
 

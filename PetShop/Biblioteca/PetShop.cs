@@ -209,13 +209,19 @@ namespace Entidades
             return listaClientes;
         }
 
+
+        /// <summary>
+        /// Suna el objeto cliente a la lista de objetos cliente por medio de sobrecarga de operador
+        /// </summary>
+        /// <param name="cliente"></param>
         public static void AddCliente(Cliente cliente)
         {
             listaClientes += cliente;
         }
 
         /// <summary>
-        /// Agregar producto a la lista
+        /// Suna el objeto cliente a la lista de objetos prodcuto por medio de sobrecarga de operador
+        /// </summary>
         /// </summary>
         /// <param name="producto"></param>
         public static void AddProducto(Producto producto)
@@ -235,7 +241,7 @@ namespace Entidades
 
 
         /// <summary>
-        /// Agregar usuario a la lista
+        /// Suna el objeto usuario a diccionario de objetos usuario
         /// </summary>
         /// <param name="usuario"></param>
         public static void AddUsuario(Usuario usuario)
@@ -320,7 +326,6 @@ namespace Entidades
                     break;
                 }
             }
-
             return false;
         }
 
@@ -414,7 +419,11 @@ namespace Entidades
         }
 
 
-        //
+        /// <summary>
+        /// Eliminar usuario y devolver la lista actualizada
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Devolver la lista de usuarios actualizada</returns>
         public static bool EliminarUsuario(Usuario usuario)
         {
             Dictionary<string, Usuario> auxList = PetShop.Usuario;
@@ -429,21 +438,38 @@ namespace Entidades
             return false;
         }
 
+
+        /// <summary>
+        /// Limpiar la lista de productos
+        /// </summary>
         public static void LimpiarListaProductos()
         {
             listaProductos.Clear();
         }
 
+
+        /// <summary>
+        /// Limpiar la lista de usuarios
+        /// </summary>
         public static void LimpiarListaUsarios()
         {
             listaUsuariosClaveValor.Clear();
         }
 
+
+        /// <summary>
+        /// Limpiar la lista de clientes
+        /// </summary>
         public static void LimpiarListaClientes()
         {
             listaClientes.Clear();
         }
 
+        /// <summary>
+        /// Limpiar la lista de productos y la vuelva a cargar con la lista pasada por parametro
+        /// </summary>
+        /// <param name="listaProductosAux"></param>
+        /// <returns>Devuelve la lista que fue cragada por parametro</returns>
         public static List<Producto> CargarListaNuevamenteProducto(List<Producto> listaProductosAux)
         {
             if (!(listaProductosAux is null))
@@ -458,6 +484,12 @@ namespace Entidades
             return null;
         }
 
+
+        /// <summary>
+        /// Limpiar la lista de usuarios y la vuelve a cargar con la que se pasa por parametro
+        /// </summary>
+        /// <param name="listaUsuariosAux"></param>
+        /// <returns>Devuelve la lista que se paso por parametro</returns>
         public static Dictionary<string, Usuario> CargarListaNuevamente(Dictionary<string, Usuario> listaUsuariosAux)
         {
             if (!(listaUsuariosAux is null))
@@ -472,6 +504,12 @@ namespace Entidades
             return null;
         }
 
+
+        /// <summary>
+        /// Limpia lista de clientes y se carga con la que se pasa por parametro
+        /// </summary>
+        /// <param name="listaClienteAux"></param>
+        /// <returns>Devuelve la lista cagada por parametro</returns>
         public static List<Cliente> CargarListaNuevamenteClientes(List<Cliente> listaClienteAux)
         {
             if (!(listaClienteAux is null))
@@ -486,6 +524,13 @@ namespace Entidades
             return null;
         }
 
+
+        /// <summary>
+        /// busca una palabra que este incluida en algunos de los atributos del objeto cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <param name="palabra"></param>
+        /// <returns>Devuelve true si la encontro, false si no</returns>
         public static bool BuscarClientePorString(Cliente cliente, string palabra)
         {
             if (cliente.IdCliente.ToString().Contains(palabra) ||
@@ -498,6 +543,13 @@ namespace Entidades
             return false;
         }
 
+
+        /// <summary>
+        /// busca una palabra que este incluida en algunos de los atributos del objeto producto
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <param name="palabra"></param>
+        /// <returns></returns>
         public static bool BuscarProductoPorString(Producto producto, string palabra)
         {
             if (producto.Codigo.ToString().Contains(palabra) ||
@@ -525,10 +577,5 @@ namespace Entidades
             }
             return null;
         }
-
-
-
-
-
     }
 }

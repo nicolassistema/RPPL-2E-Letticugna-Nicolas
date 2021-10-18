@@ -12,11 +12,25 @@ namespace Entidades
         #endregion
 
         #region "Constructores"
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase Usuario.
+        /// </summary>
         public Usuario() : base()
         {
 
         }
 
+
+        /// <summary>
+        /// Constructor con parámetros de la clase Usuario.
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="usuario"></param>
+        /// <param name="password"></param>
+        /// <param name="perfilUsuario"></param>
         public Usuario(string cuit, string nombre, string apellido, string usuario, string password, EPerfilUsuario perfilUsuario) : base(cuit, nombre, apellido)
         {
             this.usuario = usuario;
@@ -75,6 +89,10 @@ namespace Entidades
         #endregion
 
         #region "Enumerados"
+
+        /// <summary>
+        /// enumerados
+        /// </summary>
         public enum EPerfilUsuario
         {
             Admin,
@@ -93,12 +111,14 @@ namespace Entidades
         {
             if (usuarios != usuario)
             {
-                PetShop.Usuario.Add(usuario.Cuit,usuario);
+                PetShop.Usuario.Add(usuario.Cuit, usuario);
                 return PetShop.Usuario;
             }
             else
                 return PetShop.Usuario;
         }
+
+
         /// <summary>
         /// Elimina el objeto de la lista si es que se encuentra
         /// </summary>
@@ -117,13 +137,14 @@ namespace Entidades
                 return PetShop.Usuario;
         }
 
+
         /// <summary>
         /// Verifica que el objeto  se encuentre en la lista
         /// </summary>
         /// <param name="usuarios"></param>
         /// <param name="usuario"></param>
         /// <returns>Devuelve true si  se encuentra el objeto esta en la lista </returns>
-        public static bool operator ==(Dictionary<string,Usuario> usuarios, Usuario usuario)
+        public static bool operator ==(Dictionary<string, Usuario> usuarios, Usuario usuario)
         {
             foreach (var item in usuarios)
             {
@@ -133,6 +154,8 @@ namespace Entidades
 
             return false;
         }
+
+
         /// <summary>
         /// Verifica que el objeto NO se encuentre en la lista
         /// </summary>
@@ -157,6 +180,11 @@ namespace Entidades
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// Muestra mensaje tomando de ToString sobresescrita de la clase
+        /// </summary>
+        /// <returns>Devuelve un string</returns>
         public string Mostrar()
         {
             return ToString();
@@ -175,11 +203,6 @@ namespace Entidades
             }
             return false;
         }
-
-
-
-
-
 
         #endregion
     }

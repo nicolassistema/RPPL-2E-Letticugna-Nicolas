@@ -7,7 +7,7 @@ namespace Entidades
 {
     public class Venta
     {
-        
+
         List<Producto> productos;
         Cliente cliente;
         Usuario usuario;
@@ -16,13 +16,24 @@ namespace Entidades
         double montoEnvio;
         double montoTipoEnvio;
 
-
+        /// <summary>
+        /// Constructor sin parámetros de la clase Venta.
+        /// </summary>
         public Venta()
         {
             productos = new List<Producto>();
         }
 
-        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio ) : this()
+
+        /// <summary>
+        /// Constructor con parámetros de la clase Venta.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="cliente"></param>
+        /// <param name="monto"></param>
+        /// <param name="productos"></param>
+        /// <param name="montoEnvio"></param>
+        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio) : this()
         {
             this.NumeroFactura = IdFacturacionAutoIncremental();
             this.Cliente = cliente;
@@ -30,10 +41,17 @@ namespace Entidades
             this.Usuario = usuario;
             this.productos = productos;
             this.montoEnvio = montoEnvio;
-   
         }
 
-
+        /// <summary>
+        /// Constructor con parámetros de la clase Venta.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="cliente"></param>
+        /// <param name="monto"></param>
+        /// <param name="productos"></param>
+        /// <param name="montoEnvio"></param>
+        /// <param name="montoTipoEnvio"></param>
         public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio, double montoTipoEnvio) : this()
         {
             this.NumeroFactura = IdFacturacionAutoIncremental();
@@ -46,6 +64,12 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase Venta.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="cliente"></param>
+        /// <param name="productos"></param>
         public Venta(Usuario usuario, Cliente cliente, List<Producto> productos) : this()
         {
             this.NumeroFactura = IdFacturacionAutoIncremental();
@@ -56,7 +80,9 @@ namespace Entidades
 
         }
         #region "Propiedades"
-
+        /// <summary>
+        /// Propiedad MontoTipoEnvio
+        /// </summary>
         public double MontoTipoEnvio
         {
             get
@@ -69,7 +95,9 @@ namespace Entidades
             }
         }
 
-
+        /// <summary>
+        /// propiedad MontoEnvio
+        /// </summary>
         public double MontoEnvio
         {
             get
@@ -83,6 +111,10 @@ namespace Entidades
         }
 
 
+
+        /// <summary>
+        /// propiedad MontoTotal
+        /// </summary>
         public double MontoTotal
         {
             get
@@ -95,6 +127,10 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// propiedad NumeroFactura
+        /// </summary>
         public int NumeroFactura
         {
             get
@@ -107,6 +143,10 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// propiedad Cliente
+        /// </summary>
         public Cliente Cliente
         {
             get
@@ -119,6 +159,10 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// propiedad Usuario
+        /// </summary>
         public Usuario Usuario
         {
             get
@@ -186,6 +230,12 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Suma el total por porducto
+        /// </summary>
+        /// <param name="productos"></param>
+        /// <param name="producto"></param>
+        /// <returns>devuelve la suma</returns>
         public double SumaTotalPorProducto(List<Producto> productos, Producto producto)
         {
             double aux = 0;
@@ -199,6 +249,13 @@ namespace Entidades
             return aux;
         }
 
+
+        /// <summary>
+        /// cuenta la cantidad de porductos de la lista
+        /// </summary>
+        /// <param name="productos"></param>
+        /// <param name="producto"></param>
+        /// <returns>devuelve al cantidad</returns>
         public int CantidadPorProducto(List<Producto> productos, Producto producto)
         {
             int cantidad = 0;
@@ -212,34 +269,29 @@ namespace Entidades
             return cantidad;
         }
 
-       
-
 
         /// <summary>
-        /// Muestra la venta
+        /// Muestra el resumen de la venta en un string simil impresion de ticket 
         /// </summary>
-        /// <returns>Muestra la venta</returns>
+        /// <returns>Mdevuelve  el resumen de la venta en un string simil impresion de ticket </returns>
         public override string ToString()
         {
-
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine("C.  CONCEPTO                PRECIO      IMPORTE");
             sb.AppendLine("------------------------------------------------");
 
-              var totales = from d in productos
-                            group d by new {d.Codigo,d.Nombre, d.Precio } into totals
+            var totales = from d in productos
+                          group d by new { d.Codigo, d.Nombre, d.Precio } into totals
                           select new
                           {
                               codigo = totals.Key,
                               Nombre = totals.Key.Nombre,
-                              nombre=totals.Key.Nombre,
+                              nombre = totals.Key.Nombre,
                               Precio = totals.Key.Precio,
                               Total = totals.Sum(c => c.Precio),
                               cant = totals.Count()
                           };
-
-
             foreach (var total in totales)
             {
                 sb.AppendLine(" " + total.cant.ToString() + "   " + total.Nombre.ToString() + "      $" + string.Format("{0:f2}", total.Precio) + "         $" + string.Format("{0:f2}", total.Total));
@@ -249,11 +301,11 @@ namespace Entidades
             {
                 if (!(this.montoTipoEnvio == 500))
                 {
-                sb.AppendLine($"      Costo de envio (Moto): $ {this.montoTipoEnvio}");
+                    sb.AppendLine($"      Costo de envio (Moto): $ {this.montoTipoEnvio}");
                 }
                 else
                 {
-                sb.AppendLine($"          Costo de envio (Miniflete): $ {this.montoTipoEnvio}");
+                    sb.AppendLine($"          Costo de envio (Miniflete): $ {this.montoTipoEnvio}");
                 }
                 sb.AppendLine($"              Costo por Cant. Cuadras: ${this.montoEnvio}");
                 sb.AppendLine($"                     Costo Total de envio: ${this.montoEnvio + this.montoTipoEnvio}");
@@ -285,6 +337,8 @@ namespace Entidades
             }
             return monto;
         }
+
+
         /// <summary>
         /// muestar el objetos
         /// </summary>
@@ -293,13 +347,6 @@ namespace Entidades
         {
             return ToString();
         }
-
-
-
-      
-       
-
-
 
         #endregion
     }
