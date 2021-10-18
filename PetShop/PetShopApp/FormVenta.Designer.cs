@@ -102,6 +102,8 @@ namespace PetShopApp
             this.btnCompraNueva = new System.Windows.Forms.Button();
             this.btnConfirmarCompra = new System.Windows.Forms.Button();
             this.lblDescuento = new System.Windows.Forms.Button();
+            this.lbkClienteExistente = new System.Windows.Forms.LinkLabel();
+            this.lbkNoCliente = new System.Windows.Forms.LinkLabel();
             this.pnlBuscarCliente.SuspendLayout();
             this.pnlCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdSelecc)).BeginInit();
@@ -115,9 +117,9 @@ namespace PetShopApp
             this.lblNombreUsuario.AutoSize = true;
             this.lblNombreUsuario.Location = new System.Drawing.Point(12, 9);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(38, 15);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(118, 15);
             this.lblNombreUsuario.TabIndex = 0;
-            this.lblNombreUsuario.Text = "label1";
+            this.lblNombreUsuario.Text = "Nombre del Usuarios";
             this.lblNombreUsuario.Click += new System.EventHandler(this.lblNombreUsuario_Click);
             // 
             // lblCerrarSesion
@@ -160,7 +162,7 @@ namespace PetShopApp
             this.pnlBuscarCliente.Controls.Add(this.txtCuit);
             this.pnlBuscarCliente.Location = new System.Drawing.Point(15, 38);
             this.pnlBuscarCliente.Name = "pnlBuscarCliente";
-            this.pnlBuscarCliente.Size = new System.Drawing.Size(270, 174);
+            this.pnlBuscarCliente.Size = new System.Drawing.Size(256, 174);
             this.pnlBuscarCliente.TabIndex = 4;
             // 
             // lblMensajeCliente
@@ -187,7 +189,7 @@ namespace PetShopApp
             // 
             // btnBuscarCliente
             // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(192, 30);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(175, 30);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(75, 49);
             this.btnBuscarCliente.TabIndex = 5;
@@ -833,11 +835,37 @@ namespace PetShopApp
             this.lblDescuento.UseVisualStyleBackColor = true;
             this.lblDescuento.Click += new System.EventHandler(this.lblDescuento_Click);
             // 
+            // lbkClienteExistente
+            // 
+            this.lbkClienteExistente.AutoSize = true;
+            this.lbkClienteExistente.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbkClienteExistente.Location = new System.Drawing.Point(287, 131);
+            this.lbkClienteExistente.Name = "lbkClienteExistente";
+            this.lbkClienteExistente.Size = new System.Drawing.Size(92, 12);
+            this.lbkClienteExistente.TabIndex = 14;
+            this.lbkClienteExistente.TabStop = true;
+            this.lbkClienteExistente.Text = "Auto Carga Cliente";
+            this.lbkClienteExistente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkClienteExistente_LinkClicked);
+            // 
+            // lbkNoCliente
+            // 
+            this.lbkNoCliente.AutoSize = true;
+            this.lbkNoCliente.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbkNoCliente.Location = new System.Drawing.Point(279, 155);
+            this.lbkNoCliente.Name = "lbkNoCliente";
+            this.lbkNoCliente.Size = new System.Drawing.Size(109, 12);
+            this.lbkNoCliente.TabIndex = 15;
+            this.lbkNoCliente.TabStop = true;
+            this.lbkNoCliente.Text = "Auto Carga No Cliente";
+            this.lbkNoCliente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkNoCliente_LinkClicked);
+            // 
             // FormVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 527);
+            this.Controls.Add(this.lbkNoCliente);
+            this.Controls.Add(this.lbkClienteExistente);
             this.Controls.Add(this.lblDescuento);
             this.Controls.Add(this.pnlConfirmarCompra);
             this.Controls.Add(this.pnlVenta);
@@ -936,5 +964,7 @@ namespace PetShopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_Detalle_Producto;
         private System.Windows.Forms.Button lblDescuento;
+        private System.Windows.Forms.LinkLabel lbkClienteExistente;
+        private System.Windows.Forms.LinkLabel lbkNoCliente;
     }
 }

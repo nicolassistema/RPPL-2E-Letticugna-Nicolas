@@ -42,6 +42,10 @@ namespace PetShopApp
             this.lblValidCuit = new System.Windows.Forms.Label();
             this.lblValidNombre = new System.Windows.Forms.Label();
             this.lblValidApellido = new System.Windows.Forms.Label();
+            this.lbkClienteNuevo = new System.Windows.Forms.LinkLabel();
+            this.lbkClienteExistente = new System.Windows.Forms.LinkLabel();
+            this.pnlAutoCargaDatos = new System.Windows.Forms.Panel();
+            this.pnlAutoCargaDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCuit
@@ -163,11 +167,43 @@ namespace PetShopApp
             this.lblValidApellido.TabIndex = 11;
             this.lblValidApellido.Text = "*";
             // 
+            // lbkClienteNuevo
+            // 
+            this.lbkClienteNuevo.AutoSize = true;
+            this.lbkClienteNuevo.Location = new System.Drawing.Point(3, 2);
+            this.lbkClienteNuevo.Name = "lbkClienteNuevo";
+            this.lbkClienteNuevo.Size = new System.Drawing.Size(82, 15);
+            this.lbkClienteNuevo.TabIndex = 12;
+            this.lbkClienteNuevo.TabStop = true;
+            this.lbkClienteNuevo.Text = "Cliente Nuevo";
+            this.lbkClienteNuevo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkClienteNuevo_LinkClicked);
+            // 
+            // lbkClienteExistente
+            // 
+            this.lbkClienteExistente.AutoSize = true;
+            this.lbkClienteExistente.Location = new System.Drawing.Point(3, 17);
+            this.lbkClienteExistente.Name = "lbkClienteExistente";
+            this.lbkClienteExistente.Size = new System.Drawing.Size(94, 15);
+            this.lbkClienteExistente.TabIndex = 13;
+            this.lbkClienteExistente.TabStop = true;
+            this.lbkClienteExistente.Text = "Cliente Existente";
+            this.lbkClienteExistente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkClienteExistente_LinkClicked);
+            // 
+            // pnlAutoCargaDatos
+            // 
+            this.pnlAutoCargaDatos.Controls.Add(this.lbkClienteNuevo);
+            this.pnlAutoCargaDatos.Controls.Add(this.lbkClienteExistente);
+            this.pnlAutoCargaDatos.Location = new System.Drawing.Point(35, 218);
+            this.pnlAutoCargaDatos.Name = "pnlAutoCargaDatos";
+            this.pnlAutoCargaDatos.Size = new System.Drawing.Size(161, 37);
+            this.pnlAutoCargaDatos.TabIndex = 14;
+            // 
             // FormAltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 224);
+            this.ClientSize = new System.Drawing.Size(237, 266);
+            this.Controls.Add(this.pnlAutoCargaDatos);
             this.Controls.Add(this.lblValidApellido);
             this.Controls.Add(this.lblValidNombre);
             this.Controls.Add(this.lblValidCuit);
@@ -186,6 +222,8 @@ namespace PetShopApp
             this.Name = "FormAltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAltaCliente";
+            this.pnlAutoCargaDatos.ResumeLayout(false);
+            this.pnlAutoCargaDatos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +243,8 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblValidCuit;
         private System.Windows.Forms.Label lblValidNombre;
         private System.Windows.Forms.Label lblValidApellido;
+        private System.Windows.Forms.LinkLabel lbkClienteNuevo;
+        private System.Windows.Forms.LinkLabel lbkClienteExistente;
+        private System.Windows.Forms.Panel pnlAutoCargaDatos;
     }
 }

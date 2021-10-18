@@ -79,8 +79,10 @@ Clientes nuevos
 20323206016
 20323206024
 20323206032	
-						  
-						  
+
+20323206709			  
+20323206717					  
+	
 Facturador
 ==========
 * aceitar Camino funcional
@@ -131,6 +133,30 @@ Console.WriteLine(“The process failed: {0}”, e.ToString());
 
 
 
+Faltantes
+=========
+
+*Nombres de controles con los estilos correspondientes. --> ya esta
+*Los formularios no pueden tener el color por defecto y el nombre debe ser legible al usuario.
+*Tanto el icono del título de los formularios, como el de la app (el que aparece en la barra de windows) no puede ser por defecto.
+*Deben existir botones que completen los datos de un administrador o de un empleado automáticamente para loguear la app (No loguearse automáticamente, sino completar lainformación en los textbox correspondientes para agilizar el ingreso de información)
+*El icono de la aplicación no puede ser el icono por defecto,no puede tener fondo por defecto.--> listo
+*No puede haber código sucio ni código obsoleto (código obsoleto, aunque esté comentado,invalidará este ítem).
+
+
+Puntos promocion
+================
+*Hacer que el menú desaparezca si el mouse no se posiciona en la parte superior del formulario.
+*Cerrar la sesión por inactividad
+*mplementar al menos dos buscadores (que busquen por diferente dato) que permitan hacer
+ búsquedas más ágiles.
+*Exportar a csv.
+*Agregar sonido al guardar. 
+*Habilitar “dark mode”
+
+
+
+ 
 
 
 

@@ -37,6 +37,8 @@ namespace PetShopApp
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbkUsuario = new System.Windows.Forms.LinkLabel();
+            this.lbkAdmin = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txtUser
@@ -50,6 +52,7 @@ namespace PetShopApp
             // 
             this.txtPass.Location = new System.Drawing.Point(117, 97);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(100, 23);
             this.txtPass.TabIndex = 1;
             // 
@@ -104,11 +107,35 @@ namespace PetShopApp
             this.label3.Text = "Mensaje";
             this.label3.Visible = false;
             // 
+            // lbkUsuario
+            // 
+            this.lbkUsuario.AutoSize = true;
+            this.lbkUsuario.Location = new System.Drawing.Point(60, 230);
+            this.lbkUsuario.Name = "lbkUsuario";
+            this.lbkUsuario.Size = new System.Drawing.Size(110, 15);
+            this.lbkUsuario.TabIndex = 7;
+            this.lbkUsuario.TabStop = true;
+            this.lbkUsuario.Text = "Auto Carga Usuario";
+            this.lbkUsuario.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkUsuario_LinkClicked);
+            // 
+            // lbkAdmin
+            // 
+            this.lbkAdmin.AutoSize = true;
+            this.lbkAdmin.Location = new System.Drawing.Point(60, 245);
+            this.lbkAdmin.Name = "lbkAdmin";
+            this.lbkAdmin.Size = new System.Drawing.Size(149, 15);
+            this.lbkAdmin.TabIndex = 8;
+            this.lbkAdmin.TabStop = true;
+            this.lbkAdmin.Text = "Auto Carga Usuario Admin";
+            this.lbkAdmin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkAdmin_LinkClicked);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 214);
+            this.ClientSize = new System.Drawing.Size(266, 284);
+            this.Controls.Add(this.lbkAdmin);
+            this.Controls.Add(this.lbkUsuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -137,6 +164,8 @@ namespace PetShopApp
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel lbkUsuario;
+        private System.Windows.Forms.LinkLabel lbkAdmin;
     }
 }
 

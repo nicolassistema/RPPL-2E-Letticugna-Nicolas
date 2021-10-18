@@ -16,6 +16,9 @@ namespace PetShopApp
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
+        string cuitInt;
+ 
+        
 
         public FormAltaCliente()
         {
@@ -23,10 +26,33 @@ namespace PetShopApp
         }
 
 
+
+
         public FormAltaCliente(Usuario usuario) : this()
         {
             this.userForm = usuario;
+            pnlAutoCargaDatos.Visible = true;
         }
+
+        public FormAltaCliente(Usuario usuario, string cuitInt) : this()
+        {
+            this.userForm = usuario;
+            this.Cuit = cuitInt;
+            txtCuit.Text = cuitInt;
+            pnlAutoCargaDatos.Visible = false;
+
+        }
+
+
+
+        public   string Cuit
+        {
+            get { return cuitInt; }
+            set { cuitInt = value; }
+        }
+
+
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -40,17 +66,21 @@ namespace PetShopApp
 
         private void txtCuit_Leave(object sender, EventArgs e)
         {
-            {
-                if (Validaciones.ValidateNumberCuit(txtCuit.Text))
+             {
+                if (!(PetShop.ValidaClienteExistenteByCuit(txtCuit.Text)))
                 {
-
-                    lblValidCuit.ForeColor = Color.Green;
+                    if (Validaciones.ValidateNumberCuit(txtCuit.Text))
+                    {
+                        lblValidCuit.ForeColor = Color.Green;
+                    }
                 }
                 else
                 {
+                    MessageBox.Show("El cuil del Cliente a cargar ya existe en el sistema. Por favor cargar uno nuevo o salir");
                     lblValidCuit.ForeColor = Color.Red;
                 }
             }
+
         }
 
         private void txtNombre_Leave(object sender, EventArgs e)
@@ -107,6 +137,9 @@ namespace PetShopApp
                 this.Hide();
                 this.Close();
             }
+
+
+
         }
 
 
@@ -121,9 +154,56 @@ namespace PetShopApp
             }
         }
 
+        private void lbkClienteNuevo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtCuit.Text = "20323206709";
+            txtNombre.Text = "Juan";
+            txtApellido.Text = "Gomez";
+            
+            ValidacionMasivaAutomatica();
+        }
+
+        private void lbkClienteExistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           Cliente cliente = new Cliente();
+            cliente = PetShop.ObtenerClienteByCuit("20323206008");
+
+
+            if (!(cliente is null))
+            {
+                txtCuit.Text = cliente.Cuit;
+                txtNombre.Text = cliente.Nombre;
+                txtApellido.Text = cliente.Apellido;
+               
+            }
+
+            ValidacionMasivaAutomatica();
+        }
 
 
 
+        private void ValidacionMasivaAutomatica()
+        {
+
+            if (Validaciones.ValidacionString(txtNombre.Text))
+            {
+                lblValidNombre.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidNombre.ForeColor = Color.Red;
+            }
+
+            if (Validaciones.ValidacionString(txtApellido.Text))
+            {
+                lblValidApellido.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidApellido.ForeColor = Color.Red;
+            }
+
+        }
 
     }
 }

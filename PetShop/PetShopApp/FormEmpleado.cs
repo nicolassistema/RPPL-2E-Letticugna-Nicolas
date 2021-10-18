@@ -194,6 +194,8 @@ namespace PetShopApp
             frmAltaEmpleado empleado = new frmAltaEmpleado(this.userForm);
             empleado.ShowDialog();
             this.CargarDataGrid();
+            btnEliminar.Enabled = true;
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

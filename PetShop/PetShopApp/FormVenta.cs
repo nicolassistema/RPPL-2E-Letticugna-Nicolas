@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using Entidades;
+using System.Diagnostics.Tracing;
 
 namespace PetShopApp
 {
@@ -45,7 +46,10 @@ namespace PetShopApp
             btnLimpiarSelectProd.Enabled = false;
             FocusPnlBuscarCliente(true);
             VisibilidadPnlConfirmarCompra(false);
+        
+
         }
+
 
 
         public void CargarDataGridProducto()
@@ -178,6 +182,32 @@ namespace PetShopApp
                 lblNombre.Visible = false;
                 lblApellido.Visible = false;
                 ActivDesactivPnlCompra(false);
+            }
+            else if (PetShop.ObtenerClientePorCuit(txtCuit.Text) is null)
+            {
+
+
+                DialogResult boton = MessageBox.Show("Cliente inexistente. Desea cargarlo en el sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (boton == DialogResult.Yes)
+                {
+
+                    FormAltaCliente cliente = new FormAltaCliente(this.userForm, txtCuit.Text);
+                    cliente.ShowDialog();
+                }
+
+
+              
+              
+
+                //lblMensajeCliente.Text = "Cliente no cargado en ls lista de cliente";
+                //lblMensajeCliente.Visible = true;
+                //lblCuit.Visible = false;
+                //lblNombre.Visible = false;
+                //lblApellido.Visible = false;
+                //ActivDesactivPnlCompra(false);
+
+
+
             }
             else
             {
@@ -790,6 +820,16 @@ namespace PetShopApp
                 myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
                 return myCp;
             }
+        }
+
+        private void lbkClienteExistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtCuit.Text = "20323205109";
+        }
+
+        private void lbkNoCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtCuit.Text = "20323206024";
         }
     }
 }

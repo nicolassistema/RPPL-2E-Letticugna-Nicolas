@@ -60,7 +60,7 @@ namespace Entidades
             }
         }
 
-
+   
 
         public static Dictionary<string,Usuario> Usuario
         {
@@ -222,6 +222,73 @@ namespace Entidades
            
             return null;
         }
+
+
+        public static Usuario ObtenerUsuarioByCuit(string cuit)
+        {
+            Dictionary<string, Usuario> auxList = PetShop.Usuario;
+            foreach (var item in auxList)
+            {
+                if (item.Value.Cuit == cuit)
+                {
+                    return item.Value;
+                    break;
+                }
+            }
+
+            return null;
+        }
+
+
+
+        public static Cliente ObtenerClienteByCuit(string cuit)
+        {
+            List<Cliente> auxList = PetShop.Cliente;
+            foreach (var item in auxList)
+            {
+                if (item.Cuit == cuit)
+                {
+                    return item;
+                    break;
+                }
+            }
+
+            return null;
+        }
+
+
+        public static bool ValidaUsuarioExistenteByCuit(string cuit)
+        {
+            Dictionary<string, Usuario> auxList = PetShop.Usuario;
+            foreach (var item in auxList)
+            {
+                if (item.Value.Cuit == cuit)
+                {
+                    return true;
+                    break;
+                }
+            }
+
+            return false;
+        }
+
+
+        public static bool ValidaClienteExistenteByCuit(string cuit)
+        {
+           List<Cliente> auxList = PetShop.Cliente;
+            foreach (var item in auxList)
+            {
+                if (item.Cuit == cuit)
+                {
+                    return true;
+                    break;
+                }
+            }
+
+            return false;
+        }
+
+
 
         public static Producto ObtenerProductoByID(int id)
         {

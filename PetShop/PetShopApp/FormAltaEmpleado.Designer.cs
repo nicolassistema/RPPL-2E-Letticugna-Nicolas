@@ -51,6 +51,8 @@ namespace PetShopApp
             this.lblValidUser = new System.Windows.Forms.Label();
             this.lblValidPass = new System.Windows.Forms.Label();
             this.lblValidPerfil = new System.Windows.Forms.Label();
+            this.lbkEmpleadoExistente = new System.Windows.Forms.LinkLabel();
+            this.lbkEmpleadoInexistente = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txtCuit
@@ -265,11 +267,35 @@ namespace PetShopApp
             this.lblValidPerfil.TabIndex = 20;
             this.lblValidPerfil.Text = "*";
             // 
+            // lbkEmpleadoExistente
+            // 
+            this.lbkEmpleadoExistente.AutoSize = true;
+            this.lbkEmpleadoExistente.Location = new System.Drawing.Point(78, 375);
+            this.lbkEmpleadoExistente.Name = "lbkEmpleadoExistente";
+            this.lbkEmpleadoExistente.Size = new System.Drawing.Size(110, 15);
+            this.lbkEmpleadoExistente.TabIndex = 21;
+            this.lbkEmpleadoExistente.TabStop = true;
+            this.lbkEmpleadoExistente.Text = "Empleado Existente";
+            this.lbkEmpleadoExistente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkEmpleadoExistente_LinkClicked);
+            // 
+            // lbkEmpleadoInexistente
+            // 
+            this.lbkEmpleadoInexistente.AutoSize = true;
+            this.lbkEmpleadoInexistente.Location = new System.Drawing.Point(78, 390);
+            this.lbkEmpleadoInexistente.Name = "lbkEmpleadoInexistente";
+            this.lbkEmpleadoInexistente.Size = new System.Drawing.Size(124, 15);
+            this.lbkEmpleadoInexistente.TabIndex = 22;
+            this.lbkEmpleadoInexistente.TabStop = true;
+            this.lbkEmpleadoInexistente.Text = "Empleado Inexistemte";
+            this.lbkEmpleadoInexistente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkEmpleadoInexistente_LinkClicked);
+            // 
             // frmAltaEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 340);
+            this.ClientSize = new System.Drawing.Size(298, 444);
+            this.Controls.Add(this.lbkEmpleadoInexistente);
+            this.Controls.Add(this.lbkEmpleadoExistente);
             this.Controls.Add(this.lblValidPerfil);
             this.Controls.Add(this.lblValidPass);
             this.Controls.Add(this.lblValidUser);
@@ -325,5 +351,7 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblValidUser;
         private System.Windows.Forms.Label lblValidPass;
         private System.Windows.Forms.Label lblValidPerfil;
+        private System.Windows.Forms.LinkLabel lbkEmpleadoExistente;
+        private System.Windows.Forms.LinkLabel lbkEmpleadoInexistente;
     }
 }

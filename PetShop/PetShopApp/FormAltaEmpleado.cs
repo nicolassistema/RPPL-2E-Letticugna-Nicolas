@@ -25,6 +25,7 @@ namespace PetShopApp
         public frmAltaEmpleado(Usuario usuario) : this()
         {
             this.userForm = usuario;
+          
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -38,22 +39,28 @@ namespace PetShopApp
         }
 
 
-
         private void txtCuit_Leave(object sender, EventArgs e)
         {
             {
-                if (Validaciones.ValidateNumberCuit(txtCuit.Text))
+                if (!(PetShop.ValidaUsuarioExistenteByCuit(txtCuit.Text)))
                 {
-
-                    lblValidCuit.ForeColor = Color.Green;
+                    if (Validaciones.ValidateNumberCuit(txtCuit.Text))
+                    {
+                        lblValidCuit.ForeColor = Color.Green;
+                    }
                 }
                 else
                 {
+                    MessageBox.Show("El cuil del Usuario a cargar ya existe en el sistema. Por favor cargar uno nuevo o salir");
                     lblValidCuit.ForeColor = Color.Red;
                 }
             }
         }
 
+
+        
+
+       
         private void txtNombre_Leave(object sender, EventArgs e)
         {
             if (Validaciones.ValidacionString(txtNombre.Text))
@@ -137,12 +144,12 @@ namespace PetShopApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-        
+
 
 
             if (!(FlagDetector()))
             {
-                MessageBox.Show("Por favor competar los campos requeridos");
+                MessageBox.Show("Por favor completar los campos requeridos");
             }
             else
             {
@@ -167,6 +174,99 @@ namespace PetShopApp
                 myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
                 return myCp;
             }
+        }
+
+        private void lbkEmpleadoExistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario = PetShop.ObtenerUsuarioByCuit("20323205125");
+
+
+            if (!(usuario is null))
+            {
+                txtCuit.Text = usuario.Cuit;
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                txtUsuario.Text = usuario.NameUsuario;
+                txtPassword.Text = usuario.PassUsuario;
+                cmbPerfil.Text = usuario.PerfilUsuario.ToString();
+            }
+
+            ValidacionMasivaAutomatica();
+
+        }
+
+
+       
+
+        private void lbkEmpleadoInexistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+                
+                txtCuit.Text = "20323206032";
+                txtNombre.Text = "Juan";
+                txtApellido.Text = "Montoto";
+                txtUsuario.Text = "pepe";
+                txtPassword.Text = "1234";
+                cmbPerfil.Text = "Admin";
+        
+            ValidacionMasivaAutomatica();
+        }
+
+
+        private void ValidacionMasivaAutomatica()
+        {
+
+            if (Validaciones.ValidacionString(txtNombre.Text))
+            {
+                lblValidNombre.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidNombre.ForeColor = Color.Red;
+            }
+
+            if (Validaciones.ValidacionString(txtApellido.Text))
+            {
+                lblValidApellido.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidApellido.ForeColor = Color.Red;
+            }
+
+            if (Validaciones.ValidacionString(txtUsuario.Text))
+            {
+                lblValidUser.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidUser.ForeColor = Color.Red;
+            }
+
+            if (Validaciones.ValidacionString(txtPassword.Text))
+            {
+                lblValidPass.ForeColor = Color.Green;
+            }
+            else
+            {
+                lblValidPass.ForeColor = Color.Red;
+            }
+
+            if (cmbPerfil.Items.Count < 1)
+            {
+                lblValidPerfil.ForeColor = Color.Red;
+            }
+            else if (cmbPerfil.SelectedIndex.Equals(-1))
+            {
+                lblValidPerfil.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblValidPerfil.ForeColor = Color.Green;
+            }
+
+
         }
     }
 }

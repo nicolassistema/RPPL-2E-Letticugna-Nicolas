@@ -64,5 +64,16 @@ namespace PetShopApp
             }
         }
 
+        private void lbkUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtUser.Text = "pepe";
+            txtPass.Text = "123";
+        }
+
+        private void lbkAdmin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            txtUser.Text = "admin";
+            txtPass.Text = "admin";
+        }
     }
 }
