@@ -484,7 +484,9 @@ namespace PetShopApp
             }
         }
 
-
+        /// <summary>
+        /// Genera un sonido
+        /// </summary>
         private void Sonido()
         {
             try
@@ -497,7 +499,6 @@ namespace PetShopApp
                 throw;
             }
         }
-
 
 
         /// <summary>
@@ -546,7 +547,6 @@ namespace PetShopApp
                 throw;
             }
         }
-
 
 
     }
