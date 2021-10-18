@@ -11,19 +11,34 @@ namespace Entidades
         #endregion
 
         #region "Constructores"
+        /// <summary>
+        /// Constructor sin parámetros de la clase cliente.
+        /// </summary>
         public Cliente() : base()
         {
 
 
         }
 
-
+        /// <summary>
+        /// Constructor con parámetros de la clase cliente.
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
         public Cliente(string cuit, string nombre, string apellido) : base(cuit, nombre, apellido)
         {
             this.idCliente = IdAutoIncremental();
-   
+
         }
 
+        /// <summary>
+        /// Constructor con parámetros de la clase cliente.
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="saldo"></param>
         public Cliente(string cuit, string nombre, string apellido, double saldo) : base(cuit, nombre, apellido)
         {
             this.idCliente = IdAutoIncremental();
@@ -32,6 +47,9 @@ namespace Entidades
         #endregion
 
         #region "Propiedades"
+        /// <summary>
+        /// Propiedad
+        /// </summary>
         public int IdCliente
         {
             get
@@ -44,7 +62,9 @@ namespace Entidades
             }
         }
 
-
+        /// <summary>
+        /// Propiedad
+        /// </summary>
         public double Saldo
         {
             get
@@ -69,6 +89,12 @@ namespace Entidades
 
         #region "Operadores"
 
+        /// <summary>
+        /// Sobre carga de operador
+        /// </summary>
+        /// <param name="clientes"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static List<Cliente> operator +(List<Cliente> clientes, Cliente cliente)
         {
             if (clientes != cliente)
@@ -80,6 +106,12 @@ namespace Entidades
                 return PetShop.Cliente;
         }
 
+        /// <summary>
+        /// Sobre carga de operador
+        /// </summary>
+        /// <param name="clientes"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static List<Cliente> operator -(List<Cliente> clientes, Cliente cliente)
         {
 
@@ -92,6 +124,12 @@ namespace Entidades
                 return clientes;
         }
 
+        /// <summary>
+        /// Sobre carga de operador
+        /// </summary>
+        /// <param name="clientes"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static bool operator ==(List<Cliente> clientes, Cliente cliente)
         {
             foreach (Cliente auxCliente in PetShop.Cliente)
@@ -103,6 +141,13 @@ namespace Entidades
             return false;
         }
 
+
+        /// <summary>
+        /// Sobre carga de operador
+        /// </summary>
+        /// <param name="clientes"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public static bool operator !=(List<Cliente> clientes, Cliente cliente)
         {
             return !(clientes == cliente);

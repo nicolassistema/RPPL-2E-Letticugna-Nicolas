@@ -8,22 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using System.Globalization;
 
 namespace PetShopApp
 {
     public partial class frmAdministracion : Form
     {
+        private Timer ti;
+
         Usuario userForm;
         private const int CP_NOCLOSE_BUTTON = 0x200;
         public frmAdministracion()
         {
+            ti = new Timer();
+            ti.Tick += new EventHandler(eventoTimer);
             InitializeComponent();
+            ti.Enabled = true;
+            lblTimer.Visible = true;
+
+        }
+
+
+        private void eventoTimer(object ob, EventArgs evt)
+        {
+            DateTime hoy = DateTime.Now;
+            lblTimer.Text = hoy.ToString("F", CultureInfo.CreateSpecificCulture("es-ES"));
         }
 
         public frmAdministracion(Usuario usuario) : this()
         {
             this.userForm = usuario;
-            lblBienvenido.Text = "Bienvenido: " + usuario.Nombre +" "+ usuario.Apellido;
+            lblBienvenido.Text = "Bienvenido: " + usuario.Nombre + " " + usuario.Apellido;
             if (!(Usuario.IsAdmin(userForm)))
             {
                 btnClientes.Visible = false;
@@ -93,5 +108,58 @@ namespace PetShopApp
             }
         }
 
+        private void lbkBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+
+            if (ManejadorDeForms.DarkMode)
+            {
+                this.BackColor = Color.Black;
+                lblTimer.ForeColor = Color.White;
+                btnClientes.BackColor = Color.Black;
+                btnVender.BackColor = Color.Black;
+                btnInventario.BackColor = Color.Black;
+                btnEmpleados.BackColor = Color.Black;
+                btnFacturacion.BackColor = Color.Black;
+                pnlLogo.BackColor = Color.Black;
+                pnlMenu.BackColor = Color.Black;
+                this.pnlLogoDos.BackColor = Color.Black; ;
+                lbkBlackTheme.Text = "Visiion Black";
+
+            }
+            else
+            {
+               ApagarDarkMode();
+            }
+
+        }
+
+
+        private void ApagarDarkMode()
+        {
+
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblTimer.ForeColor = Color.Black;
+            btnVender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
+            btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
+            btnInventario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
+            btnFacturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
+            btnEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
+            pnlLogo.BackColor = this.pnlLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(40)))), ((int)(((byte)(100)))));
+            pnlMenu.BackColor = this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+
+            this.pnlLogoDos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            lbkBlackTheme.Text = "Visiion White";
+        }
+
+
+        private void frmAdministracion_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                ApagarDarkMode();
+            }
+
+        }
     }
 }

@@ -21,10 +21,11 @@ namespace Entidades
         static Venta venta;
 
 
-
+        /// <summary>
+        /// Constructor sin parámetros de la clase PetShop.
+        /// </summary>
         static PetShop()
         {
-            //   Usuario = new List<Usuario>();
             Descuento = new Stack<Producto>();
             Usuario = new Dictionary<string, Usuario>();
             Producto = new List<Producto>();
@@ -35,19 +36,22 @@ namespace Entidades
             HarcodearListas();
         }
 
-
+        /// <summary>
+        /// Harcodeo de datos
+        /// </summary>
         public static void HarcodearListas()
         {
             HarcodDescuentos();
             HardcodUsuariosClaveValor();
-            //HardcodUsuarios();
             HardcodProductos();
             HardcodClientes();
             HardcodVentas();
         }
 
-      
 
+        /// <summary>
+        /// Propuiedad del Stack
+        /// </summary>
         public static Stack<Producto> Descuento
         {
             get
@@ -60,28 +64,20 @@ namespace Entidades
             }
         }
 
-   
 
-        public static Dictionary<string,Usuario> Usuario
+        /// <summary>
+        /// Propiedad del dicicionario
+        /// </summary>
+        public static Dictionary<string, Usuario> Usuario
         {
             get { return listaUsuariosClaveValor; }
             set { listaUsuariosClaveValor = value; }
         }
 
 
-
-        //public static List<Usuario> Usuario
-        //{
-        //    get
-        //    {
-        //        return listaUsuarios;
-        //    }
-        //    set
-        //    {
-        //        listaUsuarios = value;
-        //    }
-        //}
-
+        /// <summary>
+        /// Pripiedad de la lista
+        /// </summary>
         public static List<Producto> Producto
         {
             get
@@ -94,6 +90,11 @@ namespace Entidades
             }
         }
 
+
+
+        /// <summary>
+        /// Pripiedad de la lista
+        /// </summary>
         public static List<Cliente> Cliente
         {
             get
@@ -106,6 +107,11 @@ namespace Entidades
             }
         }
 
+
+
+        /// <summary>
+        /// Pripiedad de la lista
+        /// </summary>
         public static List<Venta> Ventas
         {
             get
@@ -118,27 +124,23 @@ namespace Entidades
             }
         }
 
-        //private static void HardcodUsuarios()//diccionario
-        //{
-        // //   listaUsuarios += (new Usuario("20323205109", "Nicolas", "Letticugna", "pepe", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
-        //    listaUsuarios += (new Usuario("20323205109", "Nicolas", "Letticugna", "pepe", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
-        //    listaUsuarios += (new Usuario("20323205117", "Pedro", "Gomez", "pipo", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
-        //    listaUsuarios += (new Usuario("20323205125", "lolo", "Lopez", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin));
-        //    listaUsuarios += (new Usuario("20323205133", "Juan", "Lopez", "pupu", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
-        //}
 
-
-        private static void HardcodUsuariosClaveValor()//diccionario
+        /// <summary>
+        /// Harcodeo de usuarios
+        /// </summary>
+        private static void HardcodUsuariosClaveValor()
         {
-            listaUsuariosClaveValor.Add ("20323205109", new Usuario("20323205109", "Nicolas", "Letticugna", "pepe", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
-            listaUsuariosClaveValor.Add("20323205117",new Usuario("20323205117", "Pedro", "Gomez", "pipo", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
+            listaUsuariosClaveValor.Add("20323205109", new Usuario("20323205109", "Nicolas", "Letticugna", "pepe", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
+            listaUsuariosClaveValor.Add("20323205117", new Usuario("20323205117", "Pedro", "Gomez", "pipo", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
             listaUsuariosClaveValor.Add("20323205125", new Usuario("20323205125", "lolo", "Lopez", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin));
             listaUsuariosClaveValor.Add("20323205133", new Usuario("20323205133", "Juan", "Lopez", "pupu", "123", Entidades.Usuario.EPerfilUsuario.Empleado));
         }
 
 
 
-
+        /// <summary>
+        /// Harcodeo de productos
+        /// </summary>
         private static void HardcodProductos()
         {
             listaProductos += (new Cama("Cama pepito           ", "Cama lalala", "Cama grande descripcion", 35, 11.11, 20, Cama.ETamanio.Grande));
@@ -152,15 +154,20 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Harcodeo de descuentos
+        /// </summary>
         private static void HarcodDescuentos()
         {
-            listaDescuentos.Push ( new Cama("Cama pepito", "Cama lalala", "Cama grande descripcion",  11.11,20, Cama.ETamanio.Grande));
-            listaDescuentos.Push(new Juguete("juguete pepito", "juguete  lalala", "juguete grande descripcion",  33.33,20, Juguete.EMaterial.Plastico));
-            listaDescuentos.Push(new Alimento("Alimento pepito", "Alimento  lalala", "Alimento grande descripcion", 66.66,20, Alimento.ETipoAlimento.Balanceado));
+            listaDescuentos.Push(new Cama("Cama pepito", "Cama lalala", "Cama grande descripcion", 11.11, 20, Cama.ETamanio.Grande));
+            listaDescuentos.Push(new Juguete("juguete pepito", "juguete  lalala", "juguete grande descripcion", 33.33, 20, Juguete.EMaterial.Plastico));
+            listaDescuentos.Push(new Alimento("Alimento pepito", "Alimento  lalala", "Alimento grande descripcion", 66.66, 20, Alimento.ETipoAlimento.Balanceado));
         }
-  
 
 
+        /// <summary>
+        /// Harcodeo de clientes
+        /// </summary>
         private static void HardcodClientes()
         {
             listaClientes += (new Cliente("20323206008", "menagno", "lopez", 0));
@@ -169,21 +176,34 @@ namespace Entidades
             listaClientes += (new Cliente("20323206059", "fefe", "lopez", 0));
         }
 
+
+        /// <summary>
+        /// Harcodeo de ventas
+        /// </summary>
         private static void HardcodVentas()
         {
             Producto prod1 = new Producto(1, "Dog Chow", "Dog Chow", 4000);
-
             listaVentas += (new Venta(new Usuario("123456789", "Lucas", "Rodriguez", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
             listaVentas += (new Venta(new Usuario("123456789", "Nicolas", "Letticugna", "lrodriguez", "lucas2021", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
             listaVentas += (new Venta(new Usuario("123456789", "Caro", "LaScrofani", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
             listaVentas += (new Venta(new Usuario("123456789", "bobo", "esponja", "admin", "admin", Entidades.Usuario.EPerfilUsuario.Admin), new Cliente("20333232326", "Cosme", "Fulanito", 0), new List<Producto> { prod1 }));
         }
 
+
+        /// <summary>
+        /// Obetener lista venta
+        /// </summary>
+        /// <returns>lista</returns>
         public static List<Venta> ObtenerListaVentas()
         {
             return listaVentas;
         }
 
+
+        /// <summary>
+        /// Obtener lista cliente
+        /// </summary>
+        /// <returns>lista</returns>
         public static List<Cliente> ObtenerListaCliente()
         {
             return listaClientes;
@@ -194,21 +214,42 @@ namespace Entidades
             listaClientes += cliente;
         }
 
+        /// <summary>
+        /// Agregar producto a la lista
+        /// </summary>
+        /// <param name="producto"></param>
         public static void AddProducto(Producto producto)
         {
             listaProductos += producto;
         }
 
+
+        /// <summary>
+        /// Obtener lista de usarios
+        /// </summary>
+        /// <returns>diccionario</returns>
         public static Dictionary<string, Usuario> ObtenerListaUsuarios()
         {
             return listaUsuariosClaveValor;
         }
 
+
+        /// <summary>
+        /// Agregar usuario a la lista
+        /// </summary>
+        /// <param name="usuario"></param>
         public static void AddUsuario(Usuario usuario)
         {
-            listaUsuariosClaveValor.Add(usuario.Cuit,usuario);
+            listaUsuariosClaveValor.Add(usuario.Cuit, usuario);
         }
 
+
+        /// <summary>
+        /// Obtener usaurio
+        /// </summary>
+        /// <param name="usuarioNombre"></param>
+        /// <param name="password"></param>
+        /// <returns>usuario</returns>
         public static Usuario ObtenerUsuario(string usuarioNombre, string password)
         {
             Dictionary<string, Usuario> auxList = PetShop.Usuario;
@@ -219,11 +260,15 @@ namespace Entidades
                     return item.Value;
                 }
             }
-           
+
             return null;
         }
 
-
+        /// <summary>
+        /// Obtiene un usuario por medio del cuil
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <returns>usuario</returns>
         public static Usuario ObtenerUsuarioByCuit(string cuit)
         {
             Dictionary<string, Usuario> auxList = PetShop.Usuario;
@@ -235,12 +280,15 @@ namespace Entidades
                     break;
                 }
             }
-
             return null;
         }
 
 
-
+        /// <summary>
+        /// obtiene un cliente por medio del cuil
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <returns>cliente</returns>
         public static Cliente ObtenerClienteByCuit(string cuit)
         {
             List<Cliente> auxList = PetShop.Cliente;
@@ -256,7 +304,11 @@ namespace Entidades
             return null;
         }
 
-
+        /// <summary>
+        /// valida el cuit del usuario
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <returns>true si esta, false si no</returns>
         public static bool ValidaUsuarioExistenteByCuit(string cuit)
         {
             Dictionary<string, Usuario> auxList = PetShop.Usuario;
@@ -273,9 +325,14 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// valida el cuit del cliente
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <returns>true si esta, false si no</returns>
         public static bool ValidaClienteExistenteByCuit(string cuit)
         {
-           List<Cliente> auxList = PetShop.Cliente;
+            List<Cliente> auxList = PetShop.Cliente;
             foreach (var item in auxList)
             {
                 if (item.Cuit == cuit)
@@ -284,12 +341,15 @@ namespace Entidades
                     break;
                 }
             }
-
             return false;
         }
 
 
-
+        /// <summary>
+        /// obtiene un produto de la lista
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>producto</returns>
         public static Producto ObtenerProductoByID(int id)
         {
             List<Producto> auxList = PetShop.Producto;
@@ -304,9 +364,13 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// elimina el producto de la lista
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns>lista actualizada</returns>
         public static List<Producto> ItemProductUpdate(Producto producto)
         {
-
             foreach (var item in PetShop.ObtenerPorductos())
             {
                 if (producto.Codigo == item.Codigo)
@@ -320,12 +384,21 @@ namespace Entidades
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>obtiene la lista de prodcutos</returns>
         public static List<Producto> ObtenerPorductos()
         {
             return listaProductos;
         }
 
+
+        /// <summary>
+        /// Eliminar el producto
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns>true si pudo eliminar, false si no</returns>
         public static bool EliminarProducto(Producto producto)
         {
             List<Producto> auxList = PetShop.Producto;
@@ -340,6 +413,8 @@ namespace Entidades
             return false;
         }
 
+
+        //
         public static bool EliminarUsuario(Usuario usuario)
         {
             Dictionary<string, Usuario> auxList = PetShop.Usuario;
@@ -452,7 +527,7 @@ namespace Entidades
         }
 
 
- 
+
 
 
     }

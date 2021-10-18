@@ -133,5 +133,47 @@ namespace PetShopApp
                 return myCp;
             }
         }
+
+
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            rtxTicket.BackColor = this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblBlackTheme.Text = "Vision Black";
+            rtxTicket.BackColor = Color.Black;
+
+
+        }
+
+
+   
+
+
+        private void FormFactura_Load(object sender, EventArgs e)
+        {
+
+            if (ManejadorDeForms.DarkMode)
+            {
+                ApagarDarkMode();
+            }
+        }
+
+        private void lblBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+
+            if (ManejadorDeForms.DarkMode)
+            {
+                this.BackColor = Color.Black;
+                rtxTicket.BackColor = Color.Black;
+                lblBlackTheme.Text = "Vision White";
+                rtxTicket.BackColor = Color.White;
+
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
     }
 }

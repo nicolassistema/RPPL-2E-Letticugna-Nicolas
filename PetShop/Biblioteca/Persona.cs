@@ -13,7 +13,9 @@ namespace Entidades
         #endregion
 
         #region "Constructor"
-
+        /// <summary>
+        /// Constructor con parámetros de la clase Persona.
+        /// </summary>
         public Persona()
         {
             this.Cuit = String.Empty;
@@ -21,6 +23,12 @@ namespace Entidades
             this.Apellido = String.Empty;
         }
 
+        /// <summary>
+        /// Constructor con parámetros de la clase Persona.
+        /// </summary>
+        /// <param name="cuit"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
         public Persona(string cuit, string nombre, string apellido)
         {
             this.Nombre = nombre;
@@ -69,19 +77,11 @@ namespace Entidades
         #endregion
 
         #region "utils"
+
         /// <summary>
-        /// Mostrar el objeto
+        /// Sobre carga de mostrar
         /// </summary>
-        /// <returns>Mostrar el objeto</returns>
-        //public override string ToString()
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append($"{this.Apellido} |");
-        //    sb.Append($"{this.Nombre} |");
-
-        //    return sb.ToString();
-        //}
-
+        /// <returns></returns>
         public virtual string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

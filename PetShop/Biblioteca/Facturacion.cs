@@ -13,17 +13,29 @@ namespace Entidades
         double montoTotal;
         List<Venta> listaVenta;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase Facturacion.
+        /// </summary>
         public Facturacion()
         {
 
         }
 
+        /// <summary>
+        /// Constructor con parámetros de la clase Facturacion.
+        /// </summary>
+        /// <param name="montoTotal"></param>
         public Facturacion(double montoTotal) : this()
         {
             this.fecha = DateTime.Now;
             this.montoTotal = montoTotal;
         }
 
+        /// <summary>
+        /// Constructor sin parámetros de la clase Facturacion.
+        /// </summary>
+        /// <param name="listaVenta"></param>
         public Facturacion(List<Venta> listaVenta) : this()
         {
             this.fecha = DateTime.Now;
@@ -75,17 +87,20 @@ namespace Entidades
             return new Facturacion(acum);
         }
 
+
+
+        /// <summary>
+        /// Sobre carga de ToString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-
             Facturacion facturacion = new Facturacion(((Facturacion)listaVenta).montoTotal);
             string fechaActual = (facturacion.Fecha).ToString("d", CultureInfo.CreateSpecificCulture("es-ES"));
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Fecha: {fechaActual}");
             sb.AppendLine($"Facturación del dia: ${string.Format("{0:f2}", facturacion.MontoTotal)}");
 
-
-           
             return sb.ToString();
         }
 

@@ -93,5 +93,46 @@ namespace PetShopApp
             }
         }
 
+
+
+
+
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblNombreUsuario.ForeColor = Color.Black;
+            lblFecha.ForeColor = Color.Black;
+            lblTimer.ForeColor = Color.Black;
+            lblVisionOscura.Text = "Visiion Black";
+
+        }
+
+
+        private void frmAdministracion_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                ApagarDarkMode();
+            }
+        }
+
+        private void lblVisionOscura_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+
+            if (ManejadorDeForms.DarkMode)
+            {
+                this.BackColor = Color.Black;
+                lblNombreUsuario.ForeColor = Color.White;
+                lblFecha.ForeColor = Color.White;
+                lblTimer.ForeColor = Color.White;
+                lblVisionOscura.Text = "Visiion White";
+                
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
     }
 }

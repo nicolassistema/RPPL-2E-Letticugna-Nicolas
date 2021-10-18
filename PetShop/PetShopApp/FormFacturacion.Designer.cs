@@ -35,6 +35,7 @@ namespace PetShopApp
             this.lblCerrarSesion = new System.Windows.Forms.LinkLabel();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
+            this.lblVisionOscura = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblNombreUsuario
@@ -91,11 +92,24 @@ namespace PetShopApp
             this.lblTimer.Text = "Timer";
             this.lblTimer.Visible = false;
             // 
+            // lblVisionOscura
+            // 
+            this.lblVisionOscura.AutoSize = true;
+            this.lblVisionOscura.Location = new System.Drawing.Point(286, 9);
+            this.lblVisionOscura.Name = "lblVisionOscura";
+            this.lblVisionOscura.Size = new System.Drawing.Size(79, 15);
+            this.lblVisionOscura.TabIndex = 9;
+            this.lblVisionOscura.TabStop = true;
+            this.lblVisionOscura.Text = "Vision Oscura";
+            this.lblVisionOscura.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblVisionOscura_LinkClicked);
+            // 
             // frmFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(633, 223);
+            this.Controls.Add(this.lblVisionOscura);
             this.Controls.Add(this.lblTimer);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblCerrarSesion);
@@ -119,5 +133,6 @@ namespace PetShopApp
         private System.Windows.Forms.LinkLabel lblCerrarSesion;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.LinkLabel lblVisionOscura;
     }
 }

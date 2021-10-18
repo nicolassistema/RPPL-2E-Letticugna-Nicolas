@@ -33,11 +33,13 @@ namespace PetShopApp
             this.rtxTicket = new System.Windows.Forms.RichTextBox();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblBlackTheme = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // rtxTicket
             // 
-            this.rtxTicket.Location = new System.Drawing.Point(12, 12);
+            this.rtxTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            this.rtxTicket.Location = new System.Drawing.Point(12, 45);
             this.rtxTicket.Name = "rtxTicket";
             this.rtxTicket.Size = new System.Drawing.Size(447, 441);
             this.rtxTicket.TabIndex = 0;
@@ -46,7 +48,7 @@ namespace PetShopApp
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnImprimir.Location = new System.Drawing.Point(12, 459);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 492);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(216, 110);
             this.btnImprimir.TabIndex = 1;
@@ -57,7 +59,7 @@ namespace PetShopApp
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalir.Location = new System.Drawing.Point(234, 459);
+            this.btnSalir.Location = new System.Drawing.Point(234, 492);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(225, 110);
             this.btnSalir.TabIndex = 2;
@@ -65,11 +67,24 @@ namespace PetShopApp
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // lblBlackTheme
+            // 
+            this.lblBlackTheme.AutoSize = true;
+            this.lblBlackTheme.Location = new System.Drawing.Point(361, 9);
+            this.lblBlackTheme.Name = "lblBlackTheme";
+            this.lblBlackTheme.Size = new System.Drawing.Size(74, 15);
+            this.lblBlackTheme.TabIndex = 3;
+            this.lblBlackTheme.TabStop = true;
+            this.lblBlackTheme.Text = "Black Theme";
+            this.lblBlackTheme.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBlackTheme_LinkClicked);
+            // 
             // FormFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 581);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            this.ClientSize = new System.Drawing.Size(473, 610);
+            this.Controls.Add(this.lblBlackTheme);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.rtxTicket);
@@ -80,7 +95,9 @@ namespace PetShopApp
             this.Name = "FormFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Factura";
+            this.Load += new System.EventHandler(this.FormFactura_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +106,6 @@ namespace PetShopApp
         private System.Windows.Forms.RichTextBox rtxTicket;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.LinkLabel lblBlackTheme;
     }
 }
