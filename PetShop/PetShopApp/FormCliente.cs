@@ -14,6 +14,7 @@ namespace PetShopApp
     public partial class frmCliente : Form
     {
         Usuario userForm;
+        private const int CP_NOCLOSE_BUTTON = 0x200;
 
         public frmCliente()
         {
@@ -197,5 +198,16 @@ namespace PetShopApp
             dvgListaClientes.AllowUserToDeleteRows = false;
             dvgListaClientes.AllowUserToAddRows = false;
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
     }
 }

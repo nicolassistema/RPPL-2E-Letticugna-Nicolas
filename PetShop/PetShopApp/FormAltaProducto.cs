@@ -15,6 +15,7 @@ namespace PetShopApp
 {
     public partial class FormAltaProducto : Form
     {
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
         Producto producto;
         formInventario inventario;
@@ -376,6 +377,17 @@ namespace PetShopApp
             }
         }
 
-    
+
+
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
     }
 }

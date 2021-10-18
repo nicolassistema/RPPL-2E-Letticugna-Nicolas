@@ -14,6 +14,7 @@ namespace PetShopApp
     public partial class frmAdministracion : Form
     {
         Usuario userForm;
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         public frmAdministracion()
         {
             InitializeComponent();
@@ -81,5 +82,16 @@ namespace PetShopApp
             inventario.ShowDialog();
             this.Close();
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
     }
 }

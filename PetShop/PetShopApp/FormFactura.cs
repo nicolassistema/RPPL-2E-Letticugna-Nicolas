@@ -14,6 +14,7 @@ namespace PetShopApp
 {
     public partial class FormFactura : Form
     {
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         Venta venta;
 
         public FormFactura()
@@ -121,6 +122,16 @@ namespace PetShopApp
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             ImprimirEnTxt();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace PetShopApp
 {
     public partial class FormEmpleado : Form
     {
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
 
         public FormEmpleado()
@@ -310,6 +311,16 @@ namespace PetShopApp
         {
             dgvListaEmpleados.AllowUserToDeleteRows = false;
             dgvListaEmpleados.AllowUserToAddRows = false;
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }

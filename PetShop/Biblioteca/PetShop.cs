@@ -6,6 +6,8 @@ namespace Entidades
 {
     public static class PetShop
     {
+
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         static List<Usuario> listaUsuarios;
         public static List<Producto> listaProductos;
         public static Dictionary<string, Usuario> listaUsuariosClaveValor;
@@ -383,8 +385,7 @@ namespace Entidades
         }
 
 
-
-    
+ 
 
 
     }

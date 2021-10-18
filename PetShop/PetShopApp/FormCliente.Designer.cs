@@ -224,6 +224,8 @@ namespace PetShopApp
             this.Controls.Add(this.lblVolver);
             this.Controls.Add(this.lblNombreUsuario);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";

@@ -21,3 +21,4 @@ C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\Biblioteca\obj\Debug\net5.0\En
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\Biblioteca\obj\Debug\net5.0\Entidades.dll
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\Biblioteca\obj\Debug\net5.0\ref\Entidades.dll
 C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\Biblioteca\obj\Debug\net5.0\Entidades.pdb
+C:\Users\Usuario\Desktop\RECUPERATORIO 2E\PetShop\Biblioteca\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache

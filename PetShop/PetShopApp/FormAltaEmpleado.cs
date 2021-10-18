@@ -13,6 +13,7 @@ namespace PetShopApp
 {
     public partial class frmAltaEmpleado : Form
     {
+        private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
 
         public frmAltaEmpleado()
@@ -158,5 +159,14 @@ namespace PetShopApp
             }
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
     }
 }
