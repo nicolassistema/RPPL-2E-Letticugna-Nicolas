@@ -51,43 +51,6 @@ namespace Entidades
         /// <param name="nombre"></param>
         /// <param name="descripcion"></param>
         /// <param name="precio"></param>
-        public Producto(string marca, string nombre, string descripcion, double precio) : this()
-        {
-
-            this.Codigo = autoIncremental++; // IdAutoIncremental();
-            this.marca = marca;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-            this.precio = precio;
-        }
-
-
-        /// <summary>
-        /// Constructor con parámetros de la clase Producto.
-        /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="nombre"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        public Producto(string marca, string nombre, string descripcion, int cantidad, double precio) : this()
-        {
-            this.Codigo = autoIncremental++;
-            this.marca = marca;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-            this.cantidad = cantidad;
-            this.precio = precio;
-        }
-
-
-        /// <summary>
-        /// Constructor con parámetros de la clase Producto.
-        /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="nombre"></param>
-        /// <param name="descripcion"></param>
-        /// <param name="precio"></param>
         /// <param name="kilogramos"></param>
         public Producto(string marca, string nombre, string descripcion, double precio, double kilogramos) : this()
         {
@@ -98,6 +61,7 @@ namespace Entidades
             this.precio = precio;
             this.kilogramos = kilogramos;
         }
+
 
         /// <summary>
         /// Constructor con parámetros de la clase Producto.
@@ -120,40 +84,6 @@ namespace Entidades
         }
 
 
-        /// <summary>
-        /// Constructor con parámetros de la clase Producto.
-        /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="nombre"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        public Producto(string marca, string nombre, int cantidad, double precio) : this()
-        {
-            this.Codigo = autoIncremental++;
-            this.nombre = nombre;
-            this.marca = marca;
-            this.cantidad = cantidad;
-            this.precio = precio;
-        }
-
-
-        /// <summary>
-        /// Constructor con parámetros de la clase Producto.
-        /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="nombre"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        /// <param name="descripcion"></param>
-        public Producto(string marca, string nombre, int cantidad, double precio, string descripcion) : this()
-        {
-            this.Codigo = IdAutoIncremental();
-            this.nombre = nombre;
-            this.marca = marca;
-            this.cantidad = cantidad;
-            this.precio = precio;
-            this.descripcion = descripcion;
-        }
         #endregion
 
         #region "Propiedades"

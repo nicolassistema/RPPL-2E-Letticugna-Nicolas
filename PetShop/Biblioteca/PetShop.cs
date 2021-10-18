@@ -8,7 +8,7 @@ namespace Entidades
     {
 
         private const int CP_NOCLOSE_BUTTON = 0x200;
-        static List<Usuario> listaUsuarios;
+
         public static List<Producto> listaProductos;
         public static Dictionary<string, Usuario> listaUsuariosClaveValor;
         public static Stack<Producto> listaDescuentos;
@@ -18,7 +18,6 @@ namespace Entidades
         public static List<Venta> listaVentas;
         public static List<Facturacion> listaFacturas;
         static Usuario usuario;
-        static Venta venta;
 
 
         /// <summary>
@@ -370,26 +369,6 @@ namespace Entidades
 
 
         /// <summary>
-        /// elimina el producto de la lista
-        /// </summary>
-        /// <param name="producto"></param>
-        /// <returns>lista actualizada</returns>
-        public static List<Producto> ItemProductUpdate(Producto producto)
-        {
-            foreach (var item in PetShop.ObtenerPorductos())
-            {
-                if (producto.Codigo == item.Codigo)
-                {
-                    PetShop.EliminarProducto(item);
-                    PetShop.AddProducto(producto);
-                    break;
-                }
-            }
-            return PetShop.ObtenerPorductos();
-        }
-
-
-        /// <summary>
         /// 
         /// </summary>
         /// <returns>obtiene la lista de prodcutos</returns>
@@ -464,6 +443,7 @@ namespace Entidades
         {
             listaClientes.Clear();
         }
+
 
         /// <summary>
         /// Limpiar la lista de productos y la vuelva a cargar con la lista pasada por parametro

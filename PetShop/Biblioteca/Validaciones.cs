@@ -94,13 +94,12 @@ namespace Entidades
         /// <returns>true o false</returns>
         public static bool ValidateNumberCuit(string number)
         {
-            //Quito los guiones, el cuit resultante debe tener 11 caracteres.
             number = number.Trim();
             number = number.Replace("-", string.Empty);
-
             if (number.Length != 11)
+            {
                 return false;
-
+            }
             return ValidaCuit(number);
         }
 
@@ -219,31 +218,6 @@ namespace Entidades
                 return false;
             }
             return true;
-        }
-
-
-        /// <summary>
-        /// valido que no tenga mas de punto, un punto y una coma, una coma y un punto
-        /// </summary>
-        /// <param name="strInt"></param>
-        /// <returns>Devuelvo true si tiene mas de punto, un punto y una coma, una coma y un punto, false sino </returns>
-        public static bool ValidaPuntoComa(string strInt)
-        {
-            string str = strInt;
-            char[] arr = str.ToCharArray();
-            int contador = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] == '.' || arr[i] == ',')
-                {
-                    contador++;
-                    if (contador > 1)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
 
 

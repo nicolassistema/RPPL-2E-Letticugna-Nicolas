@@ -33,24 +33,6 @@ namespace Entidades
         /// <param name="monto"></param>
         /// <param name="productos"></param>
         /// <param name="montoEnvio"></param>
-        public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio) : this()
-        {
-            this.NumeroFactura = IdFacturacionAutoIncremental();
-            this.Cliente = cliente;
-            this.MontoTotal = monto;
-            this.Usuario = usuario;
-            this.productos = productos;
-            this.montoEnvio = montoEnvio;
-        }
-
-        /// <summary>
-        /// Constructor con parámetros de la clase Venta.
-        /// </summary>
-        /// <param name="usuario"></param>
-        /// <param name="cliente"></param>
-        /// <param name="monto"></param>
-        /// <param name="productos"></param>
-        /// <param name="montoEnvio"></param>
         /// <param name="montoTipoEnvio"></param>
         public Venta(Usuario usuario, Cliente cliente, double monto, List<Producto> productos, double montoEnvio, double montoTipoEnvio) : this()
         {
@@ -95,6 +77,7 @@ namespace Entidades
             }
         }
 
+
         /// <summary>
         /// propiedad MontoEnvio
         /// </summary>
@@ -109,7 +92,6 @@ namespace Entidades
                 this.montoEnvio = value;
             }
         }
-
 
 
         /// <summary>
@@ -193,6 +175,7 @@ namespace Entidades
             return false;
         }
 
+
         /// <summary>
         /// Verifica que el producto NO se encuentre en la lista de ventas
         /// </summary>
@@ -203,6 +186,7 @@ namespace Entidades
         {
             return !(productos == producto);
         }
+
 
         public static List<Venta> operator +(List<Venta> ventas, Venta venta)
         {
