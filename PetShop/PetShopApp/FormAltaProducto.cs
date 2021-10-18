@@ -431,5 +431,77 @@ namespace PetShopApp
                 return myCp;
             }
         }
+
+
+
+
+
+        /// <summary>
+        /// Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblMarca.ForeColor = Color.Black;
+            lblNombre.ForeColor = Color.Black;
+            lblDescrip.ForeColor = Color.Black;
+            lblStock.ForeColor = Color.Black;
+            lblPrecio.ForeColor = Color.Black;
+            lblKg.ForeColor = Color.Black;
+            lblTipoProd.ForeColor = Color.Black;
+            lblDetalleTipoProd.ForeColor = Color.Black;
+            lblDarkMode.Text = "DarkMode ON";
+
+        }
+
+
+        /// <summary>
+        ///  Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblMarca.ForeColor = Color.White;
+            lblNombre.ForeColor = Color.White;
+            lblDescrip.ForeColor = Color.White;
+            lblStock.ForeColor = Color.White;
+            lblPrecio.ForeColor = Color.White;
+            lblKg.ForeColor = Color.White;
+            lblTipoProd.ForeColor = Color.White;
+            lblDetalleTipoProd.ForeColor = Color.White;
+            lblDarkMode.Text = "DarkMode OFF";
+        }
+
+
+      
+
+
+
+        private void lblDarkMode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+        private void FormAltaProducto_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+
     }
 }

@@ -210,7 +210,7 @@ namespace PetShopApp
             // 
             this.lblTimer.AutoSize = true;
             this.lblTimer.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTimer.Location = new System.Drawing.Point(215, 200);
+            this.lblTimer.Location = new System.Drawing.Point(160, 212);
             this.lblTimer.Name = "lblTimer";
             this.lblTimer.Size = new System.Drawing.Size(158, 54);
             this.lblTimer.TabIndex = 10;

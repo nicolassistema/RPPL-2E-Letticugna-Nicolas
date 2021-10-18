@@ -269,5 +269,76 @@ namespace PetShopApp
                 lblValidPerfil.ForeColor = Color.Green;
             }
         }
+
+
+        /// <summary>
+        /// Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblCuit.ForeColor = Color.Black;
+            lblNombre.ForeColor = Color.Black;
+            lblApellido.ForeColor = Color.Black;
+            lblUsuario.ForeColor = Color.Black;
+            lblPassword.ForeColor = Color.Black;
+            lblPerfil.ForeColor = Color.Black;
+            lblDarkMode.Text = "DarkMode ON";
+
+        }
+
+
+        /// <summary>
+        ///  Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblCuit.ForeColor = Color.White;
+            lblNombre.ForeColor = Color.White;
+            lblApellido.ForeColor = Color.White;
+            lblUsuario.ForeColor = Color.White;
+            lblPassword.ForeColor = Color.White;
+            lblPerfil.ForeColor = Color.White;
+            lblDarkMode.Text = "DarkMode OFF";
+        }
+
+
+        private void lblDarkMode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+
+        private void frmAltaEmpleado_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+
+
+     
+
+
+    
+   
+
+
+
     }
 }

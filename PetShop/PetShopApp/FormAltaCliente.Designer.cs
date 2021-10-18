@@ -45,6 +45,7 @@ namespace PetShopApp
             this.lbkClienteNuevo = new System.Windows.Forms.LinkLabel();
             this.lbkClienteExistente = new System.Windows.Forms.LinkLabel();
             this.pnlAutoCargaDatos = new System.Windows.Forms.Panel();
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
             this.pnlAutoCargaDatos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,11 +199,24 @@ namespace PetShopApp
             this.pnlAutoCargaDatos.Size = new System.Drawing.Size(161, 37);
             this.pnlAutoCargaDatos.TabIndex = 14;
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(134, 9);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 15;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked_1);
+            // 
             // FormAltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(237, 266);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.pnlAutoCargaDatos);
             this.Controls.Add(this.lblValidApellido);
             this.Controls.Add(this.lblValidNombre);
@@ -246,5 +260,6 @@ namespace PetShopApp
         private System.Windows.Forms.LinkLabel lbkClienteNuevo;
         private System.Windows.Forms.LinkLabel lbkClienteExistente;
         private System.Windows.Forms.Panel pnlAutoCargaDatos;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
     }
 }

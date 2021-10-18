@@ -59,6 +59,7 @@ namespace PetShopApp
             this.lblValidTipoProd = new System.Windows.Forms.Label();
             this.lblValidDetalleProd = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -332,11 +333,24 @@ namespace PetShopApp
             this.lblValidDetalleProd.TabIndex = 26;
             this.lblValidDetalleProd.Text = "*";
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(181, 9);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 27;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked);
+            // 
             // FormAltaProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(309, 530);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.lblValidDetalleProd);
             this.Controls.Add(this.lblValidTipoProd);
             this.Controls.Add(this.lblValidKg);
@@ -370,6 +384,7 @@ namespace PetShopApp
             this.Name = "FormAltaProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Producto";
+            this.Load += new System.EventHandler(this.FormAltaProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +420,6 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblValidTipoProd;
         private System.Windows.Forms.Label lblValidDetalleProd;
         private System.Windows.Forms.ToolTip ttMensaje;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
     }
 }

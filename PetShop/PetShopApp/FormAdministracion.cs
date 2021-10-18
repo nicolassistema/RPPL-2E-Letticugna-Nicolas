@@ -128,30 +128,6 @@ namespace PetShopApp
         }
 
 
-        private void lbkBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
-            if (ManejadorDeForms.DarkMode)
-            {
-                this.BackColor = Color.Black;
-                lblTimer.ForeColor = Color.White;
-                btnClientes.BackColor = Color.Black;
-                btnVender.BackColor = Color.Black;
-                btnInventario.BackColor = Color.Black;
-                btnEmpleados.BackColor = Color.Black;
-                btnFacturacion.BackColor = Color.Black;
-                pnlLogo.BackColor = Color.Black;
-                pnlMenu.BackColor = Color.Black;
-                this.pnlLogoDos.BackColor = Color.Black; ;
-                lbkBlackTheme.Text = "Visiion Black";
-            }
-            else
-            {
-                ApagarDarkMode();
-            }
-        }
-
-
         /// <summary>
         /// Setea color de dark mode en los objetos del formulario
         /// </summary>
@@ -166,18 +142,55 @@ namespace PetShopApp
             btnEmpleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
             pnlLogo.BackColor = this.pnlLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(40)))), ((int)(((byte)(100)))));
             pnlMenu.BackColor = this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
-
+            lbkBlackTheme.Text = "DarkMode ON";
             this.pnlLogoDos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            lbkBlackTheme.Text = "Visiion White";
         }
 
+
+        /// <summary>
+        ///  Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblTimer.ForeColor = Color.White;
+            btnClientes.BackColor = Color.Black;
+            btnVender.BackColor = Color.Black;
+            btnInventario.BackColor = Color.Black;
+            btnEmpleados.BackColor = Color.Black;
+            btnFacturacion.BackColor = Color.Black;
+            pnlLogo.BackColor = Color.Black;
+            pnlMenu.BackColor = Color.Black;
+            this.pnlLogoDos.BackColor = Color.Black; ;
+            lbkBlackTheme.Text = "DarkMode OFF";
+        }
+
+
+        private void lbkBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+     
 
         private void frmAdministracion_Load(object sender, EventArgs e)
         {
             if (ManejadorDeForms.DarkMode)
             {
+                PrenderDarkMode();
+            }
+            else
+            {
                 ApagarDarkMode();
             }
         }
+
     }
 }

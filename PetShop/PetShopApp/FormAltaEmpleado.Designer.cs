@@ -53,6 +53,7 @@ namespace PetShopApp
             this.lblValidPerfil = new System.Windows.Forms.Label();
             this.lbkEmpleadoExistente = new System.Windows.Forms.LinkLabel();
             this.lbkEmpleadoInexistente = new System.Windows.Forms.LinkLabel();
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txtCuit
@@ -289,11 +290,24 @@ namespace PetShopApp
             this.lbkEmpleadoInexistente.Text = "Empleado Inexistemte";
             this.lbkEmpleadoInexistente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkEmpleadoInexistente_LinkClicked);
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(172, 9);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 23;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked);
+            // 
             // frmAltaEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(298, 444);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.lbkEmpleadoInexistente);
             this.Controls.Add(this.lbkEmpleadoExistente);
             this.Controls.Add(this.lblValidPerfil);
@@ -323,6 +337,7 @@ namespace PetShopApp
             this.Name = "frmAltaEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Empleado";
+            this.Load += new System.EventHandler(this.frmAltaEmpleado_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +368,6 @@ namespace PetShopApp
         private System.Windows.Forms.Label lblValidPerfil;
         private System.Windows.Forms.LinkLabel lbkEmpleadoExistente;
         private System.Windows.Forms.LinkLabel lbkEmpleadoInexistente;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
     }
 }

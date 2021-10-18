@@ -222,5 +222,54 @@ namespace PetShopApp
             }
         }
 
+
+
+        /// <summary>
+        /// Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblNombreUsuario.ForeColor = Color.Black;
+            lblDarkMode.Text = "DarkMode ON";
+   
+        }
+
+
+        /// <summary>
+        ///  Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblNombreUsuario.ForeColor = Color.White;
+            lblDarkMode.Text = "DarkMode OFF";
+        }
+
+
+        private void lblDarkMode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+        private void frmCliente_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
     }
 }

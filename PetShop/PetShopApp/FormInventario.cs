@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using System.IO;
+using System.Media;
+
 
 namespace PetShopApp
 {
@@ -17,6 +19,8 @@ namespace PetShopApp
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
+        SoundPlayer sonido;
+
 
 
         /// <summary>
@@ -89,7 +93,7 @@ namespace PetShopApp
             }
         }
 
-      
+
         /// <summary>
         /// Restartear datagrid y vuelve a cargarlo
         /// </summary>
@@ -429,6 +433,121 @@ namespace PetShopApp
                 return myCp;
             }
         }
+
+
+        /// <summary>
+        /// Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblNombreUsuario.ForeColor = Color.Black;
+            lblDarkMode.Text = "DarkMode ON";
+
+        }
+
+
+        /// <summary>
+        ///  Setea color de dark mode en los objetos del formulario
+        /// </summary>
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblNombreUsuario.ForeColor = Color.White;
+            lblDarkMode.Text = "DarkMode OFF";
+        }
+
+
+        private void lblDarkMode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+
+        private void formInventario_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+
+        private void Sonido()
+        {
+            try
+            {
+                sonido = new SoundPlayer(Application.StartupPath + @"sonidito.wav");
+                sonido.Play();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Guarda el inventario de productos en un archivo csv
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            string dirParameter = AppDomain.CurrentDomain.BaseDirectory + @"\file.csv";
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "(*.csv)|*.csv";
+            saveFileDialog1.FileName = "Inventario_Fecha_" + DateTime.Today.ToString("dd-MM-yyyy");
+            try
+            {
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(saveFileDialog1.FileName))
+                    {
+                        string csv = saveFileDialog1.FileName;
+                        StreamWriter tesxtoAGuardar = File.CreateText(csv);
+                        tesxtoAGuardar.WriteLine($"MARCA;NOMBRE;DESCRIPCION;STOCK;PRECIO;KG;TIPO PRODUCTO; TIPO DETALLE PRODUCTO");
+                        foreach (var item in PetShop.ObtenerPorductos())
+                        {
+                            tesxtoAGuardar.WriteLine($"{item.Marca};{item.Nombre};{item.Descripcion};{item.Cantidad};{item.Precio};{item.Kilogramos};{Validaciones.ObtenerNombreObjeto(item)};{Validaciones.ObtenerValorEnumeradoDeObjeto(item)}");
+                        }
+                        Sonido();
+                        tesxtoAGuardar.Close();
+                    }
+                    else
+                    {
+                        string csv = saveFileDialog1.FileName;
+                        StreamWriter tesxtoAGuardar = File.CreateText(csv);
+                        tesxtoAGuardar.WriteLine($"MARCA;NOMBRE;DESCRIPCION;STOCK;PRECIO;KG;TIPO PRODUCTO; TIPO DETALLE PRODUCTO");
+                        foreach (var item in PetShop.ObtenerPorductos())
+                        {
+                            tesxtoAGuardar.WriteLine($"{item.Marca};{item.Nombre};{item.Descripcion};{item.Cantidad};{item.Precio};{item.Kilogramos};{Validaciones.ObtenerNombreObjeto(item)};{Validaciones.ObtenerValorEnumeradoDeObjeto(item)}");
+                        }
+                        Sonido();
+                        tesxtoAGuardar.Close();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
 
     }
 }

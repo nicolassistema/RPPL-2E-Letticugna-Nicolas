@@ -52,6 +52,8 @@ namespace PetShopApp
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnConfirmModificacion = new System.Windows.Forms.Button();
             this.btnCancelarModificacion = new System.Windows.Forms.Button();
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
+            this.btnExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +142,7 @@ namespace PetShopApp
             this.dvgProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dvgProductos.RowHeadersVisible = false;
             this.dvgProductos.RowTemplate.Height = 25;
-            this.dvgProductos.Size = new System.Drawing.Size(702, 283);
+            this.dvgProductos.Size = new System.Drawing.Size(702, 303);
             this.dvgProductos.TabIndex = 6;
             this.dvgProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellContentClick);
             this.dvgProductos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgProductos_CellContentDoubleClick);
@@ -247,11 +249,35 @@ namespace PetShopApp
             this.btnCancelarModificacion.UseVisualStyleBackColor = true;
             this.btnCancelarModificacion.Click += new System.EventHandler(this.btnCancelarModificacion_Click);
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(459, 9);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 11;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(12, 340);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 55);
+            this.btnExportar.TabIndex = 12;
+            this.btnExportar.Text = "Exportar Inventario";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // formInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 388);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            this.ClientSize = new System.Drawing.Size(813, 405);
+            this.Controls.Add(this.btnExportar);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.btnCancelarModificacion);
             this.Controls.Add(this.btnConfirmModificacion);
             this.Controls.Add(this.pnlBuscar);
@@ -267,6 +293,7 @@ namespace PetShopApp
             this.Name = "formInventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
+            this.Load += new System.EventHandler(this.formInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgProductos)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
@@ -297,5 +324,7 @@ namespace PetShopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_Detalle_Producto;
         private System.Windows.Forms.Button btnCancelarModificacion;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

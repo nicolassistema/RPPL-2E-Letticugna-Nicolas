@@ -50,6 +50,7 @@ namespace PetShopApp
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pnlMenuIzquiedo = new System.Windows.Forms.Panel();
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEmpleados)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.pnlMenuIzquiedo.SuspendLayout();
@@ -230,11 +231,24 @@ namespace PetShopApp
             this.pnlMenuIzquiedo.Size = new System.Drawing.Size(85, 278);
             this.pnlMenuIzquiedo.TabIndex = 8;
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(347, 9);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 9;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked_1);
+            // 
             // FormEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(716, 380);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.pnlMenuIzquiedo);
             this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.dgvListaEmpleados);
@@ -247,6 +261,7 @@ namespace PetShopApp
             this.Name = "FormEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleado";
+            this.Load += new System.EventHandler(this.FormEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaEmpleados)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
@@ -276,5 +291,6 @@ namespace PetShopApp
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel pnlMenuIzquiedo;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
     }
 }

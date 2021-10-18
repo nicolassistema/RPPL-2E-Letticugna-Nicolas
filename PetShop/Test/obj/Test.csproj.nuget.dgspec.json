@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Test\\Test.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\Entidades.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Test\\Test.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Test\\Test.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Test\\Test.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Test\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\Desktop\\RECUPERATORIO 2E\\PetShop\\Biblioteca\\Entidades.csproj"
+              "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Usuario\\Desktop\\Nueva carpeta (2)\\PetShop\\Biblioteca\\Entidades.csproj"
               }
             }
           }

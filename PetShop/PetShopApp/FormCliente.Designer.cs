@@ -48,6 +48,7 @@ namespace PetShopApp
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.pnlMenuIzquierdo = new System.Windows.Forms.Panel();
+            this.lblDarkMode = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dvgListaClientes)).BeginInit();
             this.pnlBuscar.SuspendLayout();
             this.pnlMenuIzquierdo.SuspendLayout();
@@ -212,11 +213,24 @@ namespace PetShopApp
             this.pnlMenuIzquierdo.Size = new System.Drawing.Size(79, 176);
             this.pnlMenuIzquierdo.TabIndex = 8;
             // 
+            // lblDarkMode
+            // 
+            this.lblDarkMode.AutoSize = true;
+            this.lblDarkMode.Location = new System.Drawing.Point(220, 10);
+            this.lblDarkMode.Name = "lblDarkMode";
+            this.lblDarkMode.Size = new System.Drawing.Size(62, 15);
+            this.lblDarkMode.TabIndex = 9;
+            this.lblDarkMode.TabStop = true;
+            this.lblDarkMode.Text = "DarkMode";
+            this.lblDarkMode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked);
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(554, 276);
+            this.Controls.Add(this.lblDarkMode);
             this.Controls.Add(this.pnlMenuIzquierdo);
             this.Controls.Add(this.pnlBuscar);
             this.Controls.Add(this.dvgListaClientes);
@@ -229,6 +243,7 @@ namespace PetShopApp
             this.Name = "frmCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cliente";
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgListaClientes)).EndInit();
             this.pnlBuscar.ResumeLayout(false);
             this.pnlBuscar.PerformLayout();
@@ -255,5 +270,6 @@ namespace PetShopApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.Panel pnlMenuIzquierdo;
+        private System.Windows.Forms.LinkLabel lblDarkMode;
     }
 }

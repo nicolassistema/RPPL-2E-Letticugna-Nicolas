@@ -198,7 +198,7 @@ namespace PetShopApp
                             {
                                 btnLimpiarSelectProd.Enabled = false;
                             }
-                            ActivDesactivPnlBuscarCliente(false);
+
                             btnCancelaCompra.Enabled = true;
                             ActivDesactivPnlCompra(true);
                             lblMensajeCliente.Visible = false;
@@ -208,6 +208,7 @@ namespace PetShopApp
                             lblNombre.Visible = true;
                             lblApellido.Text = item.Apellido.ToString();
                             lblApellido.Visible = true;
+                            ActivDesactivPnlBuscarCliente(false);
                         }
                     }
                 }
@@ -252,13 +253,35 @@ namespace PetShopApp
         {
             if (estado)
             {
-                pnlBuscarCliente.BackColor = Color.LightYellow;
-                this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    this.pnlBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+                }
+                else
+                {
+                    pnlBuscarCliente.BackColor = Color.LightYellow;
+                    this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+                }
+
             }
             else
             {
-                this.pnlBuscarCliente.BackColor = System.Drawing.SystemColors.Control;
-                this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    this.pnlBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+
+                }
+                else
+                {
+                    this.pnlBuscarCliente.BackColor = System.Drawing.SystemColors.Control;
+                    this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+
+                }
             }
         }
 
@@ -271,13 +294,29 @@ namespace PetShopApp
         {
             if (estado)
             {
-                pnlCompra.BackColor = Color.LightYellow;
-                this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    pnlCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                }
+                else
+                {
+                    pnlCompra.BackColor = Color.LightYellow;
+                    this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                }
             }
             else
             {
-                this.pnlCompra.BackColor = System.Drawing.SystemColors.Control;
-                this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    pnlCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                }
+                else
+                {
+                    pnlCompra.BackColor = Color.LightYellow;
+                    this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                }
             }
         }
 
@@ -290,13 +329,30 @@ namespace PetShopApp
         {
             if (estado)
             {
-                pnlVenta.BackColor = Color.LightYellow;
-                this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    pnlVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                }
+                else
+                {
+                    pnlVenta.BackColor = Color.LightYellow;
+                    this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                }
             }
             else
             {
-                this.pnlVenta.BackColor = System.Drawing.SystemColors.Control;
-                this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                if (ManejadorDeForms.DarkMode)
+                {
+                    pnlVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+                    this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                }
+                else
+                {
+                    pnlVenta.BackColor = Color.LightYellow;
+                    this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                }
+                    
             }
         }
 
@@ -333,10 +389,14 @@ namespace PetShopApp
             }
             else
             {
+
                 pnlBuscarCliente.Enabled = false;
                 FocusPnlBuscarCliente(false);
             }
         }
+
+
+
 
 
         /// <summary>
@@ -501,7 +561,6 @@ namespace PetShopApp
                 lblTipoEnvio.Text = "Moto: $";
                 lblMontoTipoEnvio.Text = "100";
             }
-
             for (int i = 0; i < dgvListaProductos.RowCount; i++)
             {
                 if (idAux == Convert.ToInt32(dgvListaProductos.Rows[i].Cells[0].Value.ToString()))
@@ -549,7 +608,7 @@ namespace PetShopApp
                 total = double.Parse(lblMostrarTotal.Text.ToString());
                 montoTipoEnvio = double.Parse(lblMontoTipoEnvio.Text.ToString());
                 resultado = precioXCuadra + total + montoTipoEnvio;
-                lblMontoVta.Text = resultado.ToString();
+                lblMontoVta.Text = string.Format("{0:f2}", double.Parse(resultado.ToString()));
             }
         }
         private void btnCancelaCompra_Click(object sender, EventArgs e)
@@ -888,6 +947,58 @@ namespace PetShopApp
         private void lbkNoCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtCuit.Text = "20323206024";
+        }
+
+
+        private void ApagarDarkMode()
+        {
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
+            lblNombreUsuario.ForeColor = Color.Black;
+            lbkBlackTheme.Text = "DarkMode ON";
+            pnlBuscarCliente.BackColor = Color.LightYellow;
+            this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlCompra.BackColor = Color.LightYellow;
+            pnlVenta.BackColor = Color.LightYellow;
+            this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
+
+        private void PrenderDarkMode()
+        {
+            this.BackColor = Color.Black;
+            lblNombreUsuario.ForeColor = Color.White;
+            lbkBlackTheme.Text = "DarkMode OFF";
+            this.pnlBuscarCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+            pnlCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+            this.pnlCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pnlBuscarCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            pnlVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(117)))), ((int)(((byte)(33)))));
+            this.pnlVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
+
+
+        private void lblDarkMode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
+        }
+
+        private void FormVenta_Load(object sender, EventArgs e)
+        {
+            if (ManejadorDeForms.DarkMode)
+            {
+                PrenderDarkMode();
+            }
+            else
+            {
+                ApagarDarkMode();
+            }
         }
     }
 }

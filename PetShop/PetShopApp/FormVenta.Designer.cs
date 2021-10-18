@@ -104,6 +104,7 @@ namespace PetShopApp
             this.lblDescuento = new System.Windows.Forms.Button();
             this.lbkClienteExistente = new System.Windows.Forms.LinkLabel();
             this.lbkNoCliente = new System.Windows.Forms.LinkLabel();
+            this.lbkBlackTheme = new System.Windows.Forms.LinkLabel();
             this.pnlBuscarCliente.SuspendLayout();
             this.pnlCompra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaProdSelecc)).BeginInit();
@@ -120,7 +121,6 @@ namespace PetShopApp
             this.lblNombreUsuario.Size = new System.Drawing.Size(118, 15);
             this.lblNombreUsuario.TabIndex = 0;
             this.lblNombreUsuario.Text = "Nombre del Usuarios";
-
             // 
             // lblCerrarSesion
             // 
@@ -160,6 +160,7 @@ namespace PetShopApp
             this.pnlBuscarCliente.Controls.Add(this.lblNombre);
             this.pnlBuscarCliente.Controls.Add(this.lblCuit);
             this.pnlBuscarCliente.Controls.Add(this.txtCuit);
+            this.pnlBuscarCliente.ForeColor = System.Drawing.Color.Blue;
             this.pnlBuscarCliente.Location = new System.Drawing.Point(15, 38);
             this.pnlBuscarCliente.Name = "pnlBuscarCliente";
             this.pnlBuscarCliente.Size = new System.Drawing.Size(256, 174);
@@ -181,6 +182,7 @@ namespace PetShopApp
             // lblCuitIng
             // 
             this.lblCuitIng.AutoSize = true;
+            this.lblCuitIng.ForeColor = System.Drawing.Color.Blue;
             this.lblCuitIng.Location = new System.Drawing.Point(20, 48);
             this.lblCuitIng.Name = "lblCuitIng";
             this.lblCuitIng.Size = new System.Drawing.Size(29, 15);
@@ -200,6 +202,7 @@ namespace PetShopApp
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
+            this.lblApellido.ForeColor = System.Drawing.Color.Blue;
             this.lblApellido.Location = new System.Drawing.Point(18, 152);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Padding = new System.Windows.Forms.Padding(0, 0, 100, 0);
@@ -211,6 +214,7 @@ namespace PetShopApp
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+            this.lblNombre.ForeColor = System.Drawing.Color.Blue;
             this.lblNombre.Location = new System.Drawing.Point(18, 124);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Padding = new System.Windows.Forms.Padding(0, 0, 100, 0);
@@ -222,6 +226,7 @@ namespace PetShopApp
             // lblCuit
             // 
             this.lblCuit.AutoSize = true;
+            this.lblCuit.ForeColor = System.Drawing.Color.Blue;
             this.lblCuit.Location = new System.Drawing.Point(18, 93);
             this.lblCuit.Name = "lblCuit";
             this.lblCuit.Padding = new System.Windows.Forms.Padding(0, 0, 100, 0);
@@ -859,11 +864,24 @@ namespace PetShopApp
             this.lbkNoCliente.Text = "Auto Carga No Cliente";
             this.lbkNoCliente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbkNoCliente_LinkClicked);
             // 
+            // lbkBlackTheme
+            // 
+            this.lbkBlackTheme.AutoSize = true;
+            this.lbkBlackTheme.Location = new System.Drawing.Point(963, 9);
+            this.lbkBlackTheme.Name = "lbkBlackTheme";
+            this.lbkBlackTheme.Size = new System.Drawing.Size(70, 15);
+            this.lbkBlackTheme.TabIndex = 16;
+            this.lbkBlackTheme.TabStop = true;
+            this.lbkBlackTheme.Text = "Vision Black";
+            this.lbkBlackTheme.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblDarkMode_LinkClicked);
+            // 
             // FormVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(1324, 527);
+            this.Controls.Add(this.lbkBlackTheme);
             this.Controls.Add(this.lbkNoCliente);
             this.Controls.Add(this.lbkClienteExistente);
             this.Controls.Add(this.lblDescuento);
@@ -880,6 +898,7 @@ namespace PetShopApp
             this.Name = "FormVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";
+            this.Load += new System.EventHandler(this.FormVenta_Load);
             this.pnlBuscarCliente.ResumeLayout(false);
             this.pnlBuscarCliente.PerformLayout();
             this.pnlCompra.ResumeLayout(false);
@@ -966,5 +985,6 @@ namespace PetShopApp
         private System.Windows.Forms.Button lblDescuento;
         private System.Windows.Forms.LinkLabel lbkClienteExistente;
         private System.Windows.Forms.LinkLabel lbkNoCliente;
+        private System.Windows.Forms.LinkLabel lbkBlackTheme;
     }
 }
