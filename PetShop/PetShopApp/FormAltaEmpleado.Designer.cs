@@ -45,6 +45,12 @@ namespace PetShopApp
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
+            this.lblValidCuit = new System.Windows.Forms.Label();
+            this.lblValidNombre = new System.Windows.Forms.Label();
+            this.lblValidApellido = new System.Windows.Forms.Label();
+            this.lblValidUser = new System.Windows.Forms.Label();
+            this.lblValidPass = new System.Windows.Forms.Label();
+            this.lblValidPerfil = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCuit
@@ -53,6 +59,7 @@ namespace PetShopApp
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(182, 23);
             this.txtCuit.TabIndex = 0;
+            this.txtCuit.Leave += new System.EventHandler(this.txtCuit_Leave);
             // 
             // txtNombre
             // 
@@ -60,6 +67,7 @@ namespace PetShopApp
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(182, 23);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // txtPassword
             // 
@@ -67,6 +75,7 @@ namespace PetShopApp
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(182, 23);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // txtUsuario
             // 
@@ -74,6 +83,7 @@ namespace PetShopApp
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(182, 23);
             this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave);
             // 
             // txtApellido
             // 
@@ -81,6 +91,7 @@ namespace PetShopApp
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(182, 23);
             this.txtApellido.TabIndex = 4;
+            this.txtApellido.Leave += new System.EventHandler(this.txtApellido_Leave);
             // 
             // lblCuit
             // 
@@ -143,6 +154,7 @@ namespace PetShopApp
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(182, 23);
             this.cmbPerfil.TabIndex = 10;
+            this.cmbPerfil.Leave += new System.EventHandler(this.cmbPerfil_Leave);
             // 
             // lblPerfil
             // 
@@ -187,11 +199,83 @@ namespace PetShopApp
             this.lblMensaje.Text = "Mensaje";
             this.lblMensaje.Visible = false;
             // 
+            // lblValidCuit
+            // 
+            this.lblValidCuit.AutoSize = true;
+            this.lblValidCuit.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidCuit.ForeColor = System.Drawing.Color.Red;
+            this.lblValidCuit.Location = new System.Drawing.Point(266, 77);
+            this.lblValidCuit.Name = "lblValidCuit";
+            this.lblValidCuit.Size = new System.Drawing.Size(21, 28);
+            this.lblValidCuit.TabIndex = 15;
+            this.lblValidCuit.Text = "*";
+            // 
+            // lblValidNombre
+            // 
+            this.lblValidNombre.AutoSize = true;
+            this.lblValidNombre.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidNombre.ForeColor = System.Drawing.Color.Red;
+            this.lblValidNombre.Location = new System.Drawing.Point(266, 106);
+            this.lblValidNombre.Name = "lblValidNombre";
+            this.lblValidNombre.Size = new System.Drawing.Size(21, 28);
+            this.lblValidNombre.TabIndex = 16;
+            this.lblValidNombre.Text = "*";
+            // 
+            // lblValidApellido
+            // 
+            this.lblValidApellido.AutoSize = true;
+            this.lblValidApellido.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidApellido.ForeColor = System.Drawing.Color.Red;
+            this.lblValidApellido.Location = new System.Drawing.Point(266, 134);
+            this.lblValidApellido.Name = "lblValidApellido";
+            this.lblValidApellido.Size = new System.Drawing.Size(21, 28);
+            this.lblValidApellido.TabIndex = 17;
+            this.lblValidApellido.Text = "*";
+            // 
+            // lblValidUser
+            // 
+            this.lblValidUser.AutoSize = true;
+            this.lblValidUser.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidUser.ForeColor = System.Drawing.Color.Red;
+            this.lblValidUser.Location = new System.Drawing.Point(266, 164);
+            this.lblValidUser.Name = "lblValidUser";
+            this.lblValidUser.Size = new System.Drawing.Size(21, 28);
+            this.lblValidUser.TabIndex = 18;
+            this.lblValidUser.Text = "*";
+            // 
+            // lblValidPass
+            // 
+            this.lblValidPass.AutoSize = true;
+            this.lblValidPass.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidPass.ForeColor = System.Drawing.Color.Red;
+            this.lblValidPass.Location = new System.Drawing.Point(266, 193);
+            this.lblValidPass.Name = "lblValidPass";
+            this.lblValidPass.Size = new System.Drawing.Size(21, 28);
+            this.lblValidPass.TabIndex = 19;
+            this.lblValidPass.Text = "*";
+            // 
+            // lblValidPerfil
+            // 
+            this.lblValidPerfil.AutoSize = true;
+            this.lblValidPerfil.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblValidPerfil.ForeColor = System.Drawing.Color.Red;
+            this.lblValidPerfil.Location = new System.Drawing.Point(266, 217);
+            this.lblValidPerfil.Name = "lblValidPerfil";
+            this.lblValidPerfil.Size = new System.Drawing.Size(21, 28);
+            this.lblValidPerfil.TabIndex = 20;
+            this.lblValidPerfil.Text = "*";
+            // 
             // frmAltaEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 340);
+            this.ClientSize = new System.Drawing.Size(298, 340);
+            this.Controls.Add(this.lblValidPerfil);
+            this.Controls.Add(this.lblValidPass);
+            this.Controls.Add(this.lblValidUser);
+            this.Controls.Add(this.lblValidApellido);
+            this.Controls.Add(this.lblValidNombre);
+            this.Controls.Add(this.lblValidCuit);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -233,5 +317,11 @@ namespace PetShopApp
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.Label lblValidCuit;
+        private System.Windows.Forms.Label lblValidNombre;
+        private System.Windows.Forms.Label lblValidApellido;
+        private System.Windows.Forms.Label lblValidUser;
+        private System.Windows.Forms.Label lblValidPass;
+        private System.Windows.Forms.Label lblValidPerfil;
     }
 }

@@ -288,6 +288,29 @@ namespace PetShopApp
             CargarDataGrid();
         }
 
+        private void dgvListaEmpleados_DoubleClick(object sender, EventArgs e)
+        {
+            dgvListaEmpleados.AllowUserToDeleteRows = false;
+            dgvListaEmpleados.AllowUserToAddRows = false;
+        }
+
+        private void dgvListaEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvListaEmpleados.AllowUserToDeleteRows = false;
+            dgvListaEmpleados.AllowUserToAddRows = false;
+        }
+
+        private void dgvListaEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvListaEmpleados.AllowUserToDeleteRows = false;
+            dgvListaEmpleados.AllowUserToAddRows = false;
+        }
+
+        private void dgvListaEmpleados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvListaEmpleados.AllowUserToDeleteRows = false;
+            dgvListaEmpleados.AllowUserToAddRows = false;
+        }
     }
 }
 

@@ -110,6 +110,10 @@ namespace PetShopApp
             this.dgvListaEmpleados.RowTemplate.Height = 25;
             this.dgvListaEmpleados.Size = new System.Drawing.Size(603, 280);
             this.dgvListaEmpleados.TabIndex = 3;
+            this.dgvListaEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaEmpleados_CellContentClick);
+            this.dgvListaEmpleados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaEmpleados_CellContentDoubleClick);
+            this.dgvListaEmpleados.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaEmpleados_CellValueChanged);
+            this.dgvListaEmpleados.DoubleClick += new System.EventHandler(this.dgvListaEmpleados_DoubleClick);
             // 
             // Cuit
             // 
