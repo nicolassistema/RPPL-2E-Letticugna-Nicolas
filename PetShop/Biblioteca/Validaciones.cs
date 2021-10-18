@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Entidades
 {
@@ -66,6 +67,21 @@ namespace Entidades
                 }
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// devuelve en string el nombre del objeto pasado por parametro
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>Devuelve el nombre del objeto en string</returns>
+        public static string ObtenerNombreObjeto(Object objeto)
+        {
+            string aux;
+            Type type = objeto.GetType();
+            aux = type.ToString();
+            aux = aux.Substring(aux.IndexOf(".") + 1);
+            return aux;
         }
 
 
@@ -145,6 +161,26 @@ namespace Entidades
                 int digito = int.Parse(cuit.Substring(10));
                 return calculado == digito;
             }
+        }
+
+
+        /// <summary>
+        /// Obtiene el valor del objeto del tipo enumerado que se pasa por paramtro
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>devuelve en string el valor que enumerado</returns>
+        public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
+        {
+            Type type = objeto.GetType();
+            foreach (PropertyInfo propertyInfo in type.GetProperties())
+            {
+                if (!(propertyInfo.GetType().IsEnum))
+                {
+                    string lala = propertyInfo.GetValue(objeto).ToString();
+                    return lala;
+                }
+            }
+            return null;
         }
 
 

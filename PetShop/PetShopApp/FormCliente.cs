@@ -13,7 +13,7 @@ namespace PetShopApp
 {
     public partial class frmCliente : Form
     {
-        Usuario userForm;
+        private Usuario userForm;
         private const int CP_NOCLOSE_BUTTON = 0x200;
 
 
@@ -41,7 +41,7 @@ namespace PetShopApp
         /// <summary>
         /// Carga el datagrid con valores de la lista clientes
         /// </summary>
-        public void CargarDataGrid()
+        private void CargarDataGrid()
         {
             dvgListaClientes.Refresh();
             dvgListaClientes.DataSource = null;

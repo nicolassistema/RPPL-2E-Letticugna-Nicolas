@@ -16,7 +16,7 @@ namespace PetShopApp
     public partial class FormEmpleado : Form
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
-        Usuario userForm;
+        private Usuario userForm;
 
 
         /// <summary>
@@ -77,17 +77,6 @@ namespace PetShopApp
                 i++;
             }
         }
-
-
-        /// <summary>
-        /// Refresca el form
-        /// </summary>
-        public void RefrescarForm()
-        {
-            FormEmpleado form = new FormEmpleado();
-            form.Refresh();
-        }
-
 
 
         private void lblVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -187,7 +176,7 @@ namespace PetShopApp
         /// <param name="usuario"></param>
         /// <param name="palabra"></param>
         /// <returns>devuelve true si encuentre y false sino</returns>
-        public bool BuscarPorString(Usuario usuario, string palabra)
+        private bool BuscarPorString(Usuario usuario, string palabra)
         {
             if (
                 usuario.Cuit.ToLower().Contains(palabra) ||

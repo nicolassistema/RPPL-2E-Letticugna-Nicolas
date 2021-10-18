@@ -16,9 +16,8 @@ namespace PetShopApp
     public partial class FormAltaProducto : Form
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
-        Usuario userForm;
-        Producto producto;
-        formInventario inventario;
+        private Usuario userForm;
+        private Producto producto;
 
 
         /// <summary>
@@ -56,8 +55,8 @@ namespace PetShopApp
             txtStock.Text = producto.Cantidad.ToString();
             txtPrecio.Text = producto.Precio.ToString();
             txtKg.Text = producto.Kilogramos.ToString();
-            cmbTipoProd.Text = formInventario.ObtenerNombreObjeto(producto);
-            cmbDetalleTipoProd.Text = formInventario.ObtenerValorEnumeradoDeObjeto(producto);
+            cmbTipoProd.Text = Validaciones.ObtenerNombreObjeto(producto);
+            cmbDetalleTipoProd.Text = Validaciones.ObtenerValorEnumeradoDeObjeto(producto);
         }
 
 
@@ -86,7 +85,7 @@ namespace PetShopApp
         /// Activacion de tooltip por medio de variable booleana pasada por parametro
         /// </summary>
         /// <param name="estado"></param>
-        public void VisualizacionTooltip(bool estado)
+        private void VisualizacionTooltip(bool estado)
         {
             if (!estado)
             {
@@ -101,7 +100,7 @@ namespace PetShopApp
         /// </summary>
         /// <param name="control"></param>
         /// <param name="mensaje"></param>
-        public void MensajeTooltip(Control control, string mensaje)
+        private void MensajeTooltip(Control control, string mensaje)
         {
             this.ttMensaje.AutoPopDelay = 5000;
             this.ttMensaje.InitialDelay = 1;

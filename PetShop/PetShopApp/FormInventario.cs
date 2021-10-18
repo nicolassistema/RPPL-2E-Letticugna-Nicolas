@@ -68,7 +68,7 @@ namespace PetShopApp
         /// <summary>
         /// Carga datos de la lista productos al datagrid
         /// </summary>
-        public void CargarDataGridProducto()
+        private void CargarDataGridProducto()
         {
             int i = 0;
             dvgProductos.Refresh();
@@ -83,85 +83,17 @@ namespace PetShopApp
                 dvgProductos.Rows[i].Cells[4].Value = item.Cantidad;
                 dvgProductos.Rows[i].Cells[5].Value = item.Precio;
                 dvgProductos.Rows[i].Cells[6].Value = item.Kilogramos;
-                dvgProductos.Rows[i].Cells[7].Value = ObtenerNombreObjeto(item);
-                dvgProductos.Rows[i].Cells[8].Value = ObtenerValorEnumeradoDeObjeto(item);
+                dvgProductos.Rows[i].Cells[7].Value = Validaciones.ObtenerNombreObjeto(item);
+                dvgProductos.Rows[i].Cells[8].Value = Validaciones.ObtenerValorEnumeradoDeObjeto(item);
                 i++;
             }
         }
 
-
-        /// <summary>
-        /// Obtiene el valor del objeto del tipo enumerado que se pasa por paramtro
-        /// </summary>
-        /// <param name="objeto"></param>
-        /// <returns>devuelve en string el valor que enumerado</returns>
-        public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
-        {
-            Type type = objeto.GetType();
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
-            {
-                if (!(propertyInfo.GetType().IsEnum))
-                {
-                    string lala = propertyInfo.GetValue(objeto).ToString();
-                    return lala;
-                }
-            }
-            return null;
-        }
-
-
-        /// <summary>
-        /// devuelve en string el nombre del objeto pasado por parametro
-        /// </summary>
-        /// <param name="objeto"></param>
-        /// <returns>Devuelve el nombre del objeto en string</returns>
-        public static string ObtenerNombreObjeto(Object objeto)
-        {
-            string aux;
-            Type type = objeto.GetType();
-            aux = type.ToString();
-            aux = aux.Substring(aux.IndexOf(".") + 1);
-            return aux;
-        }
-
-
-        /// <summary>
-        /// Devuelve el tipo de objeto donde se le pasa por paramtro el nombre en string
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <returns>devueleve el tipo de objeto</returns>
-        public static Type ObtenerTipoObjetoByNombre(string nombre)
-        {
-            switch (nombre)
-            {
-                case "Cama":
-                    Cama cama = new Cama();
-                    return cama.GetType();
-                    break;
-                case "Juguete":
-                    Juguete juguete = new Juguete();
-                    return juguete.GetType();
-                    break;
-                case "ArtCuidadoMascota":
-                    ArtCuidadoMascota articulo = new ArtCuidadoMascota();
-                    return articulo.GetType();
-                    break;
-                case "Alimento":
-                    Alimento alimento = new Alimento();
-                    return alimento.GetType();
-                    break;
-
-                default:
-                    return null;
-                    break;
-            }
-        }
-
-
+      
         /// <summary>
         /// Restartear datagrid y vuelve a cargarlo
         /// </summary>
-        public void RestartearListas()
+        private void RestartearListas()
         {
             dvgProductos.Rows.Clear();
             CargarDataGridProducto();
@@ -182,7 +114,7 @@ namespace PetShopApp
                 {
                     if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                     {
-                        dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
+                        dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, Validaciones.ObtenerNombreObjeto(item), Validaciones.ObtenerValorEnumeradoDeObjeto(item));
                     }
                 }
                 MakeReadOnly();
@@ -198,7 +130,7 @@ namespace PetShopApp
                 {
                     if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                     {
-                        dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
+                        dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, Validaciones.ObtenerNombreObjeto(item), Validaciones.ObtenerValorEnumeradoDeObjeto(item));
                     }
                 }
                 dvgProductos.ReadOnly = false;
@@ -405,39 +337,6 @@ namespace PetShopApp
                 }
             }
             return PetShop.ObtenerPorductos();
-        }
-
-
-        /// <summary>
-        /// Devuelve el objeto donde se pasa por parametro el nombre en string
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <returns></returns>
-        public static Object ObtenerObjetoByString(string nombre)
-        {
-            switch (nombre)
-            {
-                case "Cama":
-                    Cama cama = new Cama();
-                    return cama;
-                    break;
-                case "Juguete":
-                    Juguete juguete = new Juguete();
-                    return juguete;
-                    break;
-                case "ArtCuidadoMascota":
-                    ArtCuidadoMascota articulo = new ArtCuidadoMascota();
-                    return articulo;
-                    break;
-                case "Alimento":
-                    Alimento alimento = new Alimento();
-                    return alimento;
-                    break;
-
-                default:
-                    break;
-            }
-            return null;
         }
 
 

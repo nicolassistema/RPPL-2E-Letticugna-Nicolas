@@ -42,7 +42,7 @@ namespace PetShopApp
         /// <summary>
         /// Genera en un string el formato deseado de una cadena de elementos
         /// </summary>
-        public void ImprimirPorPantalla()
+        private void ImprimirPorPantalla()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("---------------------Pet Shop------------------");
@@ -58,29 +58,10 @@ namespace PetShopApp
 
 
         /// <summary>
-        /// Genera en un string el formato deseado de una cadena de elementos
-        /// </summary>
-        /// <returns></returns>
-        public string ImprimirTicket()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("---------------------Pet Shop------------------");
-            sb.AppendLine("                    'El Pikachu Juan'             ");
-            sb.AppendLine("           By Nicolas Ezequiel Letticugna       ");
-            sb.AppendLine("       Av. Gral. Chamizo y Donovan - Gerli      ");
-            sb.AppendLine("         Tel. 0800-2020-2020 (op. 3)            ");
-            sb.AppendLine("------------------------------------------------");
-            sb.AppendLine(MostrarFecha());
-            sb.Append(venta.ToString());
-            return sb.ToString();
-        }
-
-
-        /// <summary>
         /// Muestra fecha en una cadena de string
         /// </summary>
         /// <returns></returns>
-        public string MostrarFecha()
+        private string MostrarFecha()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"Factura N°  {FormatoNroFactura()}       " + DateTime.Today.ToString("dd/MM/yyyy") + " " + DateTime.Now.ToString("HH:mm:ss"));
@@ -92,7 +73,7 @@ namespace PetShopApp
         /// Le da formato al numero de la factura para que se puede imprimir con este formato Factura "0005"
         /// </summary>
         /// <returns>Devuelve el numero de factura con un formato particular</returns>
-        public string FormatoNroFactura()
+        private string FormatoNroFactura()
         {
             const int MaxLength = 5;
             int aux;

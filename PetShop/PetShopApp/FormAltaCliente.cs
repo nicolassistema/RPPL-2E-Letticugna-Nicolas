@@ -15,8 +15,8 @@ namespace PetShopApp
     public partial class FormAltaCliente : Form
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
-        Usuario userForm;
-        string cuitInt;
+        private Usuario userForm;
+        private string cuitInt;
 
 
         /// <summary>

@@ -97,7 +97,7 @@ namespace PetShopApp
         /// <summary>
         /// Toma la lista de ventas y muestra el total de las ventas
         /// </summary>
-        public void CargarTexto()
+        private  void CargarTexto()
         {
             lblFecha.Visible = true;
             facturacion = new Facturacion(listaVentas);

@@ -57,7 +57,7 @@ namespace PetShopApp
         /// <summary>
         /// Carga el datagrid con informacion de la lista
         /// </summary>
-        public void CargarDataGridProducto()
+        private void CargarDataGridProducto()
         {
             int i = 0;
             dgvListaProductos.Refresh();
@@ -72,54 +72,18 @@ namespace PetShopApp
                 dgvListaProductos.Rows[i].Cells[4].Value = item.Cantidad;
                 dgvListaProductos.Rows[i].Cells[5].Value = item.Precio;
                 dgvListaProductos.Rows[i].Cells[6].Value = item.Kilogramos;
-                dgvListaProductos.Rows[i].Cells[7].Value = ObtenerNombreObjeto(item);
-                dgvListaProductos.Rows[i].Cells[8].Value = ObtenerValorEnumeradoDeObjeto(item);
+                dgvListaProductos.Rows[i].Cells[7].Value = Validaciones.ObtenerNombreObjeto(item);
+                dgvListaProductos.Rows[i].Cells[8].Value = Validaciones.ObtenerValorEnumeradoDeObjeto(item);
                 i++;
             }
         }
 
 
         /// <summary>
-        /// Obtiene el nombre del objeto pasando por parametro el objeto
-        /// </summary>
-        /// <param name="objeto"></param>
-        /// <returns>Devuelve el nombre del objeto</returns>
-        public static string ObtenerNombreObjeto(Object objeto)
-        {
-            string aux;
-            Type type = objeto.GetType();
-            aux = type.ToString();
-            aux = aux.Substring(aux.IndexOf(".") + 1);
-            return aux;
-        }
-
-
-        /// <summary>
-        /// Obtiene el valor del enumerado pasando el objeto por parametro
-        /// </summary>
-        /// <param name="objeto"></param>
-        /// <returns>Devuelve el valor en string del enumerado pasado por paramtro</returns>
-        public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
-        {
-            Type type = objeto.GetType();
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
-            {
-                if (!(propertyInfo.GetType().IsEnum))
-                {
-                    string lala = propertyInfo.GetValue(objeto).ToString();
-                    return lala;
-                }
-            }
-            return null;
-        }
-
-
-
-        /// <summary>
         /// Actualiza la lista de productos con la informacion del datagrid
         /// </summary>
         /// <returns>devuelve la lista de productos luego de ser actualizada</returns>
-        public List<Producto> ActualizarInventario()
+        private List<Producto> ActualizarInventario()
         {
             List<Producto> listaAux = new List<Producto>();
             string nombre;
@@ -254,7 +218,7 @@ namespace PetShopApp
         /// <summary>
         /// Restartea valores del formulario y el datagrid
         /// </summary>
-        public void RestartearListas()
+        private void RestartearListas()
         {
             dgvListaProductos.Rows.Clear();
             dgvListaProdSelecc.Rows.Clear();
@@ -269,7 +233,7 @@ namespace PetShopApp
         /// <summary>
         /// Restartea objetos que estan relacionados con la venta en el formulario
         /// </summary>
-        public void RestartearVta()
+        private void RestartearVta()
         {
             pnlVenta.Visible = false;
             lblMontoVta.Text = "0.00";
@@ -284,7 +248,7 @@ namespace PetShopApp
         /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void FocusPnlBuscarCliente(bool estado)
+        private void FocusPnlBuscarCliente(bool estado)
         {
             if (estado)
             {
@@ -303,7 +267,7 @@ namespace PetShopApp
         /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void FocusPnlCompra(bool estado)
+        private void FocusPnlCompra(bool estado)
         {
             if (estado)
             {
@@ -322,7 +286,7 @@ namespace PetShopApp
         /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void FocusPnlVenta(bool estado)
+        private void FocusPnlVenta(bool estado)
         {
             if (estado)
             {
@@ -341,7 +305,7 @@ namespace PetShopApp
         ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void FocusPnlConfirm(bool estado)
+        private void FocusPnlConfirm(bool estado)
         {
             if (estado)
             {
@@ -360,7 +324,7 @@ namespace PetShopApp
         ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
         /// </summary>
         /// <param name="estado"></param>
-        public void ActivDesactivPnlBuscarCliente(bool estado)
+        private void ActivDesactivPnlBuscarCliente(bool estado)
         {
             if (estado)
             {
@@ -379,7 +343,7 @@ namespace PetShopApp
         ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
         /// </summary>
         /// <param name="estado"></param>
-        public void ActivDesactivPnlCompra(bool estado)
+        private void ActivDesactivPnlCompra(bool estado)
         {
             if (estado)
             {
@@ -399,7 +363,7 @@ namespace PetShopApp
         ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
         /// </summary>
         /// <param name="estado"></param>
-        public void ActivDesactivPnlVenta(bool estado)
+        private void ActivDesactivPnlVenta(bool estado)
         {
             if (estado)
             {
@@ -418,7 +382,7 @@ namespace PetShopApp
         ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
         /// </summary>
         /// <param name="estado"></param>
-        public void ActiveDesactivePnlConfirm(bool estado)
+        private void ActiveDesactivePnlConfirm(bool estado)
         {
             if (estado)
             {
@@ -437,7 +401,7 @@ namespace PetShopApp
         /// Activa o desactiva un grupo de objetos  por medio de activacion por variable booleana 
         /// </summary>
         /// <param name="estado"></param>
-        public void ActiveDesctiveEnvio(bool estado)
+        private void ActiveDesctiveEnvio(bool estado)
         {
             if (estado)
             {
@@ -489,7 +453,7 @@ namespace PetShopApp
             productoAux = PetShop.ObtenerProductoByID(aux);
             if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value) < 1))
             {
-                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), ObtenerNombreObjeto(productoAux) });
+                dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), Validaciones.ObtenerNombreObjeto(productoAux) });
                 dgvListaProdSelecc.AllowUserToAddRows = false;
                 for (int i = 0; i < dgvListaProdSelecc.RowCount; i++)
                 {
@@ -616,7 +580,7 @@ namespace PetShopApp
         /// Activa/desactiva visibilidad de un objeto por medio de parametro variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void VisibilidadPnlVenta(bool estado)
+        private void VisibilidadPnlVenta(bool estado)
         {
             if (estado)
             {
@@ -633,7 +597,7 @@ namespace PetShopApp
         /// Activa/desactiva visibilidad de un objeto por medio de parametro variable booleana
         /// </summary>
         /// <param name="estado"></param>
-        public void VisibilidadPnlConfirmarCompra(bool estado)
+        private void VisibilidadPnlConfirmarCompra(bool estado)
         {
             if (estado)
             {
@@ -874,16 +838,6 @@ namespace PetShopApp
             int numero = RandomCuadra();
             lblCantCuadras.Text = InfoCuadras(numero);
             lblPrcioXCuadra.Text = CalculoCuadra(numero).ToString();
-        }
-
-
-        /// <summary>
-        /// Obtiene el monto de envio del onjeto label y lo transforma a double
-        /// </summary>
-        /// <returns>devuelve double</returns>
-        public double ObtenerMontoEnvio()
-        {
-            return double.Parse(lblPrcioXCuadra.Text.ToString());
         }
 
 

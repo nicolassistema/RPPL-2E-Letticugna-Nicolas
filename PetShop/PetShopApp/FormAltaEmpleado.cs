@@ -14,7 +14,7 @@ namespace PetShopApp
     public partial class frmAltaEmpleado : Form
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
-        Usuario userForm;
+        private Usuario userForm;
 
 
         /// <summary>
