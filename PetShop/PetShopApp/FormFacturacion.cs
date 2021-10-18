@@ -21,6 +21,11 @@ namespace PetShopApp
         Usuario userForm;
         List<Venta> listaVentas;
         Facturacion facturacion;
+
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase frmFacturacion.
+        /// </summary>
         public frmFacturacion()
         {
             ti = new Timer();
@@ -30,12 +35,23 @@ namespace PetShopApp
             lblTimer.Visible = true;
         }
 
+
+        /// <summary>
+        /// Constructor con parámetros de la clase frmFacturacion.
+        /// </summary>
+        /// <param name="usuario"></param>
         public frmFacturacion(Usuario usuario) : this()
         {
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
         }
 
+
+        /// <summary>
+        /// Constructor con parámetros de la clase frmFacturacion.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="ventas"></param>
         public frmFacturacion(Usuario usuario, List<Venta> ventas) : this()
         {
             this.userForm = usuario;
@@ -43,6 +59,7 @@ namespace PetShopApp
             this.listaVentas = ventas;
             CargarTexto();
         }
+
 
         private void eventoTimer(object ob, EventArgs evt)
         {
@@ -63,6 +80,7 @@ namespace PetShopApp
             }
         }
 
+
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese cerrar session?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -75,6 +93,10 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Toma la lista de ventas y muestra el total de las ventas
+        /// </summary>
         public void CargarTexto()
         {
             lblFecha.Visible = true;
@@ -83,6 +105,9 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -94,9 +119,9 @@ namespace PetShopApp
         }
 
 
-
-
-
+        /// <summary>
+        /// Seteo de Color en los objetos
+        /// </summary>
         private void ApagarDarkMode()
         {
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
@@ -104,7 +129,6 @@ namespace PetShopApp
             lblFecha.ForeColor = Color.Black;
             lblTimer.ForeColor = Color.Black;
             lblVisionOscura.Text = "Visiion Black";
-
         }
 
 
@@ -116,10 +140,10 @@ namespace PetShopApp
             }
         }
 
+
         private void lblVisionOscura_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
-
             if (ManejadorDeForms.DarkMode)
             {
                 this.BackColor = Color.Black;
@@ -127,12 +151,12 @@ namespace PetShopApp
                 lblFecha.ForeColor = Color.White;
                 lblTimer.ForeColor = Color.White;
                 lblVisionOscura.Text = "Visiion White";
-                
             }
             else
             {
                 ApagarDarkMode();
             }
         }
+
     }
 }

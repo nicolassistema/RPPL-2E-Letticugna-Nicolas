@@ -16,11 +16,20 @@ namespace PetShopApp
         Usuario userForm;
         private const int CP_NOCLOSE_BUTTON = 0x200;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase frmCliente.
+        /// </summary>
         public frmCliente()
         {
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Constructor con parámetros de la clase frmCliente.
+        /// </summary>
+        /// <param name="usuario"></param>
         public frmCliente(Usuario usuario) : this()
         {
             this.userForm = usuario;
@@ -30,7 +39,7 @@ namespace PetShopApp
 
 
         /// <summary>
-        /// Recarga el datagrid
+        /// Carga el datagrid con valores de la lista clientes
         /// </summary>
         public void CargarDataGrid()
         {
@@ -63,6 +72,7 @@ namespace PetShopApp
             }
         }
 
+
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese cerrar session?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -75,9 +85,9 @@ namespace PetShopApp
             }
         }
 
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
             if (!(txtBuscar.Text == ""))
             {
                 pnlMenuIzquierdo.Enabled = false;
@@ -112,9 +122,12 @@ namespace PetShopApp
                     }
                 }
             }
-
         }
 
+
+        /// <summary>
+        /// Bloquea que se elimine o se agregue una fila en el datagrid
+        /// </summary>
         private void MakeReadOnly()
         {
             dvgListaClientes.AllowUserToAddRows = false;
@@ -122,12 +135,14 @@ namespace PetShopApp
             dvgListaClientes.ReadOnly = true;
         }
 
+
         private void btnAltaCliente_Click(object sender, EventArgs e)
         {
             FormAltaCliente cliente = new FormAltaCliente(this.userForm);
             cliente.ShowDialog();
             this.CargarDataGrid();
         }
+
 
         private void btnModificarCliente_Click(object sender, EventArgs e)
         {
@@ -142,34 +157,28 @@ namespace PetShopApp
                     break;
                 }
             }
-
-
             if (flag)
             {
-            List<Cliente> auxList = new List<Cliente>();
-            PetShop.LimpiarListaClientes();
+                List<Cliente> auxList = new List<Cliente>();
+                PetShop.LimpiarListaClientes();
 
-            string cuit;
-            string nombre;
-            string apellido;
+                string cuit;
+                string nombre;
+                string apellido;
+                for (int i = 0; i < dvgListaClientes.RowCount; i++)
+                {
+                    cuit = dvgListaClientes.Rows[i].Cells[1].Value.ToString();
+                    nombre = dvgListaClientes.Rows[i].Cells[2].Value.ToString();
+                    apellido = dvgListaClientes.Rows[i].Cells[3].Value.ToString();
+                    Cliente cliente = new Cliente(cuit, nombre, apellido, 0);
+                    auxList.Add(cliente);
 
-
-            for (int i = 0; i < dvgListaClientes.RowCount; i++)
-            {
-
-                cuit = dvgListaClientes.Rows[i].Cells[1].Value.ToString();
-                nombre = dvgListaClientes.Rows[i].Cells[2].Value.ToString();
-                apellido = dvgListaClientes.Rows[i].Cells[3].Value.ToString();
-                Cliente cliente = new Cliente(cuit, nombre, apellido, 0);
-                auxList.Add(cliente);
-
-                PetShop.CargarListaNuevamenteClientes(auxList);
+                    PetShop.CargarListaNuevamenteClientes(auxList);
+                }
+                btnCancelarMoficiacion.Enabled = false;
             }
-            btnCancelarMoficiacion.Enabled = false;
-
-            }
-
         }
+
 
         private void btnCancelarMoficiacion_Click(object sender, EventArgs e)
         {
@@ -199,6 +208,10 @@ namespace PetShopApp
             dvgListaClientes.AllowUserToAddRows = false;
         }
 
+
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get

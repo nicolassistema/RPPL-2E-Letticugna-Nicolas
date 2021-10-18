@@ -18,6 +18,11 @@ namespace PetShopApp
 
         Usuario userForm;
         private const int CP_NOCLOSE_BUTTON = 0x200;
+
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase frmAdministracion.
+        /// </summary>
         public frmAdministracion()
         {
             ti = new Timer();
@@ -25,16 +30,13 @@ namespace PetShopApp
             InitializeComponent();
             ti.Enabled = true;
             lblTimer.Visible = true;
-
         }
 
 
-        private void eventoTimer(object ob, EventArgs evt)
-        {
-            DateTime hoy = DateTime.Now;
-            lblTimer.Text = hoy.ToString("F", CultureInfo.CreateSpecificCulture("es-ES"));
-        }
-
+        /// <summary>
+        /// Constructor con parámetros de la clase frmAdministracion.
+        /// </summary>
+        /// <param name="usuario"></param>
         public frmAdministracion(Usuario usuario) : this()
         {
             this.userForm = usuario;
@@ -47,12 +49,21 @@ namespace PetShopApp
             }
         }
 
+
+        private void eventoTimer(object ob, EventArgs evt)
+        {
+            DateTime hoy = DateTime.Now;
+            lblTimer.Text = hoy.ToString("F", CultureInfo.CreateSpecificCulture("es-ES"));
+        }
+
+
         private void btnVender_Click(object sender, EventArgs e)
         {
             FormVenta venta = new FormVenta(this.userForm);
             this.Hide();
             venta.ShowDialog();
         }
+
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
@@ -62,6 +73,7 @@ namespace PetShopApp
             this.Close();
         }
 
+
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             FormEmpleado venta = new FormEmpleado(this.userForm);
@@ -70,6 +82,7 @@ namespace PetShopApp
             this.Close();
         }
 
+
         private void btnFacturacion_Click(object sender, EventArgs e)
         {
             frmFacturacion venta = new frmFacturacion(this.userForm, PetShop.ObtenerListaVentas());
@@ -77,6 +90,7 @@ namespace PetShopApp
             venta.ShowDialog();
             this.Close();
         }
+
 
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -90,6 +104,7 @@ namespace PetShopApp
             }
         }
 
+
         private void btnInventario_Click(object sender, EventArgs e)
         {
             formInventario inventario = new formInventario(this.userForm);
@@ -98,6 +113,10 @@ namespace PetShopApp
             this.Close();
         }
 
+
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -108,10 +127,10 @@ namespace PetShopApp
             }
         }
 
+
         private void lbkBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ManejadorDeForms.DarkMode = !ManejadorDeForms.DarkMode;
-
             if (ManejadorDeForms.DarkMode)
             {
                 this.BackColor = Color.Black;
@@ -125,19 +144,19 @@ namespace PetShopApp
                 pnlMenu.BackColor = Color.Black;
                 this.pnlLogoDos.BackColor = Color.Black; ;
                 lbkBlackTheme.Text = "Visiion Black";
-
             }
             else
             {
-               ApagarDarkMode();
+                ApagarDarkMode();
             }
-
         }
 
 
+        /// <summary>
+        /// Setea color de dark mode en los objetos del formulario
+        /// </summary>
         private void ApagarDarkMode()
         {
-
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             lblTimer.ForeColor = Color.Black;
             btnVender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(75)))));
@@ -159,7 +178,6 @@ namespace PetShopApp
             {
                 ApagarDarkMode();
             }
-
         }
     }
 }

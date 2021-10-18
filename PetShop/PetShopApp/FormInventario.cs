@@ -18,17 +18,27 @@ namespace PetShopApp
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase formInventario.
+        /// </summary>
         public formInventario()
         {
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Constructor con parámetros de la clase formInventario.
+        /// </summary>
+        /// <param name="usuario"></param>
         public formInventario(Usuario usuario) : this()
         {
             this.userForm = usuario;
             lblNombreUsuario.Text = usuario.Nombre + " " + usuario.Apellido;
             RestartearListas();
         }
+
 
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -42,6 +52,7 @@ namespace PetShopApp
             }
         }
 
+
         private void lblVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese Volver a la pantalla principal", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -54,6 +65,9 @@ namespace PetShopApp
             }
         }
 
+        /// <summary>
+        /// Carga datos de la lista productos al datagrid
+        /// </summary>
         public void CargarDataGridProducto()
         {
             int i = 0;
@@ -76,10 +90,11 @@ namespace PetShopApp
         }
 
 
-
-
-
-
+        /// <summary>
+        /// Obtiene el valor del objeto del tipo enumerado que se pasa por paramtro
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>devuelve en string el valor que enumerado</returns>
         public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
         {
             Type type = objeto.GetType();
@@ -94,6 +109,12 @@ namespace PetShopApp
             return null;
         }
 
+
+        /// <summary>
+        /// devuelve en string el nombre del objeto pasado por parametro
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>Devuelve el nombre del objeto en string</returns>
         public static string ObtenerNombreObjeto(Object objeto)
         {
             string aux;
@@ -104,6 +125,11 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Devuelve el tipo de objeto donde se le pasa por paramtro el nombre en string
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>devueleve el tipo de objeto</returns>
         public static Type ObtenerTipoObjetoByNombre(string nombre)
         {
             switch (nombre)
@@ -129,9 +155,12 @@ namespace PetShopApp
                     return null;
                     break;
             }
-
         }
 
+
+        /// <summary>
+        /// Restartear datagrid y vuelve a cargarlo
+        /// </summary>
         public void RestartearListas()
         {
             dvgProductos.Rows.Clear();
@@ -139,12 +168,8 @@ namespace PetShopApp
         }
 
 
-
-
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
             if (!(txtBuscar.Text == ""))
             {
                 InhabilitarBotonesIzquierdos(false);
@@ -158,14 +183,12 @@ namespace PetShopApp
                     if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                     {
                         dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
-                        //MakeReadOnly();
                     }
                 }
                 MakeReadOnly();
             }
             else
             {
-
                 InhabilitarBotonesIzquierdos(true);
                 dvgProductos.Rows.Clear();
                 dvgProductos.DataSource = null;
@@ -176,7 +199,6 @@ namespace PetShopApp
                     if (PetShop.BuscarProductoPorString(item, txtBuscar.Text.ToLower()))
                     {
                         dvgProductos.Rows.Add(item.Codigo, item.Marca, item.Nombre, item.Descripcion, item.Cantidad, item.Precio, item.Kilogramos, ObtenerNombreObjeto(item), ObtenerValorEnumeradoDeObjeto(item));
-                        //MakeReadOnly();
                     }
                 }
                 dvgProductos.ReadOnly = false;
@@ -184,13 +206,15 @@ namespace PetShopApp
         }
 
 
-
         private void btnLimpiarBuscar_Click(object sender, EventArgs e)
         {
             InhabilitarBotonesIzquierdos(true);
-
         }
 
+
+        /// <summary>
+        /// Esti inpide que se genere un registr en blanco o se borre un registro  en el datagrid
+        /// </summary>
         private void MakeReadOnly()
         {
             dvgProductos.AllowUserToAddRows = false;
@@ -198,7 +222,10 @@ namespace PetShopApp
             dvgProductos.ReadOnly = true;
         }
 
-
+        /// <summary>
+        /// Inhabilitar objetos en el formulario
+        /// </summary>
+        /// <param name="estado"></param>
         private void InhabilitarBotonesIzquierdos(bool estado)
         {
             if (estado)
@@ -226,6 +253,7 @@ namespace PetShopApp
             this.CargarDataGridProducto();
         }
 
+
         private void btnConfirmModificacion_Click(object sender, EventArgs e)
         {
             ActualizarInventario();
@@ -236,6 +264,10 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Carga a la lista de productos los valores del datagrid
+        /// </summary>
+        /// <param name="producto"></param>
         public void Carga(List<Producto> producto)
         {
             List<Producto> productosTemporarios = new List<Producto>();
@@ -290,19 +322,18 @@ namespace PetShopApp
                                 break;
                         }
                         break;
-
                     }
                 }
-
                 PetShop.LimpiarListaProductos();
                 PetShop.CargarListaNuevamenteProducto(productosTemporarios);
-           
             }
-         
         }
 
 
-
+        /// <summary>
+        /// valida todo el datagrid validando que los los formatos de los numeros especificos y los cargar a la lista de productos
+        /// </summary>
+        /// <returns>Devuelve la lista de prodcutos actualizada</returns>
         public List<Producto> ActualizarInventario()
         {
             bool flag = true;
@@ -314,7 +345,6 @@ namespace PetShopApp
             double kiloG;
             PetShop.LimpiarListaProductos();
 
-
             for (int m = 0; m < dvgProductos.RowCount; m++)
             {
                 if (!(Validaciones.ValidateNumber((dvgProductos.Rows[m].Cells[4].Value.ToString()))))
@@ -323,7 +353,6 @@ namespace PetShopApp
                     flag = false;
                     break;
                 }
-
                 if (Validaciones.ValidarDecimal((dvgProductos.Rows[m].Cells[5].Value.ToString())))
                 {
                     dvgProductos.Rows[m].Cells[5].Value = Validaciones.PuntoToComa(dvgProductos.Rows[m].Cells[5].Value.ToString());
@@ -334,7 +363,6 @@ namespace PetShopApp
                     flag = false;
                     break;
                 }
-
                 if (Validaciones.ValidarDecimal((dvgProductos.Rows[m].Cells[6].Value.ToString())))
                 {
                     dvgProductos.Rows[m].Cells[6].Value = Validaciones.PuntoToComa(dvgProductos.Rows[m].Cells[6].Value.ToString());
@@ -346,7 +374,6 @@ namespace PetShopApp
                     break;
                 }
             }
-
             if (flag)
             {
                 for (int i = 0; i < dvgProductos.RowCount; i++)
@@ -376,28 +403,18 @@ namespace PetShopApp
                             break;
                     }
                 }
-
             }
             return PetShop.ObtenerPorductos();
         }
 
 
-
-
-        //public static bool ValidarNumerosEnDataGrid()
-        //{
-
-
-
-        //}
-
-
-
-
-
+        /// <summary>
+        /// Devuelve el objeto donde se pasa por parametro el nombre en string
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         public static Object ObtenerObjetoByString(string nombre)
         {
-
             switch (nombre)
             {
                 case "Cama":
@@ -417,17 +434,11 @@ namespace PetShopApp
                     return alimento;
                     break;
 
-                //Falta agregar los otros dos tipos de productos
                 default:
                     break;
             }
-
             return null;
         }
-
-
-
-
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -467,6 +478,7 @@ namespace PetShopApp
             }
         }
 
+
         private void dvgProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dvgProductos.AllowUserToDeleteRows = false;
@@ -482,8 +494,8 @@ namespace PetShopApp
             dvgProductos.AllowUserToAddRows = false;
             btnCancelarModificacion.Enabled = true;
             btnEliminar.Enabled = true;
-
         }
+
 
         private void dvgProductos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -493,10 +505,12 @@ namespace PetShopApp
             btnEliminar.Enabled = true;
         }
 
+
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
         {
             CargarDataGridProducto();
         }
+
 
         private void dvgProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -504,6 +518,9 @@ namespace PetShopApp
             btnEliminar.Enabled = true;
         }
 
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get

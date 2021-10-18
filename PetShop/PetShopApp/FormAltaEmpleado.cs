@@ -16,17 +16,25 @@ namespace PetShopApp
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase frmAltaEmpleado.
+        /// </summary>
         public frmAltaEmpleado()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase frmAltaEmpleado.
+        /// </summary>
+        /// <param name="usuario"></param>
         public frmAltaEmpleado(Usuario usuario) : this()
         {
             this.userForm = usuario;
-          
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -58,9 +66,6 @@ namespace PetShopApp
         }
 
 
-        
-
-       
         private void txtNombre_Leave(object sender, EventArgs e)
         {
             if (Validaciones.ValidacionString(txtNombre.Text))
@@ -72,6 +77,7 @@ namespace PetShopApp
                 lblValidNombre.ForeColor = Color.Red;
             }
         }
+
 
         private void txtApellido_Leave(object sender, EventArgs e)
         {
@@ -85,6 +91,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
             if (Validaciones.ValidacionString(txtUsuario.Text))
@@ -97,6 +104,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtPassword_Leave(object sender, EventArgs e)
         {
             if (Validaciones.ValidacionString(txtPassword.Text))
@@ -108,6 +116,7 @@ namespace PetShopApp
                 lblValidPass.ForeColor = Color.Red;
             }
         }
+
 
         private void cmbPerfil_Leave(object sender, EventArgs e)
         {
@@ -125,8 +134,10 @@ namespace PetShopApp
             }
         }
 
-
-
+        /// <summary>
+        /// Detecta si algun control de la lista tiene color rojo y devuelve true/False
+        /// </summary>
+        /// <returns>Devuelve True si algun control esta seteado con color rojo, caso contrarop false</returns>
         private bool FlagDetector()
         {
             if (lblValidCuit.ForeColor != Color.Red &&
@@ -144,28 +155,26 @@ namespace PetShopApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
-
-
             if (!(FlagDetector()))
             {
                 MessageBox.Show("Por favor completar los campos requeridos");
             }
             else
             {
-
                 Usuario usuario;
                 lblMensaje.Text = "";
                 StringBuilder sb = new StringBuilder();
                 Dictionary<string, Usuario> lista = new Dictionary<string, Usuario>();
                 usuario = new Usuario(txtCuit.Text, txtNombre.Text, txtApellido.Text, txtUsuario.Text, txtPassword.Text, Entidades.Usuario.EPerfilUsuario.Admin);
                 PetShop.AddUsuario(usuario);
-
                 this.Hide();
                 this.Close();
             }
         }
 
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -176,12 +185,11 @@ namespace PetShopApp
             }
         }
 
+
         private void lbkEmpleadoExistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Usuario usuario = new Usuario();
             usuario = PetShop.ObtenerUsuarioByCuit("20323205125");
-
-
             if (!(usuario is null))
             {
                 txtCuit.Text = usuario.Cuit;
@@ -191,32 +199,27 @@ namespace PetShopApp
                 txtPassword.Text = usuario.PassUsuario;
                 cmbPerfil.Text = usuario.PerfilUsuario.ToString();
             }
-
             ValidacionMasivaAutomatica();
-
         }
 
-
-       
 
         private void lbkEmpleadoInexistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
-                
-                txtCuit.Text = "20323206032";
-                txtNombre.Text = "Juan";
-                txtApellido.Text = "Montoto";
-                txtUsuario.Text = "pepe";
-                txtPassword.Text = "1234";
-                cmbPerfil.Text = "Admin";
-        
+            txtCuit.Text = "20323206032";
+            txtNombre.Text = "Juan";
+            txtApellido.Text = "Montoto";
+            txtUsuario.Text = "pepe";
+            txtPassword.Text = "1234";
+            cmbPerfil.Text = "Admin";
             ValidacionMasivaAutomatica();
         }
 
 
+        /// <summary>
+        /// Valida cada campo y le setea el color de labal segun resultado de la validacion
+        /// </summary>
         private void ValidacionMasivaAutomatica()
         {
-
             if (Validaciones.ValidacionString(txtNombre.Text))
             {
                 lblValidNombre.ForeColor = Color.Green;
@@ -265,8 +268,6 @@ namespace PetShopApp
             {
                 lblValidPerfil.ForeColor = Color.Green;
             }
-
-
         }
     }
 }

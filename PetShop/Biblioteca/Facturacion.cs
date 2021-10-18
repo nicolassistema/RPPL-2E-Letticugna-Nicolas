@@ -22,6 +22,7 @@ namespace Entidades
 
         }
 
+
         /// <summary>
         /// Constructor con parámetros de la clase Facturacion.
         /// </summary>
@@ -31,6 +32,7 @@ namespace Entidades
             this.fecha = DateTime.Now;
             this.montoTotal = montoTotal;
         }
+
 
         /// <summary>
         /// Constructor sin parámetros de la clase Facturacion.
@@ -42,6 +44,7 @@ namespace Entidades
             this.montoTotal = ((Facturacion)listaVenta).montoTotal;
             this.listaVenta = listaVenta;
         }
+
 
         /// <summary>
         /// setea y devuelve el dato
@@ -58,6 +61,7 @@ namespace Entidades
             }
         }
 
+
         /// <summary>
         /// setea y devuelve el dato
         /// </summary>
@@ -72,6 +76,7 @@ namespace Entidades
                 this.montoTotal = value;
             }
         }
+
 
         /// <summary>
         /// Convierte una lista de ventas en una facturacion final
@@ -88,7 +93,6 @@ namespace Entidades
         }
 
 
-
         /// <summary>
         /// Sobre carga de ToString
         /// </summary>
@@ -100,13 +104,8 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Fecha: {fechaActual}");
             sb.AppendLine($"Facturación del dia: ${string.Format("{0:f2}", facturacion.MontoTotal)}");
-
             return sb.ToString();
         }
-
-
-
-
 
     }
 }

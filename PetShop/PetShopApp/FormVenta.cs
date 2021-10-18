@@ -19,13 +19,18 @@ namespace PetShopApp
         Usuario userForm;
         private const int CP_NOCLOSE_BUTTON = 0x200;
 
+        /// <summary>
+        /// Constructor sin parámetros de la clase FormVenta.
+        /// </summary>
         public FormVenta()
         {
             InitializeComponent();
-
         }
 
-
+        /// <summary>
+        /// Constructor con parámetros de la clase FormVenta.
+        /// </summary>
+        /// <param name="usuario"></param>
         public FormVenta(Usuario usuario) : this()
         {
             InicializadorCuadras();
@@ -46,12 +51,12 @@ namespace PetShopApp
             btnLimpiarSelectProd.Enabled = false;
             FocusPnlBuscarCliente(true);
             VisibilidadPnlConfirmarCompra(false);
-        
-
         }
 
 
-
+        /// <summary>
+        /// Carga el datagrid con informacion de la lista
+        /// </summary>
         public void CargarDataGridProducto()
         {
             int i = 0;
@@ -73,6 +78,12 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Obtiene el nombre del objeto pasando por parametro el objeto
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>Devuelve el nombre del objeto</returns>
         public static string ObtenerNombreObjeto(Object objeto)
         {
             string aux;
@@ -82,6 +93,12 @@ namespace PetShopApp
             return aux;
         }
 
+
+        /// <summary>
+        /// Obtiene el valor del enumerado pasando el objeto por parametro
+        /// </summary>
+        /// <param name="objeto"></param>
+        /// <returns>Devuelve el valor en string del enumerado pasado por paramtro</returns>
         public static string ObtenerValorEnumeradoDeObjeto(Object objeto)
         {
             Type type = objeto.GetType();
@@ -98,8 +115,10 @@ namespace PetShopApp
 
 
 
-
-
+        /// <summary>
+        /// Actualiza la lista de productos con la informacion del datagrid
+        /// </summary>
+        /// <returns>devuelve la lista de productos luego de ser actualizada</returns>
         public List<Producto> ActualizarInventario()
         {
             List<Producto> listaAux = new List<Producto>();
@@ -142,8 +161,6 @@ namespace PetShopApp
         }
 
 
-
-
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese cerrar session?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -156,6 +173,7 @@ namespace PetShopApp
             }
         }
 
+
         private void lblVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese Volver a la pantalla principal", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -167,6 +185,7 @@ namespace PetShopApp
                 this.Close();
             }
         }
+
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -185,29 +204,12 @@ namespace PetShopApp
             }
             else if (PetShop.ObtenerClientePorCuit(txtCuit.Text) is null)
             {
-
-
                 DialogResult boton = MessageBox.Show("Cliente inexistente. Desea cargarlo en el sistema?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (boton == DialogResult.Yes)
                 {
-
                     FormAltaCliente cliente = new FormAltaCliente(this.userForm, txtCuit.Text);
                     cliente.ShowDialog();
                 }
-
-
-              
-              
-
-                //lblMensajeCliente.Text = "Cliente no cargado en ls lista de cliente";
-                //lblMensajeCliente.Visible = true;
-                //lblCuit.Visible = false;
-                //lblNombre.Visible = false;
-                //lblApellido.Visible = false;
-                //ActivDesactivPnlCompra(false);
-
-
-
             }
             else
             {
@@ -228,12 +230,10 @@ namespace PetShopApp
                             {
                                 btnLimpiarSelectProd.Enabled = false;
                             }
-
                             if (double.Parse(lblMostrarTotal.Text) <= 0)
                             {
                                 btnLimpiarSelectProd.Enabled = false;
                             }
-
                             ActivDesactivPnlBuscarCliente(false);
                             btnCancelaCompra.Enabled = true;
                             ActivDesactivPnlCompra(true);
@@ -250,6 +250,10 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Restartea valores del formulario y el datagrid
+        /// </summary>
         public void RestartearListas()
         {
             dgvListaProductos.Rows.Clear();
@@ -261,6 +265,10 @@ namespace PetShopApp
             lblMontoTipoEnvio.Text = "100";
         }
 
+
+        /// <summary>
+        /// Restartea objetos que estan relacionados con la venta en el formulario
+        /// </summary>
         public void RestartearVta()
         {
             pnlVenta.Visible = false;
@@ -271,6 +279,11 @@ namespace PetShopApp
             lblVto.Text = "0.00";
         }
 
+
+        /// <summary>
+        /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void FocusPnlBuscarCliente(bool estado)
         {
             if (estado)
@@ -285,6 +298,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void FocusPnlCompra(bool estado)
         {
             if (estado)
@@ -299,6 +317,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void FocusPnlVenta(bool estado)
         {
             if (estado)
@@ -313,6 +336,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void FocusPnlConfirm(bool estado)
         {
             if (estado)
@@ -327,6 +355,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
+        /// </summary>
+        /// <param name="estado"></param>
         public void ActivDesactivPnlBuscarCliente(bool estado)
         {
             if (estado)
@@ -341,6 +374,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
+        /// </summary>
+        /// <param name="estado"></param>
         public void ActivDesactivPnlCompra(bool estado)
         {
             if (estado)
@@ -356,6 +394,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
+        /// </summary>
+        /// <param name="estado"></param>
         public void ActivDesactivPnlVenta(bool estado)
         {
             if (estado)
@@ -370,6 +413,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        ///  Realza un grupo de objetos ubicados en el formulario por medio de activacion por variable booleana y activa o desactiva un objeto
+        /// </summary>
+        /// <param name="estado"></param>
         public void ActiveDesactivePnlConfirm(bool estado)
         {
             if (estado)
@@ -384,6 +432,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Activa o desactiva un grupo de objetos  por medio de activacion por variable booleana 
+        /// </summary>
+        /// <param name="estado"></param>
         public void ActiveDesctiveEnvio(bool estado)
         {
             if (estado)
@@ -414,6 +467,7 @@ namespace PetShopApp
             }
         }
 
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             double acum = 0;
@@ -433,7 +487,6 @@ namespace PetShopApp
             Producto productoAux = new Producto();
             int aux = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[0].Value);
             productoAux = PetShop.ObtenerProductoByID(aux);
-
             if (!(Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value) < 1))
             {
                 dgvListaProdSelecc.Rows.Add(new[] { productoAux.Codigo.ToString(), productoAux.Marca.ToString(), productoAux.Nombre.ToString(), productoAux.Precio.ToString(), productoAux.Kilogramos.ToString(), ObtenerNombreObjeto(productoAux) });
@@ -448,7 +501,6 @@ namespace PetShopApp
                     lblTipoEnvio.Text = "MiniFlete: $";
                     lblMontoTipoEnvio.Text = "500";
                 }
-
                 lblMostrarTotal.Text = string.Format("{0:f2}", acum);
                 lblKgNumber.Text = string.Format("{0:f2}", kg);
                 stock = Convert.ToInt32(dgvListaProductos.Rows[dgvListaProductos.CurrentCell.RowIndex].Cells[4].Value);
@@ -460,6 +512,7 @@ namespace PetShopApp
                 MessageBox.Show("Producto sin stock!!!");
             }
         }
+
 
         private void btnSacar_Click(object sender, EventArgs e)
         {
@@ -503,6 +556,8 @@ namespace PetShopApp
             }
         }
 
+
+
         private void btnAceptaCompra_Click(object sender, EventArgs e)
         {
             double precioXCuadra = 0;
@@ -532,9 +587,7 @@ namespace PetShopApp
                 resultado = precioXCuadra + total + montoTipoEnvio;
                 lblMontoVta.Text = resultado.ToString();
             }
-
         }
-
         private void btnCancelaCompra_Click(object sender, EventArgs e)
         {
             btnSacar.Enabled = false;
@@ -543,6 +596,8 @@ namespace PetShopApp
             ActivDesactivPnlCompra(false);
             ActivDesactivPnlBuscarCliente(true);
         }
+
+
 
         private void btnLimpiarSelectProd_Click(object sender, EventArgs e)
         {
@@ -556,6 +611,11 @@ namespace PetShopApp
             CargarDataGridProducto();
         }
 
+
+        /// <summary>
+        /// Activa/desactiva visibilidad de un objeto por medio de parametro variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void VisibilidadPnlVenta(bool estado)
         {
             if (estado)
@@ -568,6 +628,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Activa/desactiva visibilidad de un objeto por medio de parametro variable booleana
+        /// </summary>
+        /// <param name="estado"></param>
         public void VisibilidadPnlConfirmarCompra(bool estado)
         {
             if (estado)
@@ -581,6 +646,7 @@ namespace PetShopApp
 
         }
 
+
         private void btnCancelarVta_Click(object sender, EventArgs e)
         {
             btnAceptaCompra.Enabled = true;
@@ -591,7 +657,6 @@ namespace PetShopApp
         }
 
 
-
         private void btnAceptarVta_Click(object sender, EventArgs e)
         {
             double montoTotal;
@@ -600,12 +665,11 @@ namespace PetShopApp
             {
                 if (Validaciones.ValidarDecimal(txtMontoAPagar.Text.ToString()))
                 {
-                    txtMontoAPagar.Text= Validaciones.PuntoToComa(txtMontoAPagar.Text.ToString());
+                    txtMontoAPagar.Text = Validaciones.PuntoToComa(txtMontoAPagar.Text.ToString());
                     try
                     {
                         Validaciones.ValidaSaldoAPagar(lblMontoVta.Text, txtMontoAPagar.Text);
                         lblMontoPagar.Text = txtMontoAPagar.Text.ToString();
-
                         montoTotal = double.Parse(lblMontoVta.Text.ToString());
                         montoPago = double.Parse(lblMontoPagar.Text.ToString());
                         lblVto.Text = string.Format("{0:f2}", (montoPago - montoTotal));
@@ -629,6 +693,7 @@ namespace PetShopApp
                 MessageBox.Show("Por favor ingresar el monto a pagar");
             }
         }
+
 
         private void btnCancelarConfirmCompra_Click(object sender, EventArgs e)
         {
@@ -661,26 +726,28 @@ namespace PetShopApp
                 montoEnvio = double.Parse(lblPrcioXCuadra.Text.ToString());
                 tipoMontoEnvio = double.Parse(lblMontoTipoEnvio.Text.ToString());
             }
-
             Venta venta = new Venta(userForm, cliente, double.Parse(lblMontoVta.Text.ToString()), listaProducto, montoEnvio, tipoMontoEnvio);
             FormFactura factura = new FormFactura(venta);
             PetShop.listaVentas += venta;
-
             PetShop.LimpiarListaProductos();
             ActualizarInventario();
-
             PasoFinal();
             factura.ShowDialog();
         }
 
+
+        /// <summary>
+        /// Activa y desactiva un grupo de objetos determinados
+        /// </summary>
         public void PasoFinal()
         {
             btnSalirDeVenta.Visible = true;
             btnCompraNueva.Visible = true;
             btnConfirmarCompra.Visible = false;
             btnCancelarConfirmCompra.Visible = false;
-
         }
+
+
 
         private void btnSalirDeVenta_Click(object sender, EventArgs e)
         {
@@ -694,6 +761,8 @@ namespace PetShopApp
             }
         }
 
+
+
         private void btnCompraNueva_Click(object sender, EventArgs e)
         {
             FormVenta fm = new FormVenta(this.userForm);
@@ -702,11 +771,15 @@ namespace PetShopApp
             this.Close();
         }
 
+
+
         private void chkSinEnvio_CheckedChanged(object sender, EventArgs e)
         {
             chkConEnvio.Checked = false;
             ActiveDesctiveEnvio(false);
         }
+
+
 
         private void chkConEnvio_CheckedChanged(object sender, EventArgs e)
         {
@@ -714,22 +787,36 @@ namespace PetShopApp
             ActiveDesctiveEnvio(true);
         }
 
+
+
         private void CheckedSinEnvio(object sender, MouseEventArgs e)
         {
             chkSinEnvio.Checked = true;
         }
+
 
         private void CheckedConEnvio(object sender, MouseEventArgs e)
         {
             chkConEnvio.Checked = true;
         }
 
+
+        /// <summary>
+        /// Genera un valor random
+        /// </summary>
+        /// <returns>devuelve el valor random</returns>
         private int RandomCuadra()
         {
             Random r = new Random();
             return int.Parse(r.Next(1, 90).ToString());
         }
 
+
+        /// <summary>
+        /// Devuelve un valor segun numero pasado por parametro
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns>Devuelve un valor segun numero pasado por parametro</returns>
         private int CalculoCuadra(int numero)
         {
             if (numero <= 30)
@@ -751,6 +838,12 @@ namespace PetShopApp
             return 0;
         }
 
+
+        /// <summary>
+        /// Devuelve la informacion segun valor pasado por parametro
+        /// </summary>
+        /// <param name="numero"></param>
+        /// <returns>Devuelve la informacion segun valor pasado por parametro</returns>
         private string InfoCuadras(int numero)
         {
             if (numero <= 30)
@@ -772,6 +865,10 @@ namespace PetShopApp
             return "";
         }
 
+
+        /// <summary>
+        /// Inicializa valores de objetos en el formulario
+        /// </summary>
         private void InicializadorCuadras()
         {
             int numero = RandomCuadra();
@@ -779,15 +876,16 @@ namespace PetShopApp
             lblPrcioXCuadra.Text = CalculoCuadra(numero).ToString();
         }
 
+
+        /// <summary>
+        /// Obtiene el monto de envio del onjeto label y lo transforma a double
+        /// </summary>
+        /// <returns>devuelve double</returns>
         public double ObtenerMontoEnvio()
         {
             return double.Parse(lblPrcioXCuadra.Text.ToString());
         }
 
-        private void lblNombreUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void lblDescuento_Click(object sender, EventArgs e)
         {
@@ -812,6 +910,10 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -822,10 +924,12 @@ namespace PetShopApp
             }
         }
 
+
         private void lbkClienteExistente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtCuit.Text = "20323205109";
         }
+
 
         private void lbkNoCliente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -18,12 +18,20 @@ namespace PetShopApp
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Usuario userForm;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase FormEmpleado.
+        /// </summary>
         public FormEmpleado()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase FormEmpleado.
+        /// </summary>
+        /// <param name="usuario"></param>
         public FormEmpleado(Usuario usuario) : this()
         {
             this.userForm = usuario;
@@ -32,14 +40,15 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Carga el data grid con los valores de la lista del tipo diccionario de usuarios
+        /// </summary>
         private void CargarDataGrid()
         {
+            int i = 0;
             dgvListaEmpleados.Refresh();
             dgvListaEmpleados.DataSource = null;
-
-            int i = 0;
             dgvListaEmpleados.RowCount = PetShop.ObtenerListaUsuarios().Count;
-
             foreach (var item in PetShop.ObtenerListaUsuarios())
             {
                 if (item.Key == userForm.Cuit.ToString())
@@ -69,11 +78,17 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Refresca el form
+        /// </summary>
         public void RefrescarForm()
         {
             FormEmpleado form = new FormEmpleado();
             form.Refresh();
         }
+
+
 
         private void lblVolver_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -87,6 +102,7 @@ namespace PetShopApp
             }
         }
 
+
         private void lblCerrarSesion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             DialogResult dr = MessageBox.Show("Dese cerrar session?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -99,10 +115,9 @@ namespace PetShopApp
             }
         }
 
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
-
             if (!(txtBuscar.Text == ""))
             {
                 pnlMenuIzquiedo.Enabled = false;
@@ -152,17 +167,19 @@ namespace PetShopApp
                     }
                 }
             }
-
-
-
         }
 
+
+        /// <summary>
+        /// Impude que se agregue un registro en blanco o que se elimine un registro en el datagrid
+        /// </summary>
         private void MakeReadOnly()
         {
             dgvListaEmpleados.AllowUserToAddRows = false;
             dgvListaEmpleados.AllowUserToDeleteRows = false;
             dgvListaEmpleados.ReadOnly = true;
         }
+
 
         /// <summary>
         /// Buscar en todos los elementos del objeto palabras que contenga lo que se busca
@@ -186,17 +203,17 @@ namespace PetShopApp
             return false;
         }
 
+
         private void btnAlta_Click(object sender, EventArgs e)
         {
             btnEliminar.Enabled = false;
             dgvListaEmpleados.Enabled = true;
-
             frmAltaEmpleado empleado = new frmAltaEmpleado(this.userForm);
             empleado.ShowDialog();
             this.CargarDataGrid();
             btnEliminar.Enabled = true;
-
         }
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -243,6 +260,7 @@ namespace PetShopApp
             }
         }
 
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Dictionary<string, Usuario> auxList = new Dictionary<string, Usuario>();
@@ -286,10 +304,12 @@ namespace PetShopApp
             }
         }
 
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             CargarDataGrid();
         }
+
 
         private void dgvListaEmpleados_DoubleClick(object sender, EventArgs e)
         {
@@ -297,11 +317,13 @@ namespace PetShopApp
             dgvListaEmpleados.AllowUserToAddRows = false;
         }
 
+
         private void dgvListaEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvListaEmpleados.AllowUserToDeleteRows = false;
             dgvListaEmpleados.AllowUserToAddRows = false;
         }
+
 
         private void dgvListaEmpleados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -309,12 +331,17 @@ namespace PetShopApp
             dgvListaEmpleados.AllowUserToAddRows = false;
         }
 
+
         private void dgvListaEmpleados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dgvListaEmpleados.AllowUserToDeleteRows = false;
             dgvListaEmpleados.AllowUserToAddRows = false;
         }
 
+
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -324,6 +351,7 @@ namespace PetShopApp
                 return myCp;
             }
         }
+
     }
 }
 

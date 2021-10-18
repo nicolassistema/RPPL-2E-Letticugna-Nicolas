@@ -19,18 +19,32 @@ namespace PetShopApp
         Usuario userForm;
         Producto producto;
         formInventario inventario;
+
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase FormAltaProducto.
+        /// </summary>
         public FormAltaProducto()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase FormAltaProducto.
+        /// </summary>
+        /// <param name="usuario"></param>
         public FormAltaProducto(Usuario usuario) : this()
         {
             this.userForm = usuario;
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase FormAltaProducto.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="producto"></param>
         public FormAltaProducto(Usuario usuario, Producto producto) : this()
         {
             this.userForm = usuario;
@@ -47,7 +61,6 @@ namespace PetShopApp
         }
 
 
-
         private void btnCanelar_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Desea cancelar el alta del Producto?", "Consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -59,8 +72,6 @@ namespace PetShopApp
         }
 
 
-
-
         private void cmbTipoProd_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbTipoProd.Text.ToString() != null)
@@ -70,6 +81,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Activacion de tooltip por medio de variable booleana pasada por parametro
+        /// </summary>
+        /// <param name="estado"></param>
         public void VisualizacionTooltip(bool estado)
         {
             if (!estado)
@@ -79,6 +95,12 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Seteo de mensaje tooltip donde se le pasa el control especifico y el mensaje
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="mensaje"></param>
         public void MensajeTooltip(Control control, string mensaje)
         {
             this.ttMensaje.AutoPopDelay = 5000;
@@ -88,10 +110,14 @@ namespace PetShopApp
             this.ttMensaje.SetToolTip(control, mensaje);
         }
 
+
+        /// <summary>
+        /// Carga combo segun parametro de entrada para componer el anidado de combos
+        /// </summary>
+        /// <param name="detalle"></param>
         private void CargaDetalleTipoProd(string detalle)
         {
             cmbDetalleTipoProd.Items.Clear();
-
             switch (detalle)
             {
                 case "Juguete":
@@ -114,9 +140,8 @@ namespace PetShopApp
                 default:
                     break;
             }
-
-
         }
+
 
         private void txtMarca_Leave(object sender, EventArgs e)
         {
@@ -130,6 +155,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtMarca_MouseHover(object sender, EventArgs e)
         {
             if (!(Validaciones.EspacioEnBlancoOVacio(txtMarca.Text)))
@@ -141,6 +167,7 @@ namespace PetShopApp
                 MensajeTooltip(txtMarca, "Por favor ingresar una marca");
             }
         }
+
 
         private void txtNombre_Leave(object sender, EventArgs e)
         {
@@ -154,6 +181,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtNombre_MouseHover(object sender, EventArgs e)
         {
             if (!(Validaciones.EspacioEnBlancoOVacio(txtNombre.Text)))
@@ -165,6 +193,7 @@ namespace PetShopApp
                 MensajeTooltip(txtNombre, "Por favor Ingresar nombre de producto");
             }
         }
+
 
         private void txtDescrip_Leave(object sender, EventArgs e)
         {
@@ -178,6 +207,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtDescrip_MouseHover(object sender, EventArgs e)
         {
             if (!(Validaciones.EspacioEnBlancoOVacio(txtDescrip.Text)))
@@ -189,6 +219,7 @@ namespace PetShopApp
                 MensajeTooltip(txtDescrip, "Por favor Ingresar Descripcion del producto");
             }
         }
+
 
         private void txtStock_Leave(object sender, EventArgs e)
         {
@@ -202,6 +233,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtStock_MouseHover(object sender, EventArgs e)
         {
             if (Validaciones.ValidateNumber(txtStock.Text.ToString()))
@@ -213,6 +245,7 @@ namespace PetShopApp
                 MensajeTooltip(txtStock, "Ingresar numeros enteros positivos");
             }
         }
+
 
         private void txtPrecio_Leave(object sender, EventArgs e)
         {
@@ -227,6 +260,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtPrecio_MouseHover(object sender, EventArgs e)
         {
             if (Validaciones.ValidarDecimal(txtPrecio.Text))
@@ -239,6 +273,7 @@ namespace PetShopApp
             }
         }
 
+
         private void txtKg_MouseHover(object sender, EventArgs e)
         {
             if (Validaciones.ValidarDecimal(txtKg.Text))
@@ -250,6 +285,7 @@ namespace PetShopApp
                 MensajeTooltip(txtKg, "Ingresar numeros decimales positivos");
             }
         }
+
 
         private void txtKg_Leave(object sender, EventArgs e)
         {
@@ -264,6 +300,7 @@ namespace PetShopApp
             }
         }
 
+
         private void cmbTipoProd_MouseHover(object sender, EventArgs e)
         {
             if (cmbTipoProd.SelectedIndex.Equals(-1))
@@ -276,6 +313,7 @@ namespace PetShopApp
             }
         }
 
+
         private void cmbTipoProd_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbTipoProd.SelectedIndex.Equals(-1))
@@ -287,6 +325,7 @@ namespace PetShopApp
                 lblValidTipoProd.ForeColor = Color.Green;
             }
         }
+
 
         private void cmbDetalleTipoProd_MouseLeave(object sender, EventArgs e)
         {
@@ -304,6 +343,7 @@ namespace PetShopApp
             }
         }
 
+
         private void cmbDetalleTipoProd_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbDetalleTipoProd.Items.Count < 1)
@@ -320,6 +360,11 @@ namespace PetShopApp
             }
         }
 
+
+        /// <summary>
+        /// Detecta si algun control de la lista tiene color rojo y devuelve true/False
+        /// </summary>
+        /// <returns>Devuelve True si algun control esta seteado con color rojo, caso contrarop false</returns>
         private bool FlagDetector()
         {
             if (lblValidMarca.ForeColor != Color.Red &&
@@ -336,10 +381,9 @@ namespace PetShopApp
             return false;
         }
 
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-        //    formInventario fm = new formInventario(this.userForm);
-
             if (!FlagDetector())
             {
                 MessageBox.Show("Por favor competar los campos requeridos");
@@ -372,14 +416,13 @@ namespace PetShopApp
                     default:
                         break;
                 }
-
-
             }
         }
 
 
-
-
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get

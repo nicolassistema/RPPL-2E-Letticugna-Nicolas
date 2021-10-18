@@ -17,20 +17,31 @@ namespace PetShopApp
         private const int CP_NOCLOSE_BUTTON = 0x200;
         Venta venta;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase FormFactura.
+        /// </summary>
         public FormFactura()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Constructor con parámetros de la clase FormFactura.
+        /// </summary>
+        /// <param name="venta"></param>
         public FormFactura(Venta venta) : this()
         {
             rtxTicket.Enabled = false;
             this.venta = venta;
             ImprimirPorPantalla();
-
         }
 
+
+        /// <summary>
+        /// Genera en un string el formato deseado de una cadena de elementos
+        /// </summary>
         public void ImprimirPorPantalla()
         {
             StringBuilder sb = new StringBuilder();
@@ -45,6 +56,11 @@ namespace PetShopApp
             rtxTicket.Text = sb.ToString();
         }
 
+
+        /// <summary>
+        /// Genera en un string el formato deseado de una cadena de elementos
+        /// </summary>
+        /// <returns></returns>
         public string ImprimirTicket()
         {
             StringBuilder sb = new StringBuilder();
@@ -56,10 +72,14 @@ namespace PetShopApp
             sb.AppendLine("------------------------------------------------");
             sb.AppendLine(MostrarFecha());
             sb.Append(venta.ToString());
-
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// Muestra fecha en una cadena de string
+        /// </summary>
+        /// <returns></returns>
         public string MostrarFecha()
         {
             StringBuilder sb = new StringBuilder();
@@ -67,6 +87,11 @@ namespace PetShopApp
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// Le da formato al numero de la factura para que se puede imprimir con este formato Factura "0005"
+        /// </summary>
+        /// <returns>Devuelve el numero de factura con un formato particular</returns>
         public string FormatoNroFactura()
         {
             const int MaxLength = 5;
@@ -82,11 +107,16 @@ namespace PetShopApp
             return sb.ToString();
         }
 
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
+
+        /// <summary>
+        /// Genera un Txt con un formato en el nombre de alrchivo que esta configurado de la siguiente manera "Factura Nro_00005_16-10-2021"
+        /// </summary>
         private void ImprimirEnTxt()
         {
             string dirParameter = AppDomain.CurrentDomain.BaseDirectory + @"\file.txt";
@@ -119,11 +149,16 @@ namespace PetShopApp
             }
         }
 
+
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             ImprimirEnTxt();
         }
 
+
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -135,28 +170,26 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Setea el color a los objetos en negro
+        /// </summary>
         private void ApagarDarkMode()
         {
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             rtxTicket.BackColor = this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(247)))), ((int)(((byte)(166)))));
             lblBlackTheme.Text = "Vision Black";
             rtxTicket.BackColor = Color.Black;
-
-
         }
-
-
-   
 
 
         private void FormFactura_Load(object sender, EventArgs e)
         {
-
             if (ManejadorDeForms.DarkMode)
             {
                 ApagarDarkMode();
             }
         }
+
 
         private void lblBlackTheme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -168,12 +201,12 @@ namespace PetShopApp
                 rtxTicket.BackColor = Color.Black;
                 lblBlackTheme.Text = "Vision White";
                 rtxTicket.BackColor = Color.White;
-
             }
             else
             {
                 ApagarDarkMode();
             }
         }
+
     }
 }

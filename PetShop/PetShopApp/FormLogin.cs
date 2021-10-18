@@ -14,9 +14,12 @@ namespace PetShopApp
     public partial class frmLogin : Form
     {
         private const int CP_NOCLOSE_BUTTON = 0x200;
-
         Usuario userForm;
 
+
+        /// <summary>
+        /// Constructor sin parámetros de la clase frmLogin.
+        /// </summary>
         public frmLogin()
         {
             InitializeComponent();
@@ -44,6 +47,7 @@ namespace PetShopApp
             }
         }
 
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult boton = MessageBox.Show("¿Seguro que quiere salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -54,6 +58,9 @@ namespace PetShopApp
         }
 
 
+        /// <summary>
+        /// Genera parametros para setearle al formulario que inhabilñite el boton [X] cerrar 
+        /// </summary>
         protected override CreateParams CreateParams
         {
             get
@@ -64,11 +71,13 @@ namespace PetShopApp
             }
         }
 
+
         private void lbkUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtUser.Text = "pepe";
             txtPass.Text = "123";
         }
+
 
         private void lbkAdmin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

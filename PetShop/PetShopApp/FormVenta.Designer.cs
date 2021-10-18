@@ -120,7 +120,7 @@ namespace PetShopApp
             this.lblNombreUsuario.Size = new System.Drawing.Size(118, 15);
             this.lblNombreUsuario.TabIndex = 0;
             this.lblNombreUsuario.Text = "Nombre del Usuarios";
-            this.lblNombreUsuario.Click += new System.EventHandler(this.lblNombreUsuario_Click);
+
             // 
             // lblCerrarSesion
             // 
